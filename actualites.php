@@ -11,7 +11,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>Nos actus | Mêlées Bordelaises</title>
+        <title>Nos actus | Bordeaux étudiants Club</title>
         <link href="<?php echo ROOT_URL . "/"?>src/css/font.css" rel="stylesheet"/>
         <link href="<?php echo ROOT_URL . "/"?>src/css/styleactu.css" rel="stylesheet"/>
         <link href="<?php echo ROOT_URL . "/"?>src/css/style.css" rel="stylesheet"/>
@@ -34,7 +34,7 @@
 
         </div>
         <h2 class="carre">
-                <p class="accroche">Restez à l’affût de toute l’actualité rugbystique à Bordeaux: résultats, interviews, événements et plus encore, tout ce qui fait vibrer l'ovalie Girondine !</p>
+                <p class="accroche">Restez à l’affût de toute l’actualité sportive à Bordeaux: résultats, interviews et événements!</p>
         </h2>
         <div class="containeractu">
 

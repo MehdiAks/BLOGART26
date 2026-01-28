@@ -68,7 +68,7 @@ $article = sql_select("ARTICLE", "*");
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>Mêlées Bordelaises</title>
+        <title>Bordeaux étudiant club</title>
         <link href="<?php echo ROOT_URL . "/"?>src/css/styleactu.css" rel="stylesheet"/>
         <link href="<?php echo ROOT_URL . "/"?>src/css/style.css" rel="stylesheet"/>
     </head>
