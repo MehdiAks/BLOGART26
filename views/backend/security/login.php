@@ -8,8 +8,6 @@ require_once '../../../functions/ctrlSaisies.php';
 
 // Ajout d'un message d'erreur si les cookies ne sont pas acceptés
 
-session_start();
-
 // Vérifier si l'utilisateur a refusé les cookies
 if (isset($_COOKIE['cookieConsent']) && $_COOKIE['cookieConsent'] === "rejected") {
     header("Location: " . ROOT_URL . "/index.php");
@@ -113,4 +111,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 </script>
-
