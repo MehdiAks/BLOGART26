@@ -20,3 +20,4 @@ function curl($url, $type, $data = null, $headers = null){
     curl_close($ch);
     return $result;
 }
+?>

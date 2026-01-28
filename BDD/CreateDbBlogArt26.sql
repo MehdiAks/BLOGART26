@@ -1,14 +1,14 @@
-/**********************************************************************/
+/***********************************************/
 /** Blog des articles (BD MySQL) du cours BDD
 //
-// Création du script de la base de données BLOGART
+// Création du script de la BDD BLOGART
 //
-// @Martine Bornerie    Le 08/05/24 14:12:00
+// @Martine Bornerie    Le 16/01/26 16:59:00
 //
-// nom script : CreateDbBlogArt25_OK.sql
+// nom script : CreateDbBlogArt26_OK.sql
 */
-/**********************************************************************/
-/*====================================================================*/
+/***********************************************/
+/*=============================================*/
 /*
 ** Format d'un article (détail tuple) :
 
@@ -36,23 +36,18 @@
 	MOTS-CLÉS :		  70 caractères
 **
 */
-/*====================================================================*/
+/*=============================================*/
 
 -- First we create the database
 
--- CREATE DATABASE BLOGART25
--- DEFAULT CHARACTER SET UTF8			  -- Tous les formats de caractères
--- DEFAULT COLLATE utf8_general_ci ;  --
+CREATE DATABASE BLOGART26
+DEFAULT CHARACTER SET UTF8			  -- Tous les formats de caractères
+DEFAULT COLLATE utf8_general_ci ;  --
 
 -- SHOW VARIABLES;					  -- Voir les paramètres de la BD
 
--- Then we add a user to the database
--- Certains windows : aot (2 lignes ci-dessous)
-
-
-
 -- Flush / Init all privileges
--- FLUSH PRIVILEGES;
+FLUSH PRIVILEGES;
 
 -- Now we create the Database
 
@@ -65,22 +60,24 @@
 -- Version du serveur: 5.5.33
 -- Version de PHP: 5.5.3
 
--- SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
--- SET time_zone = "+00:00";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 --
 -- Base de données: BLOGART
 --
-USE BLOGART25;
+USE BLOGART26;
 
 
--- --------------------------------------------------------------------
+-- ----------------------------------------------
 --
 -- Structure de la table STATUT
 --
-/*====================================================================*/
-/* Table : STATUT                                                     */
-/*====================================================================*/
+/*=============================================*/
+/* Table : STATUT                              */
+/*=============================================*/
 create table STATUT
 (
    numStat int(5) not null auto_increment,   -- PK numéro statut
@@ -91,25 +88,26 @@ create table STATUT
 
 /*
 Ajout dtCreaStat :
-ALTER TABLE `STATUT` ADD `dtCreaStat` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP AFTER `libStat`;
+ALTER TABLE STATUT 
+ADD dtCreaStat TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP AFTER libStat;
 */
 
-/*====================================================================*/
-/* Index : STATUT_FK                                                  */
-/*====================================================================*/
+/*=============================================*/
+/* Index : STATUT_FK                           */
+/*=============================================*/
 create index STATUT_FK on STATUT
 (
    numStat
 );
 
 
--- --------------------------------------------------------------------
+-- ----------------------------------------------
 --
 -- Structure de la table MEMBRE
 --
-/*====================================================================*/
-/* Table : MEMBRE                                                     */
-/*====================================================================*/
+/*=============================================*/
+/* Table : MEMBRE                              */
+/*=============================================*/
 create table MEMBRE
 (
    numMemb int(10) not null auto_increment, -- PK numéro membre
@@ -121,28 +119,28 @@ create table MEMBRE
    dtCreaMemb datetime default CURRENT_TIMESTAMP,
    dtMajMemb datetime default null ON UPDATE CURRENT_TIMESTAMP,
    accordMemb bool DEFAULT TRUE,
-   -- Ajout cookie 8/02/24
+   -- Ajout gestion cookie 8/02/24
    cookieMemb VARCHAR(70) NULL DEFAULT NULL,
    numStat int(5) not null,                  -- FK
    primary key (numMemb)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*====================================================================*/
-/* Index : MEMBRE_FK                                                  */
-/*====================================================================*/
+/*=============================================*/
+/* Index : MEMBRE_FK                           */
+/*=============================================*/
 create index MEMBRE_FK on MEMBRE
 (
    numMemb
 );
 
 
--- --------------------------------------------------------------------
+-- ----------------------------------------------
 --
 -- Structure de la table THEMATIQUE
 --
-/*====================================================================*/
-/* Table : THEMATIQUE                                                 */
-/*====================================================================*/
+/*=============================================*/
+/* Table : THEMATIQUE                          */
+/*=============================================*/
 create table THEMATIQUE
 (
    numThem int(10) not null auto_increment, -- PK numéro thématique
@@ -150,22 +148,22 @@ create table THEMATIQUE
    primary key (numThem)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*====================================================================*/
-/* Index : THEMATIQUE_FK                                              */
-/*====================================================================*/
+/*=============================================*/
+/* Index : THEMATIQUE_FK                       */
+/*=============================================*/
 create index THEMATIQUE_FK on THEMATIQUE
 (
    numThem
 );
 
 
--- --------------------------------------------------------------------
+-- ----------------------------------------------
 --
 -- Structure de la table MOTCLE
 --
-/*====================================================================*/
-/* Table : MOTCLE                                                     */
-/*====================================================================*/
+/*=============================================*/
+/* Table : MOTCLE                              */
+/*=============================================*/
 create table MOTCLE
 (
    numMotCle int(8) not null auto_increment,   -- PK numéro mot-clé
@@ -173,25 +171,25 @@ create table MOTCLE
    primary key (numMotCle)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*====================================================================*/
-/* Index : MOTCLE_FK                                                  */
-/*====================================================================*/
+/*=============================================*/
+/* Index : MOTCLE_FK                           */
+/*=============================================*/
 create index MOTCLE_FK on MOTCLE
 (
    numMotCle
 );
 
 
--- --------------------------------------------------------------------
+-- ----------------------------------------------
 --
 -- Structure de la table ARTICLE
 --
-/*====================================================================*/
-/* Table : ARTICLE                                              	    */
-/*====================================================================*/
+/*=============================================*/
+/* Table : ARTICLE                             */
+/*=============================================*/
 create table ARTICLE
 (
-   numArt int(8) not null auto_increment,   -- PK numéro article
+   numArt int(8) not null auto_increment,          -- PK numéro article
    dtCreaArt datetime DEFAULT CURRENT_TIMESTAMP,   -- Date création article
    dtMajArt datetime DEFAULT null ON UPDATE CURRENT_TIMESTAMP,  -- Date modif article
    libTitrArt varchar(100),	   -- Titre article
@@ -208,22 +206,22 @@ create table ARTICLE
    primary key (numArt)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*====================================================================*/
-/* Index : ARTICLE_FK                                     			    */
-/*====================================================================*/
+/*=============================================*/
+/* Index : ARTICLE_FK                          */
+/*=============================================*/
 create index ARTICLE_FK on ARTICLE
 (
    numArt
 );
 
 
--- --------------------------------------------------------------------
+-- ----------------------------------------------
 --
 -- Structure de la table COMMENT
 --
-/*====================================================================*/
-/* Table : COMMENT                                                    */
-/*====================================================================*/
+/*=============================================*/
+/* Table : COMMENT                             */
+/*=============================================*/
 create table COMMENT
 (
    numCom int(10) not null auto_increment,        -- PK numéro commentaire
@@ -239,22 +237,22 @@ create table COMMENT
    primary key (numCom)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*====================================================================*/
-/* Index : COMMENT_FK                                                 */
-/*====================================================================*/
+/*=============================================*/
+/* Index : COMMENT_FK                          */
+/*=============================================*/
 create index COMMENT_FK on COMMENT
 (
    numCom
 );
 
 
--- --------------------------------------------------------------------
+-- ----------------------------------------------
 --
 -- Structure de la table LIKEART   (TJ)
 --
-/*====================================================================*/
-/* Table : LIKEART                                                    */
-/*====================================================================*/
+/*=============================================*/
+/* Table : LIKEART                             */
+/*=============================================*/
 create table LIKEART
 (
    numMemb int(10) not null, -- PK, FK
@@ -263,9 +261,9 @@ create table LIKEART
    primary key (numMemb, numArt)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*====================================================================*/
-/* Index : LIKEART_FK                                                 */
-/*====================================================================*/
+/*=============================================*/
+/* Index : LIKEART_FK                          */
+/*=============================================*/
 create index LIKEART_FK on LIKEART
 (
    numMemb,
@@ -273,13 +271,13 @@ create index LIKEART_FK on LIKEART
 );
 
 
--- --------------------------------------------------------------------
+-- ----------------------------------------------
 --
 -- Structure de la table MOTCLEARTICLE   (TJ)
 --
-/*====================================================================*/
-/* Table : MOTCLEARTICLE                                              */
-/*====================================================================*/
+/*=============================================*/
+/* Table : MOTCLEARTICLE                       */
+/*=============================================*/
 create table MOTCLEARTICLE
 (
    numArt int(8) not null,    -- PK, FK
@@ -287,22 +285,21 @@ create table MOTCLEARTICLE
    primary key (numArt, numMotCle)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*====================================================================*/
-/* Index : MOTCLEARTICLE_FK                                           */
-/*====================================================================*/
+/*=============================================*/
+/* Index : MOTCLEARTICLE_FK                    */
+/*=============================================*/
 create index MOTCLEARTICLE_FK on MOTCLEARTICLE
 (
    numArt
 );
 
-/*====================================================================*/
-/* Index : MOTCLEARTICLE2_FK                                          */
-/*====================================================================*/
+/*=============================================*/
+/* Index : MOTCLEARTICLE2_FK                   */
+/*=============================================*/
 create index MOTCLEARTICLE2_FK on MOTCLEARTICLE
 (
    numMotCle
 );
-
 
 -- --------------------------------------------------------------------
 -- --------------------------------------------------------------------
@@ -358,3 +355,4 @@ alter table LIKEART add constraint FK_LIKEART2 foreign key (numMemb)
 -- Fin CIR
 -- --------------------------------------------------------------------
 -- --------------------------------------------------------------------
+COMMIT;

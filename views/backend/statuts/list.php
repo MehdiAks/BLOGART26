@@ -1,6 +1,5 @@
 <?php
-include '../../../header.php'; 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
+include '../../../header.php'; // contains the header and call to config.php
 
 //Load all statuts
 $statuts = sql_select("STATUT", "*");
@@ -20,18 +19,13 @@ $statuts = sql_select("STATUT", "*");
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($statuts as $statut) { ?>
+                    <?php foreach($statuts as $statut){ ?>
                         <tr>
-                            <td><?php echo $statut['numStat']; ?></td>
-                            <td><?php echo $statut['libStat']; ?></td>
+                            <td><?php echo($statut['numStat']); ?></td>
+                            <td><?php echo($statut['libStat']); ?></td>
                             <td>
                                 <a href="edit.php?numStat=<?php echo($statut['numStat']); ?>" class="btn btn-primary">Edit</a>
-                                
-                                <?php if ($statut['numStat'] == 1) { ?>
-                                    <a href="delete.php?numStat=<?php echo($statut['numStat']); ?>" class="btn btn-danger disabled">Delete</a>
-                                <?php } else { ?>
-                                    <a href="delete.php?numStat=<?php echo($statut['numStat']); ?>" class="btn btn-danger">Delete</a>
-                                <?php } ?>
+                                <a href="delete.php?numStat=<?php echo($statut['numStat']); ?>" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -41,4 +35,5 @@ $statuts = sql_select("STATUT", "*");
         </div>
     </div>
 </div>
-
+<?php
+include '../../../footer.php'; // contains the footer

@@ -31,3 +31,4 @@ function sql_update($table, $attributs, $where) {
         return true;
     }
 }
+?>

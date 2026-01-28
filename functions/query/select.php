@@ -39,3 +39,4 @@ function sql_select($table, $attributs = '*', $where = null, $group = null, $ord
     //return result
     return $result;
 }
+?>

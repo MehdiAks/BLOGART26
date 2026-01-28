@@ -31,3 +31,4 @@ function sql_delete($table, $where){
         return true;
     }
 }
+?>

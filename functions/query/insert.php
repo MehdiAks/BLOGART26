@@ -31,3 +31,4 @@ function sql_insert($table, $attributs, $values){
         return true;
     }
 }
+?>
