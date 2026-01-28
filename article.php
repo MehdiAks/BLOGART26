@@ -168,7 +168,7 @@ if (isset($_SESSION['user_id'])) {
                         </p>
                         <img class="image2" src="<?php echo ROOT_URL . '/src/uploads/' . ($article['urlPhotArt']); ?>" alt="Image article">
                         <p class="petit">
-                            © Groupe 05 Blog’Art MMI Bordeaux-Montaigne + Description de l’image 
+                            © Groupe 01 Blog’Art MMI Bordeaux-Montaigne + Description de l’image 
                         </p>
 
                         <div class="text-with-line">
