@@ -77,12 +77,12 @@ $article = sql_select("ARTICLE", "*");
         <div>
 
             <div class="image-fixe">
-                <img src="src/images/imageacceuil.jpg" alt="Image fixe">
+                <img src="src/images/imageacceuil.jpg" alt="Image de fond">
             </div>
 
             <div>
             <h1 class="article1titre">
-                <h1 class="titlehead" >Mêlées Bordelaises</h1>
+                <h1 class="titlehead" >Bordeaux étudiant club</h1>
             </h1>
 
         </div>

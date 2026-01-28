@@ -18,7 +18,7 @@
 
 		<section id="footer">
 			<div class="logo-footer">
-				<a href="actualites.html"><img src="/src/images/logo/LOGO-MeleesBordelaises.svg" alt="logo"></a>
+				<a href="actualites.html"><img src="/src/images/logo/LOGO-Bec.svg" alt="logo"></a>
 			</div>
 
 			<div class="footer-bar">
