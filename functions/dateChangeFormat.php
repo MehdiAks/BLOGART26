@@ -34,4 +34,3 @@ function dateChangeFormat($dateIn, $from, $to){
         return "";	// Si aucune date en entrée
     }
 }
-?>

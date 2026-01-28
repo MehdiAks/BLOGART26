@@ -14,4 +14,3 @@ function get_ExistPseudo($pseudoMemb){
 	$result->execute(array($pseudoMemb));
 	return($result->rowCount());
 }
-?>

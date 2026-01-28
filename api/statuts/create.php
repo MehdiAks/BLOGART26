@@ -2,7 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once '../../functions/ctrlSaisies.php';
 
-$libStat = ($_POST['libStat']);
+$libStat = ctrlSaisies($_POST['libStat']);
 
 sql_insert('STATUT', 'libStat', "'$libStat'");
 
