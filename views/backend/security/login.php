@@ -95,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <a  href="/views/backend/security/mdpoublié.php" class="link">Mot de passe oublié ?</a>
         </div>
 
-        <p>Nouveau chez Mêlées Bordelaises ? <br>
+        <p>Nouveau chez Bordeaux étudiant club ? <br>
             <a href="/views/backend/security/signup.php" class="link">Créez un compte</a>
         </p>
     </form>
