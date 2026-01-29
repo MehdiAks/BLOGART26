@@ -1,12 +1,24 @@
 <?php
+/*
+ * Vue back-end (administration) : formulaire d'édition pour articles.
+ * Ce fichier mélange du PHP et du HTML pour afficher la page.
+ * Les commentaires ajoutés ci-dessous expliquent les sections clés pour un débutant.
+ */
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../../header.php';
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
 
+// Condition PHP : on adapte l'affichage selon les données.
 if(isset($_GET['numArt'])){
     $numArt = (int)$_GET['numArt'];
+    // Requête SQL : récupère des données pour construire la vue.
     $article = sql_select("ARTICLE", "*", "numArt = $numArt")[0];
+    // Requête SQL : récupère des données pour construire la vue.
     $thematiques = sql_select("THEMATIQUE", "*");
+    // Requête SQL : récupère des données pour construire la vue.
     $keywords = sql_select("MOTCLE", "*");
+    // Requête SQL : récupère des données pour construire la vue.
     $selectedKeywords = sql_select("MOTCLEARTICLE", "*", "numArt = $numArt");
     $numArt = $_GET['numArt'];
     $urlPhotArt = $article['urlPhotArt'];
@@ -20,6 +32,7 @@ if(isset($_GET['numArt'])){
         </div>
         <div class="col-md-12">
             <!-- Formulaire pour éditer un article -->
+<!-- Formulaire HTML pour saisir/modifier des données. -->
             <form action="<?php echo ROOT_URL . '/api/articles/update.php' ?>" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="libTitrArt">Titre</label>
@@ -90,6 +103,7 @@ if(isset($_GET['numArt'])){
                     <label for="numThem">Thématique</label>
                     <select id="numThem" name="numThem" class="form-control" required>
                         <option value="">-- Choisissez une thématique --</option>
+<!-- Boucle PHP : on parcourt une liste pour générer du HTML dynamique. -->
                         <?php foreach ($thematiques as $thematique) { ?>
                             <option value="<?= $thematique['numThem'] ?>" <?php echo $thematique['numThem'] == $article['numThem'] ? 'selected' : ''; ?>><?= $thematique['libThem'] ?></option>
                         <?php } ?>
@@ -102,6 +116,7 @@ if(isset($_GET['numArt'])){
                         <div class="col-md-5">
                             <select name="addMotCle" id="addMotCle" class="form-control" size="5">
                                 <?php
+                                // Requête SQL : récupère des données pour construire la vue.
                                 $result = sql_select('MOTCLE');
                                 foreach ($result as $req) {
                                     echo '<option id="mot" value="' . $req['numMotCle'] . '">' . $req['libMotCle'] . '</option>';
@@ -116,6 +131,7 @@ if(isset($_GET['numArt'])){
                     </div>
                 </div>
                 
+<!-- Script JavaScript côté navigateur pour gérer des interactions. -->
                     <script>
                         const addMotCle = document.getElementById('addMotCle');
                         const newMotCle = document.getElementById('newMotCle');
@@ -123,6 +139,7 @@ if(isset($_GET['numArt'])){
                         const newOptions = newMotCle.options;
 
                         addMotCle.addEventListener('click', (e) => {
+                            // Condition PHP : on adapte l'affichage selon les données.
                             if (e.target.tagName !== "OPTION") {
                                 return;
                             }
@@ -132,6 +149,7 @@ if(isset($_GET['numArt'])){
                         })
                         newMotCle.addEventListener('click', (e) => {
                             console.log(newOptions);
+                            // Condition PHP : on adapte l'affichage selon les données.
                             if (e.target.tagName !== "OPTION") {
                                 return;
                             }

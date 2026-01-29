@@ -1,9 +1,18 @@
 <?php
+/*
+ * Vue back-end (administration) : page de suppression/confirmation pour members.
+ * Ce fichier mélange du PHP et du HTML pour afficher la page.
+ * Les commentaires ajoutés ci-dessous expliquent les sections clés pour un débutant.
+ */
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../../header.php';
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
 
+// Condition PHP : on adapte l'affichage selon les données.
 if (isset($_GET['numMemb'])) {
     $numMemb = $_GET['numMemb'];
+    // Requête SQL : récupère des données pour construire la vue.
     $member = sql_select('MEMBRE', '*', "numMemb = '$numMemb'")[0];
     $pseudoMemb = $member['pseudoMemb'];
     $prenomMemb = $member['prenomMemb'];
@@ -20,6 +29,7 @@ if (isset($_GET['numMemb'])) {
             </div>
             <div class="col-md-12">
                 <!-- Form to delete a member -->
+<!-- Formulaire HTML pour saisir/modifier des données. -->
                 <form action="<?php echo ROOT_URL . '/api/members/delete.php' ?>" method="post">
                     <div class="form-group">
                         <!-- NUM -->
@@ -49,12 +59,15 @@ if (isset($_GET['numMemb'])) {
                         <!-- STATUT -->
                         <label for="numStat">Statut du Membre</label>
                         <input id="statutMemb" name="statutMemb" class="form-control" type="text" value="<?php
+                        // Condition PHP : on adapte l'affichage selon les données.
                         if ($numStat == '1') {
                             echo 'Administrateur';
                         }
+                        // Condition PHP : on adapte l'affichage selon les données.
                         if ($numStat == '2') {
                             echo 'Modérateur';
                         }
+                        // Condition PHP : on adapte l'affichage selon les données.
                         if ($numStat == '3') {
                             echo 'Membre';
                         }
@@ -64,6 +77,7 @@ if (isset($_GET['numMemb'])) {
                     </div>
                     <br />
                     <?php
+                    // Condition PHP : on adapte l'affichage selon les données.
                     if ($numStat == 1) {
                         echo '<p>Un administrateur ne peut pas être supprimé.</p>';
                     } else { ?>

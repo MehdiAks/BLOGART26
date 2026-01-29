@@ -1,24 +1,36 @@
 <?php
+/*
+ * Vue back-end (administration) : page de suppression/confirmation pour articles.
+ * Ce fichier mélange du PHP et du HTML pour afficher la page.
+ * Les commentaires ajoutés ci-dessous expliquent les sections clés pour un débutant.
+ */
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../../header.php'; // Inclure le header
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
 
 
 // Vérifier si l'ID de l'article est passé en paramètre
+// Condition PHP : on adapte l'affichage selon les données.
 if (isset($_GET['numArt'])) {
     $numArt = $_GET['numArt'];
 
     // Récupérer les informations de l'article
+    // Requête SQL : récupère des données pour construire la vue.
     $article = sql_select("ARTICLE", "*", "numArt = $numArt")[0];
 
     // Récupérer la thématique de l'article
+    // Requête SQL : récupère des données pour construire la vue.
     $thematique = sql_select("THEMATIQUE", "*", "numThem = " . $article['numThem'])[0];
 
     // Récupérer les mots-clés associés à l'article
+    // Requête SQL : récupère des données pour construire la vue.
     $keywords = sql_select("MOTCLEARTICLE", "*", "numArt = $numArt");
 
     // Récupérer les noms des mots-clés
     $keywordsList = [];
     foreach ($keywords as $keyword) {
+        // Requête SQL : récupère des données pour construire la vue.
         $keywordInfo = sql_select("MOTCLE", "*", "numMotCle = " . $keyword['numMotCle'])[0];
         $keywordsList[] = $keywordInfo['libMotCle'];
     }
@@ -36,6 +48,7 @@ if (isset($_GET['numArt'])) {
             <p>Êtes-vous sûr de vouloir supprimer cet article ?</p>
         </div>
         <div class="col-md-12">
+<!-- Formulaire HTML pour saisir/modifier des données. -->
             <form action="<?php echo ROOT_URL . '/api/articles/delete.php' ?>" method="post">
                 <!-- Champ caché pour l'ID de l'article -->
                 <input type="hidden" name="numArt" value="<?php echo $article['numArt']; ?>">
@@ -125,4 +138,3 @@ if (isset($_GET['numArt'])) {
         </div>
     </div>
 </div>
-

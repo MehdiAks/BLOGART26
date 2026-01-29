@@ -1,11 +1,22 @@
 <?php
+/*
+ * Vue back-end (administration) : liste des éléments pour articles.
+ * Ce fichier mélange du PHP et du HTML pour afficher la page.
+ * Les commentaires ajoutés ci-dessous expliquent les sections clés pour un débutant.
+ */
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../../header.php'; // contains the header and call to config.php
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
 
 //Load all articles
+// Requête SQL : récupère des données pour construire la vue.
 $articles = sql_select("ARTICLE", "*");
+// Requête SQL : récupère des données pour construire la vue.
 $keywords = sql_select("MOTCLE", "*");
+// Requête SQL : récupère des données pour construire la vue.
 $keywordsart = sql_select("MOTCLEARTICLE", "*");
+// Requête SQL : récupère des données pour construire la vue.
 $thematiques = sql_select("THEMATIQUE", "*");
 ?>
 
@@ -14,6 +25,7 @@ $thematiques = sql_select("THEMATIQUE", "*");
     <div class="row">
         <div class="col-md-12">
             <h1>Articles</h1>
+<!-- Tableau HTML pour afficher des données sous forme de lignes/colonnes. -->
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -28,8 +40,10 @@ $thematiques = sql_select("THEMATIQUE", "*");
                     </tr>
                 </thead>
                 <tbody>
+<!-- Boucle PHP : on parcourt une liste pour générer du HTML dynamique. -->
                     <?php foreach ($articles as $article) { 
                         $numArt = $article['numArt']; // QUEL ARTICLE NUM EST-IL QUESTION?
+                        // Requête SQL : récupère des données pour construire la vue.
                         $listMot = sql_select('ARTICLE
                         INNER JOIN MOTCLEARTICLE ON article.numArt = motclearticle.numArt
                         INNER JOIN motcle ON motclearticle.numMotCle = motcle.numMotCle', 'article.numArt, libMotCle', "article.numArt = '$numArt'");
@@ -45,8 +59,10 @@ $thematiques = sql_select("THEMATIQUE", "*");
                             <td>
                                 <?php 
                                 foreach ($keywordsart as $keywordart) { 
+                                    // Condition PHP : on adapte l'affichage selon les données.
                                     if ($keywordart['numArt'] == $article['numArt']) {
                                         foreach ($keywords as $keyword) {
+                                            // Condition PHP : on adapte l'affichage selon les données.
                                             if ($keyword['numMotCle'] == $keywordart['numMotCle']) {
                                                 echo $keyword['libMotCle'] . "<br>"; 
                                             }
@@ -58,6 +74,7 @@ $thematiques = sql_select("THEMATIQUE", "*");
                             <td>
                             <?php
                                 foreach ($thematiques as $thematique) { 
+                                    // Condition PHP : on adapte l'affichage selon les données.
                                     if ($thematique['numThem'] == $article['numThem']) { 
                                         echo $thematique['libThem'];
                                         break; 

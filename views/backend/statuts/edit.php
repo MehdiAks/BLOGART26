@@ -1,11 +1,20 @@
 <?php
+/*
+ * Vue back-end (administration) : formulaire d'édition pour statuts.
+ * Ce fichier mélange du PHP et du HTML pour afficher la page.
+ * Les commentaires ajoutés ci-dessous expliquent les sections clés pour un débutant.
+ */
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../../header.php';
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
 
 
 
+// Condition PHP : on adapte l'affichage selon les données.
 if(isset($_GET['numStat'])){
     $numStat = $_GET['numStat'];
+    // Requête SQL : récupère des données pour construire la vue.
     $libStat = sql_select("STATUT", "libStat", "numStat = $numStat")[0]['libStat'];
 }
 
@@ -17,6 +26,7 @@ if(isset($_GET['numStat'])){
         </div>
         <div class="col-md-12">
             <!-- Form to create a new statut -->
+<!-- Formulaire HTML pour saisir/modifier des données. -->
             <form action="<?php echo ROOT_URL . '/api/statuts/update.php' ?>" method="post">
                 <div class="form-group">
                     <label for="libStat">Nom du statut</label>
