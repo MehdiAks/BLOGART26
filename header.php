@@ -1,4 +1,4 @@
-// Commentaire: Fichier PHP pour header.
+
 <!DOCTYPE html>
 <html lang="fr-FR">
 <head>
