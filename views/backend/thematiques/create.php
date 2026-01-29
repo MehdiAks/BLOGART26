@@ -1,15 +1,5 @@
 <?php
-/**
- * Vue : Création d'une nouvelle thématique (backend)
- * But : Afficher un formulaire simple. Les données sont envoyées
- *       en POST vers l'API qui se charge de l'insertion en base.
- * Emplacement : views/backend/thematiques/create.php
- */
-
-// Inclusion de l'en-tête commun (HTML, sessions, constantes comme ROOT_URL...)
 include '../../../header.php';
-
-// Inclusion d'un utilitaire de redirection/sécurité si nécessaire
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
 ?>
 
@@ -20,7 +10,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
             <h1>Création nouvelle Thematique</h1>
         </div>
         <div class="col-md-12">
-            <!-- Formulaire : envoi en POST vers l'API qui crée la thématique en base -->
+            <!-- Form to create a new statut -->
             <form action="<?php echo ROOT_URL . '/api/thematiques/create.php' ?>" method="post">
                 <!-- Important : le traitement (validation, sanitisation, insertion)
                      doit être fait côté serveur dans api/thematiques/create.php -->

@@ -1,7 +1,14 @@
 <?php
+/*
+ * Vue back-end (administration) : liste des éléments pour statuts.
+ * Ce fichier mélange du PHP et du HTML pour afficher la page.
+ * Les commentaires ajoutés ci-dessous expliquent les sections clés pour un débutant.
+ */
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../../header.php'; // contains the header and call to config.php
 
 //Load all statuts
+// Requête SQL : récupère des données pour construire la vue.
 $statuts = sql_select("STATUT", "*");
 ?>
 
@@ -37,6 +44,7 @@ $statuts = sql_select("STATUT", "*");
                     </tr>
                 </thead>
                 <tbody>
+<!-- Boucle PHP : on parcourt une liste pour générer du HTML dynamique. -->
                     <?php foreach($statuts as $statut){ ?>
                         <tr>
                             <td><?php echo($statut['numStat']); ?></td>

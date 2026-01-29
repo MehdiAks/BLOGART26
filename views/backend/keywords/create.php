@@ -1,5 +1,12 @@
 <?php
+/*
+ * Vue back-end (administration) : formulaire de création pour keywords.
+ * Ce fichier mélange du PHP et du HTML pour afficher la page.
+ * Les commentaires ajoutés ci-dessous expliquent les sections clés pour un débutant.
+ */
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../../header.php';
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
 ?>
 
@@ -12,6 +19,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
         </div>
         <div class="col-md-12">
             <!-- Form to create a new statut -->
+<!-- Formulaire HTML pour saisir/modifier des données. -->
             <form action="<?php echo ROOT_URL . '/api/keywords/create.php' ?>" method="post">
                 <div class="form-group">
                     <label for="libMotCle">Nom du Mot-clé</label>

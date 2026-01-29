@@ -1,4 +1,10 @@
 <?php
+/*
+ * Vue back-end (administration) : tableau de bord.
+ * Ce fichier mélange du PHP et du HTML pour afficher la page.
+ * Les commentaires ajoutés ci-dessous expliquent les sections clés pour un débutant.
+ */
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../header.php';
 
 ?>
@@ -14,6 +20,7 @@ include '../../header.php';
                 <p>Bienvenue sur le dashboard !</p>
             </div>
             <div class="col-md-12">
+<!-- Tableau HTML pour afficher des données sous forme de lignes/colonnes. -->
                 <table class="table table-striped">
                     <thead>
                         <tr>

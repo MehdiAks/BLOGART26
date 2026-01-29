@@ -1,5 +1,12 @@
 <?php
+/*
+ * Vue back-end (administration) : formulaire de création pour likes.
+ * Ce fichier mélange du PHP et du HTML pour afficher la page.
+ * Les commentaires ajoutés ci-dessous expliquent les sections clés pour un débutant.
+ */
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../../header.php';
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirecmodo.php';
 ?>
 
@@ -11,6 +18,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirecmodo.php';
         </div>
         <div class="col-md-12">
             <!-- Form to create a new like -->
+<!-- Formulaire HTML pour saisir/modifier des données. -->
             <form action="<?php echo ROOT_URL . '/api/likes/create.php' ?>" method="post">
                 <div class="form-group">
                     <label for="numArt">Article</label>
