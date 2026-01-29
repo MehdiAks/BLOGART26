@@ -12,7 +12,7 @@ $article = sql_select("ARTICLE", "*");
         <h3>Politique de Cookies</h3>
         <p>
             Nous utilisons des cookies pour assurer le bon fonctionnement de ce blog sur le Bordeaux étudiant club, améliorer votre expérience, personnaliser 
-            le contenu et analyser le trafic. Certains cookies sont strictement nécessaires, tandis que d'autres nous aident à mieux comprendre 
+            le contenu et analyser le trafic. Certains cookies sont strictement nécessaires, tandis que d'autres permettent de mieux comprendre 
             votre navigation.
             <br>
             <br>En cliquant sur “Continuer et accepter”, vous autorisez l'utilisation de tous les cookies. Si vous choisissez “Continuer sans 
@@ -87,7 +87,7 @@ $article = sql_select("ARTICLE", "*");
 
         </div>
         <h2 class="carre">
-                <p class="accroche">Notre blog est nanana texte d'accroche.</p>
+                <p class="accroche">Venez découvrir le monde du basket à Bordeaux.</p>
         </h2>
         <div class="containeractu">
 

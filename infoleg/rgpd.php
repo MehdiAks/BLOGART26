@@ -20,6 +20,10 @@ include '../header.php';
         <main class="container my-5">
             <h1 class="text-center mb-4">Politique de confidentialité</h1>
 
+            <p><b>Dernière mise à jour:  29/02/2025</b></p>
+
+            <br>
+
             <h2>Introduction</h2>
             <p>Chez <b>Bordeaux étudiant club</b>, nous accordons une grande importance à la confidentialité et à la protection des données personnelles de nos utilisateurs...</p>
 
@@ -41,7 +45,7 @@ include '../header.php';
             </ol>
 
             <h2>Partage des données</h2>
-            <p>Vos données personnelles ne sont jamais vendues à des tiers...</p>
+            <p>Vos données personnelles ne sont jamais vendues à des tiers.</p>
 
             <h2>Durée de conservation</h2>
             <p>Nous conservons vos données personnelles aussi longtemps que nécessaire pour les finalités décrites dans cette politique :</p>
@@ -82,7 +86,6 @@ include '../header.php';
                 <li>Adresse e-mail: <b>contact@bordeauxetudiantclub.com</b></li>
                 <li>Adresse postale: <b>1 Rue Jacques Ellul, 33800 Bordeaux</b></li>
             </ul>
-            <p><b>Dernière mise à jour:  07/02/2025</b></p>
 
         </main>
     </body>
