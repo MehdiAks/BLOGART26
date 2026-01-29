@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Fonctions utilitaires pour utilErrOn.
 //  Affichage des messages d'erreurs : Mode DEV
 ini_set('display_errors','on');
 ini_set('display_startup_errors','on');

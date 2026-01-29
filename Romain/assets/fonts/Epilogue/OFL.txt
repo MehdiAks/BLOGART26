@@ -1,3 +1,4 @@
+# Commentaire: Fichier OFL du projet.
 Copyright 2020 The Epilogue Project Authors (https://github.com/Etcetera-Type-Co/Epilogue)
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.

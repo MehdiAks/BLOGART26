@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Vue frontend pour search search.php.
 
 /*
  * Vue front-end : page de contenu public.

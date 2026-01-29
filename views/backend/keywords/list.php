@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Vue backend pour lister keywords.
 /*
  * Vue back-end (administration) : liste des éléments pour keywords.
  * Ce fichier mélange du PHP et du HTML pour afficher la page.

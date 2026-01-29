@@ -1,3 +1,4 @@
+// Commentaire: Vue backend pour edit - SUPPRESION comments.
 <!--
   Vue back-end (administration) : rendu HTML/PHP de la page.
   Ce fichier contient le markup HTML/PHP affiché au navigateur.

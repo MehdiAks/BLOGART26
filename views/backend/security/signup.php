@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Vue backend pour inscrire security.
 /*
  * Vue back-end (administration) : page de sécurité/authentification.
  * Ce fichier mélange du PHP et du HTML pour afficher la page.

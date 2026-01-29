@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Endpoint API pour créer la ressource articles.
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once '../../functions/ctrlSaisies.php';
 

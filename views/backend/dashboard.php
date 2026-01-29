@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Vue backend pour dashboard dashboard.php.
 /*
  * Vue back-end (administration) : tableau de bord.
  * Ce fichier mélange du PHP et du HTML pour afficher la page.

@@ -1,3 +1,4 @@
+// Commentaire: Fichier PHP pour footer.
 <!-- Load JS scripts -->
 
 <!DOCTYPE html>

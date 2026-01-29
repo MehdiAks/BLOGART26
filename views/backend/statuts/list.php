@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Vue backend pour lister statuts.
 /*
  * Vue back-end (administration) : liste des éléments pour statuts.
  * Ce fichier mélange du PHP et du HTML pour afficher la page.

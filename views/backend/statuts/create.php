@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Vue backend pour créer statuts.
 /*
  * Vue back-end (administration) : formulaire de création pour statuts.
  * Ce fichier mélange du PHP et du HTML pour afficher la page.

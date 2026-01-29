@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Vue backend pour modifier keywords.
 /*
  * Vue back-end (administration) : formulaire d'édition pour keywords.
  * Ce fichier mélange du PHP et du HTML pour afficher la page.

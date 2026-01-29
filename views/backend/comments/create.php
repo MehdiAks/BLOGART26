@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Vue backend pour créer comments.
 /*
  * Vue back-end (administration) : formulaire de création pour comments.
  * Ce fichier mélange du PHP et du HTML pour afficher la page.

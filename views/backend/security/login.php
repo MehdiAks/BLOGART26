@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Vue backend pour authentifier security.
 
 
 /*

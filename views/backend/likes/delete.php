@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Vue backend pour supprimer likes.
 /*
  * Vue back-end (administration) : page de suppression/confirmation pour likes.
  * Ce fichier mélange du PHP et du HTML pour afficher la page.

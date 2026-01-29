@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Fichier PHP pour conf.
 include '../header.php';
 ?>
 <!DOCTYPE html>

@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Vue backend pour lister members.
 /*
  * Vue back-end (administration) : liste des éléments pour members.
  * Ce fichier mélange du PHP et du HTML pour afficher la page.
