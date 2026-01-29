@@ -1,5 +1,6 @@
 <?php
-class DotEnv{
+class DotEnv
+{
     /**
      * Convert true and false to booleans, instead of:
      *
@@ -27,8 +28,9 @@ class DotEnv{
      */
     protected $options = [];
 
-    public function __construct(string $path, array $options = []){
-        if(!file_exists($path)){
+    public function __construct(string $path, array $options = [])
+    {
+        if (!file_exists($path)) {
             throw new \InvalidArgumentException(sprintf('%s does not exist', $path));
         }
 
@@ -37,7 +39,7 @@ class DotEnv{
         $this->processOptions($options);
     }
 
-    private function processOptions(array $options) : void
+    private function processOptions(array $options): void
     {
         $this->options = array_merge([
             static::PROCESS_BOOLEANS => true
@@ -48,16 +50,16 @@ class DotEnv{
      * Processes the $path of the instances and parses the values into $_SERVER and $_ENV, also returns all the data that has been read.
      * Skips empty and commented lines.
      */
-    public function load() : void
+    public function load(): void
     {
-        if(!is_readable($this->path)){
+        if (!is_readable($this->path)) {
             throw new \RuntimeException(sprintf('%s file is not readable', $this->path));
         }
 
         $lines = file($this->path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
         foreach ($lines as $line) {
 
-            if(strpos(trim($line), '#') === 0){
+            if (strpos(trim($line), '#') === 0) {
                 continue;
             }
 
@@ -65,7 +67,7 @@ class DotEnv{
             $name = trim($name);
             $value = $this->processValue($value);
 
-            if(!array_key_exists($name, $_SERVER) && !array_key_exists($name, $_ENV)){
+            if (!array_key_exists($name, $_SERVER) && !array_key_exists($name, $_ENV)) {
                 putenv(sprintf('%s=%s', $name, $value));
                 $_ENV[$name] = $value;
                 $_SERVER[$name] = $value;
@@ -73,15 +75,16 @@ class DotEnv{
         }
     }
 
-    private function processValue(string $value){
+    private function processValue(string $value)
+    {
         $trimmedValue = trim($value);
 
-        if(!empty($this->options[static::PROCESS_BOOLEANS])){
+        if (!empty($this->options[static::PROCESS_BOOLEANS])) {
             $loweredValue = strtolower($trimmedValue);
 
             $isBoolean = in_array($loweredValue, ['true', 'false'], true);
 
-            if($isBoolean){
+            if ($isBoolean) {
                 return $loweredValue === 'true';
             }
         }

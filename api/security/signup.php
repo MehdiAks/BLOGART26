@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $passMemb2 = $_POST['passMemb2'] ?? '';
     $eMailMemb = ctrlSaisies($_POST['eMailMemb'] ?? '');
     $eMailMemb2 = ctrlSaisies($_POST['eMailMemb2'] ?? '');
-    $accordMemb = isset($_POST['accordMemb']) ? 1 : 0; 
+    $accordMemb = isset($_POST['accordMemb']) ? 1 : 0;
     $numStat = 3;
 
     // Validation pseudo
@@ -28,9 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validation mot de passe
     if (strlen($passMemb) < 8) {
         $_SESSION['errors'][] = 'Le mot de passe doit contenir au moins 8 caractères';
-    } elseif (!preg_match('/[A-Z]/', $passMemb) || 
-             !preg_match('/[a-z]/', $passMemb) || 
-             !preg_match('/[0-9]/', $passMemb)) {
+    } elseif (
+        !preg_match('/[A-Z]/', $passMemb) ||
+        !preg_match('/[a-z]/', $passMemb) ||
+        !preg_match('/[0-9]/', $passMemb)
+    ) {
         $_SESSION['errors'][] = 'Le mot de passe doit contenir une majuscule, une minuscule et un chiffre';
     } elseif ($passMemb !== $passMemb2) {
         $_SESSION['errors'][] = 'Les mots de passe ne correspondent pas';
