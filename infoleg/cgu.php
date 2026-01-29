@@ -6,9 +6,9 @@ include '../header.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Conditions Générales d'Utilisation pour le site Mêlées Bordelaises. Découvrez les règles d'utilisation et notre politique de confidentialité.">
+    <meta name="description" content="Conditions Générales d'Utilisation pour le site Bordeaux étudiant club. Découvrez les règles d'utilisation et notre politique de confidentialité.">
 
-    <title>Politique de confidentialité | Mêlées Bordelaises</title>
+    <title>Politique de confidentialité | Bordeaux étudiant club</title>
 
     <!-- Ajout de Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -44,7 +44,7 @@ include '../header.php';
         <p class="text-center"><b>Dernière mise à jour: 07/02/2025</b></p>
 
         <h2 class="section-title">Objet</h2>
-        <p>Les présentes Conditions Générales d’Utilisation (CGU) définissent les modalités d’accès et d’utilisation du site <b>Mêlées Bordelaises</b> 
+        <p>Les présentes Conditions Générales d’Utilisation (CGU) définissent les modalités d’accès et d’utilisation du site <b>Bordeaux étudiant club</b> 
             (ci-après « le Site »). Toute connexion et utilisation du Site impliquent l’acceptation sans réserve des présentes conditions par 
             l’utilisateur.</p>
 
@@ -93,7 +93,7 @@ include '../header.php';
 
         <h2 class="section-title">Liens hypertextes</h2>
         <p>Le Site peut contenir des liens vers des sites externes. L’éditeur ne peut être tenu responsable du contenu ou des politiques de ces sites tiers.</p>
-        <p>Tout site souhaitant établir un lien vers le Site devra obtenir une autorisation préalable en écrivant à <b>contact@meleesbordelaises.com</b>.</p>
+        <p>Tout site souhaitant établir un lien vers le Site devra obtenir une autorisation préalable en écrivant à <b>contact@bordeauxetudiantclub.com</b>.</p>
 
         <h2 class="section-title">Données personnelles et cookies</h2>
         <p>L’utilisation du Site peut entraîner la collecte de certaines données personnelles, notamment via des cookies. Pour plus d’informations sur 
@@ -110,7 +110,7 @@ include '../header.php';
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 Mêlées Bordelaises. Tous droits réservés.</p>
+        <p>&copy; 2025 Bordeaux étudiant club. Tous droits réservés.</p>
     </footer>
 
     <!-- Ajout de Bootstrap JS (optionnel pour le moment) -->

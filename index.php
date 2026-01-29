@@ -82,7 +82,7 @@ $article = sql_select("ARTICLE", "*");
 
             <div>
             <h1 class="article1titre">
-                <h1 class="titlehead" >Mêlées Bordelaises</h1>
+                <h1 class="titlehead" >Bordeaux étudiant club</h1>
             </h1>
 
         </div>
