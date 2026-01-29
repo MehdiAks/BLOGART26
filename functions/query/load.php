@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Utilitaire de requêtes pour load.
 // ctrl saisies form
 function sql_escape($value){
     if(is_array($value)){

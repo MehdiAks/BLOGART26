@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Vue backend pour créer articles.
 /*
  * Vue back-end (administration) : formulaire de création pour articles.
  * Ce fichier mélange du PHP et du HTML pour afficher la page.

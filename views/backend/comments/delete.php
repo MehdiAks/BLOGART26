@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Vue backend pour supprimer comments.
 /*
  * Vue back-end (administration) : page de suppression/confirmation pour comments.
  * Ce fichier mélange du PHP et du HTML pour afficher la page.

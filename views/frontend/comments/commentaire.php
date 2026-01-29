@@ -1,4 +1,5 @@
 <?php 
+// Commentaire: Vue frontend pour commentaire comments.
 
 /*
  * Vue front-end : page de contenu public.

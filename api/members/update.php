@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Endpoint API pour mettre à jour la ressource members.
 session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once '../../functions/ctrlSaisies.php';

@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Fonctions utilitaires pour security.
 // Check if user have access to ressource, take level needed and return boolean
 function check_access($level) {
     if(isset($_SESSION['id_user'])){

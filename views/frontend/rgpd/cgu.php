@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Vue frontend pour cgu rgpd.
 /*
  * Vue front-end : page d'information RGPD/CGU.
  * Ce fichier mélange du PHP et du HTML pour afficher la page.

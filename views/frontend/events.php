@@ -1,4 +1,5 @@
 <?php 
+// Commentaire: Vue frontend pour events events.php.
 /*
  * Vue front-end : page de contenu public.
  * Ce fichier mélange du PHP et du HTML pour afficher la page.

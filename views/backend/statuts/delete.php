@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Vue backend pour supprimer statuts.
 /*
  * Vue back-end (administration) : page de suppression/confirmation pour statuts.
  * Ce fichier mélange du PHP et du HTML pour afficher la page.

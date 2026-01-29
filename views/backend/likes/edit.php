@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Vue backend pour modifier likes.
 /*
  * Vue back-end (administration) : formulaire d'édition pour likes.
  * Ce fichier mélange du PHP et du HTML pour afficher la page.
