@@ -10,6 +10,24 @@ $statuts = sql_select("STATUT", "*");
     <div class="row">
         <div class="col-md-12">
             <h1>Statuts</h1>
+            <?php if (isset($_GET['success'])) { ?>
+                <?php if ($_GET['success'] === 'created') { ?>
+                    <div class="alert alert-success">Statut créé avec succès.</div>
+                <?php } elseif ($_GET['success'] === 'updated') { ?>
+                    <div class="alert alert-success">Statut mis à jour avec succès.</div>
+                <?php } elseif ($_GET['success'] === 'deleted') { ?>
+                    <div class="alert alert-success">Statut supprimé avec succès.</div>
+                <?php } ?>
+            <?php } ?>
+            <?php if (isset($_GET['error'])) { ?>
+                <?php if ($_GET['error'] === 'missing') { ?>
+                    <div class="alert alert-danger">Statut inexistant.</div>
+                <?php } elseif ($_GET['error'] === 'empty') { ?>
+                    <div class="alert alert-danger">Le nom du statut est obligatoire.</div>
+                <?php } elseif ($_GET['error'] === 'used') { ?>
+                    <div class="alert alert-danger">Suppression impossible : ce statut est lié à au moins un membre.</div>
+                <?php } ?>
+            <?php } ?>
             <table class="table table-striped">
                 <thead>
                     <tr>
