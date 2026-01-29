@@ -77,7 +77,7 @@ $article = sql_select("ARTICLE", "*");
         <div>
 
             <div class="image-fixe">
-                <img src="src/images/imageacceuil.jpg" alt="Image de fond">
+                <img src="src/images/Background.jpg" alt="Image de fond">
             </div>
 
             <div>
