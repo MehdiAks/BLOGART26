@@ -1,12 +1,23 @@
 <?php
+// Commentaire: Vue backend pour supprimer thematiques.
+/*
+ * Vue back-end (administration) : page de suppression/confirmation pour thematiques.
+ * Ce fichier mélange du PHP et du HTML pour afficher la page.
+ * Les commentaires ajoutés ci-dessous expliquent les sections clés pour un débutant.
+ */
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../../header.php';
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
 
+// Condition PHP : on adapte l'affichage selon les données.
 if (isset($_GET['numThem'])) {
     $numThem = $_GET['numThem'];
+    // Requête SQL : récupère des données pour construire la vue.
     $libThem = sql_select("THEMATIQUE", "libThem", "numThem = $numThem")[0]['libThem'];
 
     // Vérifie si le statut est utilisé par au moins un membre
+    // Requête SQL : récupère des données pour construire la vue.
     $countnumThem = sql_select("ARTICLE", "COUNT(*) AS total", "numThem = $numThem")[0]['total'];
     $numThemUsed = $countnumThem > 0; // true si au moins un membre a ce statut
 }
@@ -30,6 +41,7 @@ if (isset($_GET['numThem'])) {
             <?php endif; ?>
         </div>
         <div class="col-md-12">
+<!-- Formulaire HTML pour saisir/modifier des données. -->
             <form action="<?php echo ROOT_URL . '/api/thematiques/delete.php' ?>" method="post">
                 <div class="form-group">
                     <label for="libThem">Nom de Thematique</label>

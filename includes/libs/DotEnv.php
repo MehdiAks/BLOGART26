@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Fichier PHP pour DotEnv.
 class DotEnv
 {
     /**

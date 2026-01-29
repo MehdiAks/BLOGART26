@@ -1,3 +1,4 @@
+// Commentaire: Fichier PHP pour footer.
 <!-- Load JS scripts -->
 
 <!DOCTYPE html>
@@ -18,7 +19,7 @@
 
 		<section id="footer">
 			<div class="logo-footer">
-				<a href="actualites.html"><img src="/src/images/logo/LOGO-Bec.svg" alt="logo"></a>
+				<a href="actualites.html"><img src="/src/images/logo/LOGO.svg" alt="logo"></a>
 			</div>
 
 			<div class="footer-bar">

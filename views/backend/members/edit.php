@@ -1,5 +1,13 @@
 <?php
+// Commentaire: Vue backend pour modifier members.
+/*
+ * Vue back-end (administration) : formulaire d'édition pour members.
+ * Ce fichier mélange du PHP et du HTML pour afficher la page.
+ * Les commentaires ajoutés ci-dessous expliquent les sections clés pour un débutant.
+ */
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../../header.php';
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
 
 // Seulement si tu es admin ou modérateur, tu as accès à cette page
@@ -12,8 +20,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
 $numMemb = $pseudoMemb = $prenomMemb = $nomMemb = $passMemb = $eMailMemb = "";
 $numStat = 3; // Par défaut, statut "Membre"
 
+// Condition PHP : on adapte l'affichage selon les données.
 if(isset($_GET['numMemb'])){
     $numMemb = $_GET['numMemb'];
+    // Requête SQL : récupère des données pour construire la vue.
     $membre = sql_select("MEMBRE", "*", "numMemb = $numMemb")[0] ?? [];
 
     $pseudoMemb = $membre['pseudoMemb'] ?? "";
@@ -31,6 +41,7 @@ if(isset($_GET['numMemb'])){
             <h1>Modification Membre</h1>
         </div>
         <div class="col-md-12">
+<!-- Formulaire HTML pour saisir/modifier des données. -->
             <form action="<?php echo ROOT_URL . '/api/members/update.php' ?>" method="post">
                 <input name="numMemb" class="form-control" type="hidden" value="<?php echo htmlspecialchars($numMemb); ?>" />
 

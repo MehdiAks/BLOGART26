@@ -1,10 +1,21 @@
 <?php
+// Commentaire: Vue backend pour créer articles.
+/*
+ * Vue back-end (administration) : formulaire de création pour articles.
+ * Ce fichier mélange du PHP et du HTML pour afficher la page.
+ * Les commentaires ajoutés ci-dessous expliquent les sections clés pour un débutant.
+ */
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../../header.php';
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
 
 // Récupération des thématiques et mots-clés disponibles
+// Requête SQL : récupère des données pour construire la vue.
 $thematiques = sql_select("THEMATIQUE", "*");
+// Requête SQL : récupère des données pour construire la vue.
 $keywords = sql_select("MOTCLE", "*");
+// Requête SQL : récupère des données pour construire la vue.
 $keywordsart = sql_select("MOTCLEARTICLE", "*");
 ?>
 
@@ -14,6 +25,7 @@ $keywordsart = sql_select("MOTCLEARTICLE", "*");
             <h1>Création Nouvel Article</h1>
         </div>
         <div class="col-md-12">
+<!-- Formulaire HTML pour saisir/modifier des données. -->
             <form action="<?php echo ROOT_URL . '/api/articles/create.php'; ?>" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="libTitrArt">Titre</label>
@@ -76,6 +88,7 @@ $keywordsart = sql_select("MOTCLEARTICLE", "*");
                     <label for="numThem">Thématique</label>
                     <select id="numThem" name="numThem" class="form-control" required>
                         <option value="">-- Choisissez une thématique --</option>
+<!-- Boucle PHP : on parcourt une liste pour générer du HTML dynamique. -->
                         <?php foreach ($thematiques as $thematique) { ?>
                             <option value="<?= $thematique['numThem'] ?>"><?= $thematique['libThem'] ?></option>
                         <?php } ?>
@@ -87,6 +100,7 @@ $keywordsart = sql_select("MOTCLEARTICLE", "*");
                         <div class="col-md-5">
                             <select name="addMotCle" id="addMotCle" class="form-control" size="5">
                                 <?php
+                                // Requête SQL : récupère des données pour construire la vue.
                                 $result = sql_select('MOTCLE');
                                 foreach ($result as $req) {
                                     echo '<option id="mot" value="' . $req['numMotCle'] . '">' . $req['libMotCle'] . '</option>';
@@ -101,6 +115,7 @@ $keywordsart = sql_select("MOTCLEARTICLE", "*");
                     </div>
                 </div>
                     </select>
+<!-- Script JavaScript côté navigateur pour gérer des interactions. -->
                     <script>
                         const addMotCle = document.getElementById('addMotCle');
                         const newMotCle = document.getElementById('newMotCle');
@@ -108,6 +123,7 @@ $keywordsart = sql_select("MOTCLEARTICLE", "*");
                         const newOptions = newMotCle.options;
 
                         addMotCle.addEventListener('click', (e) => {
+                            // Condition PHP : on adapte l'affichage selon les données.
                             if (e.target.tagName !== "OPTION") {
                                 return;
                             }
@@ -117,6 +133,7 @@ $keywordsart = sql_select("MOTCLEARTICLE", "*");
                         })
                         newMotCle.addEventListener('click', (e) => {
                             console.log(newOptions);
+                            // Condition PHP : on adapte l'affichage selon les données.
                             if (e.target.tagName !== "OPTION") {
                                 return;
                             }
@@ -140,4 +157,3 @@ $keywordsart = sql_select("MOTCLEARTICLE", "*");
         </div>
     </div>
 </div>
-

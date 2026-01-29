@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Fichier PHP pour cgu.
 include '../header.php';
 ?>
 <!DOCTYPE html>

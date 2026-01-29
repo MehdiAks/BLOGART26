@@ -1,5 +1,12 @@
 <?php
+// Commentaire: Vue backend pour inscrire security.
+/*
+ * Vue back-end (administration) : page de sécurité/authentification.
+ * Ce fichier mélange du PHP et du HTML pour afficher la page.
+ * Les commentaires ajoutés ci-dessous expliquent les sections clés pour un débutant.
+ */
 session_start();
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../../header.php';
 
 // Récupération des données de session
@@ -19,6 +26,7 @@ unset($_SESSION['errors'], $_SESSION['old']);
         <?php if (!empty($errors)): ?>
             <div class="alert alert-danger">
                 <ul class="mb-2">
+<!-- Boucle PHP : on parcourt une liste pour générer du HTML dynamique. -->
                     <?php foreach ($errors as $error): ?>
                         <?= htmlspecialchars($error) ?><br>
                     <?php endforeach; ?>
@@ -26,6 +34,7 @@ unset($_SESSION['errors'], $_SESSION['old']);
             </div>
         <?php endif; ?>
     </div>
+<!-- Formulaire HTML pour saisir/modifier des données. -->
     <form action="<?php echo ROOT_URL . '/api/security/signup.php' ?>" method="post">
         <!-- Prénom -->
         <div class="rowlog">
@@ -101,9 +110,11 @@ unset($_SESSION['errors'], $_SESSION['old']);
 
 </main>
 
+<!-- Script JavaScript côté navigateur pour gérer des interactions. -->
 <script>
     function togglePassword(id) {
         var x = document.getElementById(id);
+        // Condition PHP : on adapte l'affichage selon les données.
         if (x.type === "password") {
             x.type = "text";
         } else {

@@ -1,14 +1,24 @@
 <?php
+// Commentaire: Vue backend pour authentifier security.
 
 
+/*
+ * Vue back-end (administration) : page de sécurité/authentification.
+ * Ce fichier mélange du PHP et du HTML pour afficher la page.
+ * Les commentaires ajoutés ci-dessous expliquent les sections clés pour un débutant.
+ */
 session_start();
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../../header.php';
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 require_once '../../../functions/ctrlSaisies.php';
 
 // Ajout d'un message d'erreur si les cookies ne sont pas acceptés
 
 // Vérifier si l'utilisateur a refusé les cookies
+// Condition PHP : on adapte l'affichage selon les données.
 if (isset($_COOKIE['cookieConsent']) && $_COOKIE['cookieConsent'] === "rejected") {
     header("Location: " . ROOT_URL . "/index.php");
     exit();
@@ -20,22 +30,28 @@ $errorPseudo = $errorPassword = "";
 $pseudo = "";
 
 
+// Condition PHP : on adapte l'affichage selon les données.
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pseudo = ctrlSaisies($_POST['pseudo']);
     $password = ctrlSaisies($_POST['password']);
 
+    // Condition PHP : on adapte l'affichage selon les données.
     if (empty($pseudo)) {
         $errorPseudo = "Le pseudo est requis.";
     }
 
+    // Condition PHP : on adapte l'affichage selon les données.
     if (empty($password)) {
         $errorPassword = "Le mot de passe est requis.";
     }
 
+    // Condition PHP : on adapte l'affichage selon les données.
     if (empty($errorPseudo) && empty($errorPassword)) {
         // Vérifier si l'utilisateur existe
+        // Requête SQL : récupère des données pour construire la vue.
         $user = sql_select("MEMBRE", "*", "pseudoMemb = '$pseudo'");
 
+        // Condition PHP : on adapte l'affichage selon les données.
         if ($user && password_verify($password, $user[0]['passMemb'])) {
             // Connexion réussie
             $_SESSION['user_id'] = $user[0]['numMemb'];
@@ -63,6 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php endif; ?>
 
     
+<!-- Formulaire HTML pour saisir/modifier des données. -->
     <form action="" method="post">
 
         <div class="collumnslog">
@@ -101,9 +118,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 </main>
 
+<!-- Script JavaScript côté navigateur pour gérer des interactions. -->
 <script>
     function myFunction() {
         var x = document.getElementById("mdp");
+        // Condition PHP : on adapte l'affichage selon les données.
         if (x.type === "password") {
             x.type = "text";
         } else {

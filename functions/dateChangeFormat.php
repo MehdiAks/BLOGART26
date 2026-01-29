@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Fonctions utilitaires pour dateChangeFormat.
 /******************************************************
 *
 * En entrée :

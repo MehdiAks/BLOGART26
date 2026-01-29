@@ -1,10 +1,19 @@
 <?php
+// Commentaire: Vue backend pour lister members.
+/*
+ * Vue back-end (administration) : liste des éléments pour members.
+ * Ce fichier mélange du PHP et du HTML pour afficher la page.
+ * Les commentaires ajoutés ci-dessous expliquent les sections clés pour un débutant.
+ */
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../../header.php'; 
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
 
 
 
 // Charger tous les membres avec leur statut
+// Requête SQL : récupère des données pour construire la vue.
 $members = sql_select("MEMBRE INNER JOIN STATUT ON MEMBRE.numStat = STATUT.numStat", "*");
 ?>
 
@@ -12,6 +21,7 @@ $members = sql_select("MEMBRE INNER JOIN STATUT ON MEMBRE.numStat = STATUT.numSt
     <div class="row">
         <div class="col-md-12">
             <h1>Membres</h1>
+<!-- Tableau HTML pour afficher des données sous forme de lignes/colonnes. -->
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -26,6 +36,7 @@ $members = sql_select("MEMBRE INNER JOIN STATUT ON MEMBRE.numStat = STATUT.numSt
                 </thead>
                 <tbody>
                     <?php if (!empty($members)) : ?>
+<!-- Boucle PHP : on parcourt une liste pour générer du HTML dynamique. -->
                         <?php foreach ($members as $mem) : ?>
                             <tr>
                                 <td><?php echo($mem['numMemb']); ?></td>
@@ -55,4 +66,3 @@ $members = sql_select("MEMBRE INNER JOIN STATUT ON MEMBRE.numStat = STATUT.numSt
         </div>
     </div>
 </div>
-

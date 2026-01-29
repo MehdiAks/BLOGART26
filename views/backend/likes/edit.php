@@ -1,10 +1,20 @@
 <?php
+// Commentaire: Vue backend pour modifier likes.
+/*
+ * Vue back-end (administration) : formulaire d'édition pour likes.
+ * Ce fichier mélange du PHP et du HTML pour afficher la page.
+ * Les commentaires ajoutés ci-dessous expliquent les sections clés pour un débutant.
+ */
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../../header.php';
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
 
+// Condition PHP : on adapte l'affichage selon les données.
 if (isset($_GET['numMemb']) && isset($_GET['numArt'])) {
     $numMemb = $_GET['numMemb'];
     $numArt = $_GET['numArt'];
+    // Requête SQL : récupère des données pour construire la vue.
     $likeA = sql_select("LIKEART", "likeA", "numMemb = $numMemb AND numArt = $numArt")[0]['likeA'];
 }
 ?> 
@@ -16,6 +26,7 @@ if (isset($_GET['numMemb']) && isset($_GET['numArt'])) {
         </div>
         <div class="col-md-12">
             <!-- Form to edit like -->
+<!-- Formulaire HTML pour saisir/modifier des données. -->
             <form action="<?php echo ROOT_URL . '/api/likes/update.php' ?>" method="post">
                 <div class="form-group">
                     <label for="numArt">Numéro d'article</label>

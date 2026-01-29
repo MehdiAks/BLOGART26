@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Fonctions utilitaires pour ctrlSaisies.
 //ctrl saisies form avant import bdd
 function ctrlSaisies($saisie){
 

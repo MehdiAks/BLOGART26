@@ -1,9 +1,19 @@
 <?php
+// Commentaire: Vue backend pour modifier keywords.
+/*
+ * Vue back-end (administration) : formulaire d'édition pour keywords.
+ * Ce fichier mélange du PHP et du HTML pour afficher la page.
+ * Les commentaires ajoutés ci-dessous expliquent les sections clés pour un débutant.
+ */
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../../header.php';
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
 
+// Condition PHP : on adapte l'affichage selon les données.
 if(isset($_GET['numMotCle'])){
     $numMotCle = $_GET['numMotCle'];
+    // Requête SQL : récupère des données pour construire la vue.
     $libMotCle = sql_select("MOTCLE", "libMotCle", "numMotCle = $numMotCle")[0]['libMotCle'];
 }
 
@@ -15,6 +25,7 @@ if(isset($_GET['numMotCle'])){
         </div>
         <div class="col-md-12">
             <!-- Form to create a new statut -->
+<!-- Formulaire HTML pour saisir/modifier des données. -->
             <form action="<?php echo ROOT_URL . '/api/keywords/update.php' ?>" method="post">
                 <div class="form-group">
                     <label for="libMotCle">Nom du statut</label>

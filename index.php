@@ -1,4 +1,5 @@
 <?php 
+// Commentaire: Fichier PHP pour index.
 require_once 'header.php';
 sql_connect();
 
@@ -77,7 +78,7 @@ $article = sql_select("ARTICLE", "*");
         <div>
 
             <div class="image-fixe">
-                <img src="src/images/imageacceuil.jpg" alt="Image de fond">
+                <img src="src/images/background/background-index.jpg" alt="Image de fond">
             </div>
 
             <div>
