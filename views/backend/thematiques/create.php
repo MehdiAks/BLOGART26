@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Vue backend pour créer thematiques.
 /*
  * Vue back-end (administration) : formulaire de création pour thematiques.
  * Ce fichier mélange du PHP et du HTML pour afficher la page.

@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Fichier PHP pour mentionleg.
 include '../header.php';
 ?>
 <!DOCTYPE html>

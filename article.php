@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Fichier PHP pour article.
 require_once 'header.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/ctrlSaisies.php';

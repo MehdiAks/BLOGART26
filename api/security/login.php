@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Endpoint API pour authentifier la ressource security.
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once '../../functions/ctrlSaisies.php';
 session_start();

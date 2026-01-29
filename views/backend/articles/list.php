@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Vue backend pour lister articles.
 /*
  * Vue back-end (administration) : liste des éléments pour articles.
  * Ce fichier mélange du PHP et du HTML pour afficher la page.

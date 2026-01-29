@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Vue backend pour lister likes.
 /*
  * Vue back-end (administration) : liste des éléments pour likes.
  * Ce fichier mélange du PHP et du HTML pour afficher la page.

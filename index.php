@@ -1,4 +1,5 @@
 <?php 
+// Commentaire: Fichier PHP pour index.
 require_once 'header.php';
 sql_connect();
 

@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Utilitaire de requêtes pour select.
 // select instances
 function sql_select($table, $attributs = '*', $where = null, $group = null, $order = null, $limit = null){
     global $DB;

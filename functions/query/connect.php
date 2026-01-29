@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Utilitaire de requêtes pour connect.
 //PDO connection
 function sql_connect(){
     global $DB;

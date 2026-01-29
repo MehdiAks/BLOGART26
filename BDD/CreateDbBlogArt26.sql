@@ -1,3 +1,4 @@
+-- Commentaire: Script SQL pour CreateDbBlogArt26.
 /***********************************************/
 /** Blog des articles (BD MySQL) du cours BDD
 //

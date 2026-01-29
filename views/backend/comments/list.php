@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Vue backend pour lister comments.
 /*
  * Vue back-end (administration) : liste des éléments pour comments.
  * Ce fichier mélange du PHP et du HTML pour afficher la page.

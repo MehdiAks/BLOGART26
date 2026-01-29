@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Fichier PHP pour config.
 //define ROOT_PATH
 define('ROOT', $_SERVER['DOCUMENT_ROOT']);
 define('ROOT_URL', 'http://' . $_SERVER['HTTP_HOST']);

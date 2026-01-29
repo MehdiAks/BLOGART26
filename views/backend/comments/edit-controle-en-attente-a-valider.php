@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Vue backend pour edit-controle-en-attente-a-valider comments.
 /*
  * Vue back-end (administration) : rendu HTML/PHP de la page.
  * Ce fichier mélange du PHP et du HTML pour afficher la page.

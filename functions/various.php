@@ -1,4 +1,5 @@
 <?php
+// Commentaire: Fonctions utilitaires pour various.
 // curl function
 function curl($url, $type, $data = null, $headers = null){
     $ch = curl_init();
