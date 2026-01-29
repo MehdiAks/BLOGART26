@@ -11,11 +11,17 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
 
 
 
-// Condition PHP : on adapte l'affichage selon les données.
-if(isset($_GET['numStat'])){
-    $numStat = $_GET['numStat'];
-    // Requête SQL : récupère des données pour construire la vue.
-    $libStat = sql_select("STATUT", "libStat", "numStat = $numStat")[0]['libStat'];
+if (isset($_GET['numStat'])) {
+    $numStat = (int) $_GET['numStat'];
+    $statut = sql_select("STATUT", "libStat", "numStat = $numStat");
+    if (!$statut) {
+        header('Location: list.php?error=missing');
+        exit();
+    }
+    $libStat = $statut[0]['libStat'];
+} else {
+    header('Location: list.php?error=missing');
+    exit();
 }
 
 ?> 
@@ -25,13 +31,16 @@ if(isset($_GET['numStat'])){
             <h1> Statut</h1>
         </div>
         <div class="col-md-12">
+            <?php if (isset($_GET['error']) && $_GET['error'] === 'empty') { ?>
+                <div class="alert alert-danger">Le nom du statut est obligatoire.</div>
+            <?php } ?>
             <!-- Form to create a new statut -->
 <!-- Formulaire HTML pour saisir/modifier des données. -->
             <form action="<?php echo ROOT_URL . '/api/statuts/update.php' ?>" method="post">
                 <div class="form-group">
                     <label for="libStat">Nom du statut</label>
                     <input id="numStat" name="numStat" class="form-control" style="display: none" type="text" value="<?php echo($numStat); ?>" readonly="readonly" />
-                    <input id="libStat" name="libStat" class="form-control" type="text" value="<?php echo($libStat); ?>"/>
+                    <input id="libStat" name="libStat" class="form-control" type="text" value="<?php echo($libStat); ?>" required />
                 </div>
                 <br />
                 <div class="form-group mt-2">

@@ -7,11 +7,17 @@
 // Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../../header.php';
 
-// Condition PHP : on adapte l'affichage selon les données.
-if(isset($_GET['numStat'])){
-    $numStat = $_GET['numStat'];
-    // Requête SQL : récupère des données pour construire la vue.
-    $libStat = sql_select("STATUT", "libStat", "numStat = $numStat")[0]['libStat'];
+if (isset($_GET['numStat'])) {
+    $numStat = (int) $_GET['numStat'];
+    $statut = sql_select("STATUT", "libStat", "numStat = $numStat");
+    if (!$statut) {
+        header('Location: list.php?error=missing');
+        exit();
+    }
+    $libStat = $statut[0]['libStat'];
+} else {
+    header('Location: list.php?error=missing');
+    exit();
 }
 ?>
 
