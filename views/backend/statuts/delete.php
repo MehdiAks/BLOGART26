@@ -1,9 +1,17 @@
 <?php
 include '../../../header.php';
 
-if(isset($_GET['numStat'])){
-    $numStat = $_GET['numStat'];
-    $libStat = sql_select("STATUT", "libStat", "numStat = $numStat")[0]['libStat'];
+if (isset($_GET['numStat'])) {
+    $numStat = (int) $_GET['numStat'];
+    $statut = sql_select("STATUT", "libStat", "numStat = $numStat");
+    if (!$statut) {
+        header('Location: list.php?error=missing');
+        exit();
+    }
+    $libStat = $statut[0]['libStat'];
+} else {
+    header('Location: list.php?error=missing');
+    exit();
 }
 ?>
 
