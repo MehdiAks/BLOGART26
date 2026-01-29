@@ -7,7 +7,7 @@ include '../header.php';
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Politique de confidentialité | Mêlées Bordelaises</title>
+        <title>Politique de confidentialité | Bordeaux étudiant club</title>
         <link href="css/style_modif.css" rel="stylesheet"/>
         <link href="css/font.css" rel="stylesheet"/>
         
@@ -21,7 +21,7 @@ include '../header.php';
             <h1 class="text-center mb-4">Politique de confidentialité</h1>
 
             <h2>Introduction</h2>
-            <p>Chez <b>Mêlées Bordelaises</b>, nous accordons une grande importance à la confidentialité et à la protection des données personnelles de nos utilisateurs...</p>
+            <p>Chez <b>Bordeaux étudiant club</b>, nous accordons une grande importance à la confidentialité et à la protection des données personnelles de nos utilisateurs...</p>
 
             <h2>Données collectées</h2>
             <p>Nous collectons les données suivantes lors de votre interaction avec notre site :</p>
@@ -59,7 +59,7 @@ include '../header.php';
                 <li><b>Droit d’opposition:</b> refuser le traitement de vos données à certaines fins.</li>
                 <li><b>Droit à la portabilité:</b> recevoir vos données dans un format structuré.</li>
             </ul>
-            <p>Pour exercer vos droits, contactez-nous à l’adresse suivante: <b>contact@meleesbordelaises.com</b>.</p>
+            <p>Pour exercer vos droits, contactez-nous à l’adresse suivante: <b>contact@bordeauxetudiantclub.com</b>.</p>
 
             <h2>Cookies</h2>
             <p>Notre site utilise des cookies pour :</p>
@@ -79,7 +79,7 @@ include '../header.php';
             <h2>Contact</h2>
             <p>Pour toute question relative à cette politique ou au traitement de vos données personnelles, vous pouvez nous contacter à :</p>
             <ul>
-                <li>Adresse e-mail: <b>contact@meleesbordelaises.com</b></li>
+                <li>Adresse e-mail: <b>contact@bordeauxetudiantclub.com</b></li>
                 <li>Adresse postale: <b>1 Rue Jacques Ellul, 33800 Bordeaux</b></li>
             </ul>
             <p><b>Dernière mise à jour:  07/02/2025</b></p>
