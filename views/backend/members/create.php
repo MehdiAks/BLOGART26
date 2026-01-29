@@ -1,10 +1,19 @@
 <?php
+/*
+ * Vue back-end (administration) : formulaire de création pour members.
+ * Ce fichier mélange du PHP et du HTML pour afficher la page.
+ * Les commentaires ajoutés ci-dessous expliquent les sections clés pour un débutant.
+ */
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../../header.php';
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
 
 
+// Condition PHP : on adapte l'affichage selon les données.
 if (isset($_GET['numCom'])) {
     $numCom = $_GET['numCom'];
+    // Requête SQL : récupère des données pour construire la vue.
     $comment = sql_select('comment', '*', "numCom ='$numCom'")[0];
     $pseudoMemb = $comment['pseudoMemb'];
     $numArt = $comment['numArt'];
@@ -23,6 +32,7 @@ if (isset($_GET['numCom'])) {
         </div>
         <div class="col-md-12">
             <!-- Form to create a new member -->
+<!-- Formulaire HTML pour saisir/modifier des données. -->
             <form action="<?php echo ROOT_URL . '/api/members/create.php' ?>" method="post" id="formCreate">
                 <div class="form-group">
                     <!-- PSEUDO -->
@@ -83,6 +93,7 @@ if (isset($_GET['numCom'])) {
     document.getElementById('afficher').addEventListener("click", function () {
 
         attribut = document.getElementById('passMemb').getAttribute('type');
+        // Condition PHP : on adapte l'affichage selon les données.
         if (attribut == 'password') {
             document.getElementById('passMemb').setAttribute('type', 'text');
         } else {
@@ -94,6 +105,7 @@ if (isset($_GET['numCom'])) {
     document.getElementById('afficher2').addEventListener("click", function () {
 
         attribut = document.getElementById('passMemb2').getAttribute('type');
+        // Condition PHP : on adapte l'affichage selon les données.
         if (attribut == 'password') {
             document.getElementById('passMemb2').setAttribute('type', 'text');
         } else {

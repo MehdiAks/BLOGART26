@@ -1,13 +1,24 @@
 <?php
+/*
+ * Vue back-end (administration) : liste des éléments pour likes.
+ * Ce fichier mélange du PHP et du HTML pour afficher la page.
+ * Les commentaires ajoutés ci-dessous expliquent les sections clés pour un débutant.
+ */
+// Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../../header.php'; // Contient le header et l'appel à config.php
 
 // Récupérer tous les membres et les likes
+// Requête SQL : récupère des données pour construire la vue.
 $membres = sql_select("membre", "*");
+// Requête SQL : récupère des données pour construire la vue.
 $likes = sql_select("likeart", "*");
 
+// Condition PHP : on adapte l'affichage selon les données.
 if (isset($_GET['numMemb'])) {
     $numMemb = intval($_GET['numMemb']); // Sécuriser l'entrée
+    // Requête SQL : récupère des données pour construire la vue.
     $result = sql_select("membre", "pseudoMemb", "numMemb = $numMemb");
+    // Condition PHP : on adapte l'affichage selon les données.
     if (!empty($result)) {
         $pseudoMemb = $result[0]['pseudoMemb'];
     } else {
@@ -23,6 +34,7 @@ if (isset($_GET['numMemb'])) {
     <div class="row">
         <div class="col-md-12">
             <h1>Gestion des likes</h1>
+<!-- Tableau HTML pour afficher des données sous forme de lignes/colonnes. -->
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -33,9 +45,11 @@ if (isset($_GET['numMemb'])) {
                     </tr>
                 </thead>
                 <tbody>
+<!-- Boucle PHP : on parcourt une liste pour générer du HTML dynamique. -->
                     <?php foreach ($likes as $like) { 
                         // Récupérer le pseudo du membre
                         $numMemb = intval($like['numMemb']);
+                        // Requête SQL : récupère des données pour construire la vue.
                         $membreData = sql_select("membre", "pseudoMemb", "numMemb = $numMemb");
                         $pseudoMemb = !empty($membreData) ? $membreData[0]['pseudoMemb'] : "Inconnu";
                         
