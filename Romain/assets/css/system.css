@@ -104,3 +104,7 @@ footer {
 .map{
     height: 300px;
 }
+
+.center{
+    align-items: center;
+}
