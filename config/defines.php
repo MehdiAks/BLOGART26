@@ -8,6 +8,10 @@ if (strpos($_SERVER['HTTP_HOST'], 'scalingo') !== false) {
 } else {
     define('SQL_HOST', getenv('DB_HOST'));
     define('SQL_USER', getenv('DB_USER'));
-    define('SQL_PWD', getenv('DB_PASSWORD'));
+    $dbPassword = getenv('DB_PASSWORD');
+    if ($dbPassword === false || $dbPassword === '') {
+        $dbPassword = getenv('MYSQL_ROOT_PASSWORD');
+    }
+    define('SQL_PWD', $dbPassword);
     define('SQL_DB', getenv('DB_DATABASE'));
 }
