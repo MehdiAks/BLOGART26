@@ -16,13 +16,11 @@ function sql_connect(){
     if (!defined('SQL_DB') || SQL_DB === false || SQL_DB === '') {
         $missing[] = 'DB_DATABASE';
     }
-    if (!defined('SQL_PWD') || SQL_PWD === false) {
-        $missing[] = 'DB_PASSWORD';
-    }
+    $missing = array_values(array_diff($missing, ['DB_PASSWORD']));
     if ($missing) {
         throw new RuntimeException(
             'Database connection failed. Missing/empty env value(s): ' . implode(', ', $missing) . '. ' .
-            'Check your .env file or exported environment variables.'
+            'Check your .env file or exported environment variables. (DB_PASSWORD may be left empty if your database allows it.)'
         );
     }
     try {
