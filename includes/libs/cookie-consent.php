@@ -104,7 +104,6 @@ function saveCookieConsent($choice) {
  */
 function cleanExpiredConsents() {
     global $DB;
-    
     $query = "DELETE FROM COOKIE_CONSENT WHERE dateExpiration < NOW()";
     $DB->exec($query);
 }
