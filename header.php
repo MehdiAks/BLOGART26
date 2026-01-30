@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+<?php
+//load config
+require_once 'config.php';
+?>
+>>>>>>> dd0fa4878a0f4f25fca75c1c6cf020c533f62cc1
 <!DOCTYPE html>
 <html lang="fr-FR">
 <head>
@@ -17,7 +24,11 @@ require_once 'config.php';
 <body>
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
+<<<<<<< HEAD
     <a class="navbar-brand" href="#">Blog'Art 25</a>
+=======
+    <a class="navbar-brand" href="#">Bordeaux étudiant club</a>
+>>>>>>> dd0fa4878a0f4f25fca75c1c6cf020c533f62cc1
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
