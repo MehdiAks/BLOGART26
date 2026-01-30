@@ -2,7 +2,7 @@
 // includes/cookie-consent.php
 
 // Durée de validité en MINUTES
-define('COOKIE_CONSENT_DURATION_MINUTES', 5);
+define('COOKIE_CONSENT_DURATION_MINUTES', 1440); // 1 jour
 
 /**
  * Obtenir l'adresse IP de l'utilisateur
