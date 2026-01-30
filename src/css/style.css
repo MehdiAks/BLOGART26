@@ -274,7 +274,7 @@ form {
 }
 
 .input-with-icon input {
-    padding-right: 58px;
+    padding-right: 48px;
 }
 
 .password-toggle {
@@ -294,9 +294,10 @@ form {
 }
 
 .password-toggle .icon {
-    width: 22px;
-    height: 22px;
+    width: 18px;
+    height: 18px;
     display: block;
+    object-fit: contain;
 }
 
 .password-toggle .icon-open {
