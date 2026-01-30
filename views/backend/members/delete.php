@@ -3,11 +3,6 @@ include '../../../header.php';
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
 
-
-
-
-
-
 if(isset($_GET['numMemb'])){
     $numMemb = $_GET['numMemb'];
     $member = sql_select('MEMBRE', '*', "numMemb = '$numMemb'")[0];
@@ -17,37 +12,37 @@ if(isset($_GET['numMemb'])){
     $eMailMemb = $member['eMailMemb'];
     $dtCreaMemb = $member['dtCreaMemb'];
     $numStat = $member['numStat'];
- ?>
-<!-- Bootstrap form to delete a member -->
+?>
+<!-- Formulaire Bootstrap pour supprimer un membre -->
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Suppression Membre</h1>
+            <h1>Suppression du membre</h1>
         </div>
         <div class="col-md-12">
-            <!-- Form to delete a member -->
+            <!-- Formulaire pour supprimer le membre -->
             <form action="<?php echo ROOT_URL . '/api/members/delete.php' ?>" method="post">
                 <div class="form-group">
                     <!-- NUM -->
-                    <label for="numMemb">Numéro du Membre</label>
+                    <label for="numMemb">Numéro du membre</label>
                     <input id="numMemb" name="numMemb" class="form-control" style="display: none" type="text" value="<?php echo($numMemb); ?>" readonly="readonly" />
                     <!-- PRENOM -->
-                    <label for="prenomMemb">Prénom du Membre</label>
+                    <label for="prenomMemb">Prénom du membre</label>
                     <input id="prenomMemb" name="prenomMemb" class="form-control" type="text" value="<?php echo($prenomMemb); ?>" readonly="readonly" disabled />
                     <!-- NOM -->
-                    <label for="nomMemb">Nom du Membre</label>
+                    <label for="nomMemb">Nom du membre</label>
                     <input id="nomMemb" name="nomMemb" class="form-control" type="text" value="<?php echo($nomMemb); ?>" readonly="readonly" disabled />
                     <!-- PSEUDO -->
-                    <label for="pseudoMemb">Pseudo du Membre</label>
+                    <label for="pseudoMemb">Pseudo du membre</label>
                     <input id="pseudoMemb" name="pseudoMemb" class="form-control" type="text" value="<?php echo($pseudoMemb); ?>" readonly="readonly" disabled />
                     <!-- MAIL -->
-                    <label for="eMailMemb">Adresse email du Membre</label>
+                    <label for="eMailMemb">Adresse e-mail du membre</label>
                     <input id="eMailMemb" name="eMailMemb" class="form-control" type="text" value="<?php echo($eMailMemb); ?>" readonly="readonly" disabled />
                     <!-- DATE CREA -->
-                    <label for="dtCreaMemb">Date de création du Membre</label>
+                    <label for="dtCreaMemb">Date de création du membre</label>
                     <input id="dtCreaMemb" name="dtCreaMemb" class="form-control" type="text" value="<?php echo($dtCreaMemb); ?>" readonly="readonly" disabled />
                     <!-- STATUT -->
-                    <label for="numStat">Statut du Membre</label>
+                    <label for="numStat">Statut du membre</label>
                     <input id="statutMemb" name="statutMemb" class="form-control" type="text" value="<?php 
                         if ($numStat == '1'){
                             echo 'Administrateur';
@@ -67,7 +62,7 @@ if(isset($_GET['numMemb'])){
                     echo '<p>Un administrateur ne peut pas être supprimé.</p>';
                 } else { ?>
                     <div class="form-group mt-2">
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('Est-ce que tu es sûr(e) de vouloir supprimer ce membre ?')">Confirmer la suppression</button>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr(e) de vouloir supprimer ce membre ?')">Confirmer la suppression</button>
                     </div>
                 <?php } ?>
             </form>
