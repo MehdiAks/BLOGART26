@@ -7,7 +7,7 @@ html, body {
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
-    font-family: "Poppins", serif !important;
+    font-family: "Epilogue", sans-serif !important;
     overflow-x: hidden;
     text-align: center !important;
 }
@@ -44,7 +44,7 @@ dl, ol, ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: "Poppins", serif;
+    font-family: "Epilogue", sans-serif;
     font-weight: 400;
     font-size: 22px !important;
     padding: 20px 50px;
@@ -142,12 +142,15 @@ ul {
     margin-block-end: 0px !important;
     padding-inline-start: 0px;
 }
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Montserrat", sans-serif;
+}
 h1 { 
     margin: 80px;
     text-transform: uppercase !important;
     font-size: 90px !important;
     text-align: center;
-    font-family: "Poppins", serif !important;
+    font-family: "Montserrat", sans-serif !important;
 }
 
 
@@ -238,7 +241,7 @@ form {
 
 .champ input {
     width: 100%;
-    font-family: "Poppins", serif;
+    font-family: "Epilogue", sans-serif;
     border: none;
     border-bottom: 2px solid #cccccc; /* Ajoute uniquement une ligne en bas */
     outline: none; /* Supprime le contour bleu par défaut */
@@ -363,7 +366,7 @@ input:focus {
     border-radius: 40px;
     padding: 8px 25px;
     cursor: pointer;
-    font-family: "Poppins", serif;
+    font-family: "Epilogue", sans-serif;
     font-weight: 500;
     font-size: 16px;
 }
@@ -397,7 +400,7 @@ formp {
     border-radius: 40px;
     padding: 8px 25px;
     cursor: pointer;
-    font-family: "Poppins", serif;
+    font-family: "Epilogue", sans-serif;
     font-weight: 500;
     font-size: 16px;  
 }
