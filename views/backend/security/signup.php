@@ -5,6 +5,7 @@ include '../../../header.php';
 // Récupération des données de session
 $errors = $_SESSION['errors'] ?? [];
 $old = $_SESSION['old'] ?? [];
+$recaptchaSiteKey = getenv('RECAPTCHA_SITE_KEY');
 
 // Nettoyage des données de session après récupération
 unset($_SESSION['errors'], $_SESSION['old']);
@@ -27,6 +28,7 @@ unset($_SESSION['errors'], $_SESSION['old']);
         <?php endif; ?>
     </div>
     <form action="<?php echo ROOT_URL . '/api/security/signup.php' ?>" method="post">
+        <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response-signup">
         <!-- Prénom -->
         <div class="rowlog">
             <div class="collumnslog" >
@@ -101,6 +103,7 @@ unset($_SESSION['errors'], $_SESSION['old']);
 
 </main>
 
+<script src="https://www.google.com/recaptcha/api.js?render=<?php echo htmlspecialchars($recaptchaSiteKey ?? '', ENT_QUOTES, 'UTF-8'); ?>"></script>
 <script>
     function togglePassword(id) {
         var x = document.getElementById(id);
@@ -110,4 +113,28 @@ unset($_SESSION['errors'], $_SESSION['old']);
             x.type = "password";
         }
     }
+
+    (function () {
+        var form = document.querySelector('form');
+        var tokenInput = document.getElementById('g-recaptcha-response-signup');
+        if (!form || !tokenInput) {
+            return;
+        }
+
+        var isSubmitting = false;
+        form.addEventListener('submit', function (event) {
+            if (isSubmitting) {
+                return;
+            }
+            event.preventDefault();
+            grecaptcha.ready(function () {
+                grecaptcha.execute('<?php echo htmlspecialchars($recaptchaSiteKey ?? '', ENT_QUOTES, 'UTF-8'); ?>', {action: 'signup'})
+                    .then(function (token) {
+                        tokenInput.value = token;
+                        isSubmitting = true;
+                        form.submit();
+                    });
+            });
+        });
+    })();
 </script>
