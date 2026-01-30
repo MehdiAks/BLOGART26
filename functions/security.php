@@ -15,7 +15,29 @@ function check_access($level) {
 
 function verifyRecaptcha($token, $action, $threshold = null) {
     $secretKey = getenv('RECAPTCHA_SECRET_KEY');
+    $siteKey = getenv('RECAPTCHA_SITE_KEY');
     $resolvedThreshold = $threshold ?? (float) (getenv('RECAPTCHA_THRESHOLD') ?: 0.5);
+    $recaptchaEnabled = null;
+
+    if (array_key_exists('RECAPTCHA_ENABLED', $_ENV)) {
+        $recaptchaEnabled = (bool) $_ENV['RECAPTCHA_ENABLED'];
+    }
+
+    if ($recaptchaEnabled === null) {
+        $recaptchaEnabled = !empty($secretKey) && !empty($siteKey);
+    }
+
+    if (!$recaptchaEnabled) {
+        if (getenv('APP_DEBUG') === 'true') {
+            error_log('reCAPTCHA disabled: skipping verification.');
+        }
+
+        return [
+            'valid' => true,
+            'score' => 0,
+            'message' => ''
+        ];
+    }
 
     if (empty($secretKey)) {
         return [
