@@ -51,63 +51,90 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <?php include '../../../header.php'; ?>
 
-<main>
+<main class="auth-page">
+    <section class="auth-card">
+        <h1 class="text-center">Se connecter</h1>
+        <?php if ($success): ?>
+                <div class="alert alert-success"><?= htmlspecialchars($success) ?></div>
+        <?php endif; ?>
+        <?php if (isset($_SESSION['error'])): ?>
+            <div class="alert alert-danger"><?= htmlspecialchars($_SESSION['error']) ?></div>
+            <?php unset($_SESSION['error']); ?> <!-- Efface le message après affichage -->
+        <?php endif; ?>
 
-    <h1 class="text-center">Se connecter</h1>
-    <?php if ($success): ?>
-            <div class="alert alert-success"><?= htmlspecialchars($success) ?></div>
-    <?php endif; ?>
-    <?php if (isset($_SESSION['error'])): ?>
-        <div class="alert alert-danger"><?= htmlspecialchars($_SESSION['error']) ?></div>
-        <?php unset($_SESSION['error']); ?> <!-- Efface le message après affichage -->
-    <?php endif; ?>
-
-    
-    <form action="" method="post">
-
-        <div class="collumnslog">
-        <!-- Pseudo -->
-            <div class="champ">
-                <label for="pseudo">Pseudo :</label>
-                <input type="text" name="pseudo" value="<?= htmlspecialchars($pseudo) ?>" required>
-                <?php if (!empty($errorPseudo)): ?>
-                    <div class="alert alert-danger mt-2"><?= $errorPseudo ?></div>
-                <?php endif; ?>
-            </div>
-
-            <!-- Mot de passe -->
-            <div class="champ">
-                <label for="password">Mot de passe :</label>
-                <input type="password" id="mdp" name="password" required>
-                <div class="afficher-mdp">
-                    <input type="checkbox" id="showPassword" onclick="myFunction()">
-                    <label for="showPassword">Afficher mot de passe</label>
+        <form action="" method="post" class="auth-form">
+            <div class="auth-stack">
+                <!-- Pseudo -->
+                <div class="champ">
+                    <label for="pseudo">Pseudo :</label>
+                    <input type="text" id="pseudo" name="pseudo" value="<?= htmlspecialchars($pseudo) ?>" required>
+                    <?php if (!empty($errorPseudo)): ?>
+                        <div class="alert alert-danger mt-2"><?= $errorPseudo ?></div>
+                    <?php endif; ?>
                 </div>
-                <?php if (!empty($errorPassword)): ?>
-                    <div class="alert alert-danger mt-2"><?= $errorPassword ?></div>
-                <?php endif; ?>
+
+                <!-- Mot de passe -->
+                <div class="champ">
+                    <label for="mdp">Mot de passe :</label>
+                    <div class="input-with-icon">
+                        <input type="password" id="mdp" name="password" required>
+                        <button
+                            class="password-toggle"
+                            type="button"
+                            data-target="mdp"
+                            aria-label="Afficher le mot de passe"
+                        >
+                            <svg class="icon icon-closed" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                                <path d="M4 4l16 16" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <svg class="icon icon-open" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <?php if (!empty($errorPassword)): ?>
+                        <div class="alert alert-danger mt-2"><?= $errorPassword ?></div>
+                    <?php endif; ?>
+                </div>
             </div>
-        </div>
 
-        <!-- Boutons -->
-        <div class="btn-se-connecter">
-            <button type="submit">Se connecter</button>
-            <a  href="/views/backend/security/mdpoublié.php" class="link">Mot de passe oublié ?</a>
-        </div>
+            <!-- Boutons -->
+            <div class="btn-se-connecter">
+                <button type="submit">Se connecter</button>
+                <a  href="/views/backend/security/mdpoublié.php" class="link">Mot de passe oublié ?</a>
+            </div>
 
-        <p>Vous aimez le BEC ? <Inscrivez-vous>!</Inscrivez-vous> <br>
-            <a href="/views/backend/security/signup.php" class="link">Créez un compte</a>
-        </p>
-    </form>
+            <p>Vous aimez le BEC ? <Inscrivez-vous>!</Inscrivez-vous> <br>
+                <a href="/views/backend/security/signup.php" class="link">Créez un compte</a>
+            </p>
+        </form>
+    </section>
 </main>
 
 <script>
-    function myFunction() {
-        var x = document.getElementById("mdp");
-        if (x.type === "password") {
-            x.type = "text";
-        } else {
-            x.type = "password";
-        }
-    }
+    document.querySelectorAll('.password-toggle').forEach((button) => {
+        const input = document.getElementById(button.dataset.target);
+        const show = () => {
+            input.type = 'text';
+            button.classList.add('is-visible');
+        };
+        const hide = () => {
+            input.type = 'password';
+            button.classList.remove('is-visible');
+        };
+
+        button.addEventListener('pointerdown', show);
+        button.addEventListener('pointerup', hide);
+        button.addEventListener('pointerleave', hide);
+        button.addEventListener('pointercancel', hide);
+        button.addEventListener('keydown', (event) => {
+            if (event.code === 'Space' || event.code === 'Enter') {
+                show();
+            }
+        });
+        button.addEventListener('keyup', hide);
+    });
 </script>
