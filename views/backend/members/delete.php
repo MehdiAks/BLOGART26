@@ -74,3 +74,9 @@ if(isset($_GET['numMemb'])){
         </div>
     </div>
 </div> 
+<?php
+} else {
+    header('Location: list.php');
+    exit();
+}
+?>
