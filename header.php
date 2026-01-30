@@ -1,47 +1,205 @@
-<!DOCTYPE html>
-<html lang="fr-FR">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog'Art</title>
-  <!-- Load CSS -->
-  <link rel="stylesheet" href="src/css/style.css" />
-  <!-- Bootstrap CSS only -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
-  <link rel="shortcut icon" type="image/x-icon" href="src/images/article1.png" />
-</head>
 <?php
-//load config
-require_once 'config.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+$pseudoMemb = $_SESSION['pseudoMemb'] ?? null;
 ?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>BEC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo ROOT_URL . '/Romain/assets/css/reset.css'; ?>" rel="stylesheet">
+    <link href="<?php echo ROOT_URL . '/Romain/assets/css/variables.css'; ?>" rel="stylesheet">
+    <link href="<?php echo ROOT_URL . '/Romain/assets/css/system.css'; ?>" rel="stylesheet">
+    <link href="<?php echo ROOT_URL . '/Romain/assets/css/style.css'; ?>" rel="stylesheet">
+    <link href="<?php echo ROOT_URL . '/Romain/assets/css/fonts.css'; ?>" rel="stylesheet">
+
+    <style>
+        :root {
+            --bec-offwhite: #f6f1ea;
+            --bec-dark: #1c1c1c;
+            --bec-accent: #67081D;
+        }
+
+        body {
+            background-color: var(--bec-offwhite);
+            color: var(--bec-dark);
+        }
+
+        .box {
+            height: 250px;
+            margin-bottom: 20px;
+        }
+
+        .article-image {
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .article-content {
+            background-color: var(--bec-offwhite);
+            padding: 20px;
+            border-radius: 6px;
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .article-content p {
+            color: var(--bec-dark);
+        }
+
+        .article-content a {
+            color: var(--bec-accent);
+            font-weight: 600;
+        }
+
+        .exercice {
+            margin-top: 80px;
+        }
+
+        .header {
+            background-color: var(--bec-offwhite);
+            align-items: center;
+            min-height: 96px;
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .header-nav ul {
+            align-items: center;
+            gap: 40px;
+            margin: 0;
+        }
+
+        .header-nav li {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-nav a {
+            color: var(--bec-dark);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-user {
+            font-weight: 600;
+            color: var(--bec-dark);
+        }
+
+        .header-actions button {
+            background-color: var(--bec-accent);
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 999px;
+            font-weight: 600;
+        }
+
+        .header-actions button:hover {
+            background-color: #8a0a27;
+        }
+
+        .footer {
+            background-color: var(--bec-offwhite);
+            color: var(--bec-dark);
+        }
+
+        .footer a,
+        .footer h3,
+        .footer h4 {
+            color: var(--bec-dark);
+        }
+
+        .cookie-popup {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            left: auto;
+            width: min(420px, 90vw);
+            background-color: #1f1f1f;
+            color: #fff;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            text-align: left;
+        }
+
+        .cookie-content {
+            max-width: 100%;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: flex-start;
+        }
+
+        .cookie-buttons button {
+            border-radius: 999px;
+            padding: 10px 16px;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 16px;
+                padding: 16px;
+            }
+
+            .header-nav {
+                flex-direction: column;
+            }
+
+            .header-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
 
 <body>
-  <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Blog'Art 25</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/views/backend/dashboard.php">Admin</a>
-          </li>
-        </ul>
-      </div>
-      <!--right align-->
-      <div class="d-flex">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Rechercher sur le site…" aria-label="Search">
-        </form>
-        <a class="btn btn-primary m-1" href="/views/backend/security/login.php" role="button">Login</a>
-        <a class="btn btn-dark m-1" href="/views/backend/security/signup.php" role="button">Sign up</a>
-      </div>
-    </div>
-  </nav>
+    <header class="header">
+        <div class="header-logo">
+            <a href="<?php echo ROOT_URL . '/index.php'; ?>">
+                <img src="<?php echo ROOT_URL . '/Romain/assets/images/logo.png'; ?>" alt="BEC" class="header-logo">
+            </a>
+        </div>
+
+        <nav class="header-nav">
+            <ul>
+                <li>
+                    <a href="<?php echo ROOT_URL . '/index.php'; ?>">Accueil</a>
+                </li>
+                <li>
+                    <a href="#Contact">Contact</a>
+                </li>
+                <li>
+                    <a href="#Anciens-et-amis">Anciens et amis</a>
+                </li>
+            </ul>
+            <div class="header-actions">
+                <?php if ($pseudoMemb): ?>
+                    <span class="header-user"><?php echo htmlspecialchars($pseudoMemb); ?></span>
+                    <a href="<?php echo ROOT_URL . '/views/backend/dashboard.php'; ?>">
+                        <button type="button">Panneau admin</button>
+                    </a>
+                <?php else: ?>
+                    <a href="<?php echo ROOT_URL . '/views/backend/security/login.php'; ?>">
+                        <button type="button">Connexion / Inscription</button>
+                    </a>
+                <?php endif; ?>
+            </div>
+        </nav>
+    </header>
