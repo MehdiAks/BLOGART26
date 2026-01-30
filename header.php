@@ -15,6 +15,8 @@ $pseudoMemb = $_SESSION['pseudoMemb'] ?? null;
     <link href="<?php echo ROOT_URL . '/Romain/assets/css/system.css'; ?>" rel="stylesheet">
     <link href="<?php echo ROOT_URL . '/Romain/assets/css/style.css'; ?>" rel="stylesheet">
     <link href="<?php echo ROOT_URL . '/Romain/assets/css/fonts.css'; ?>" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/romain/assets/images/logo.png" />
+
 
     <style>
         :root {

@@ -16,7 +16,7 @@
                 <a href="<?php echo ROOT_URL . '/infoleg/mentionleg.php'; ?>">Mentions légales</a>
             </h4>
                         <h4>
-                <a href="<?php echo ROOT_URL . '/infoleg/rgpd.php'; ?>">RGPD</a>
+                <a href="<?php echo ROOT_URL . '/infoleg/rgpd.php'; ?>">Politique de confidentialité</a>
             </h4>
         </div>
 
