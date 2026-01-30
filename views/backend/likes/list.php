@@ -26,7 +26,7 @@ if (isset($_GET['numMemb'])) {
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Pseudo Membre</th>
+                        <th>Nom d'utilisateur</th>
                         <th>ID Article</th>
                         <th>Type de Like</th> <!-- Nouvelle colonne pour afficher le type de like -->
                         <th>Actions</th>
@@ -34,7 +34,7 @@ if (isset($_GET['numMemb'])) {
                 </thead>
                 <tbody>
                     <?php foreach ($likes as $like) { 
-                        // Récupérer le pseudo du membre
+                        // Récupérer le nom d'utilisateur du membre
                         $numMemb = intval($like['numMemb']);
                         $membreData = sql_select("membre", "pseudoMemb", "numMemb = $numMemb");
                         $pseudoMemb = !empty($membreData) ? $membreData[0]['pseudoMemb'] : "Inconnu";

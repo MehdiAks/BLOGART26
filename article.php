@@ -222,7 +222,7 @@ if (isset($_SESSION['user_id'])) {
                                     <?php foreach ($comments as $comment): ?>
                                         <div class="commentairesaf">
                                             <li class="list-group-item">
-                                            <span class="pseudo"><?php echo ($comment['pseudoMemb']); ?></span> 
+                                            <span class="username"><?php echo ($comment['pseudoMemb']); ?></span> 
                                             a écrit le 
                                             <span class="date"><?php echo ($comment['dtCreaCom']); ?> :</span>
                                             <p class="commentaire"><?php echo nl2br(($comment['libCom'])); ?></p>

@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = ctrlSaisies($_POST['password']);
 
     if (empty($pseudo)) {
-        $errorPseudo = "Le pseudo est requis.";
+        $errorPseudo = "Le nom d'utilisateur est requis.";
     }
 
     if (empty($password)) {
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: " . ROOT_URL . "/index.php");
             exit();
         } else {
-            $errorPassword = "Pseudo ou mot de passe incorrect.";
+            $errorPassword = "Nom d'utilisateur ou mot de passe incorrect.";
         }
     }
 }
@@ -64,9 +64,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <form action="" method="post" class="auth-form">
             <div class="auth-stack">
-                <!-- Pseudo -->
+                <!-- Nom d'utilisateur -->
                 <div class="champ">
-                    <label for="pseudo">Pseudo :</label>
+                    <label for="pseudo">Nom d'utilisateur :</label>
                     <input type="text" id="pseudo" name="pseudo" value="<?= htmlspecialchars($pseudo) ?>" required>
                     <?php if (!empty($errorPseudo)): ?>
                         <div class="alert alert-danger mt-2"><?= $errorPseudo ?></div>

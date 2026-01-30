@@ -43,7 +43,7 @@ $coms = sql_select("comment c INNER JOIN article a ON c.numArt = a.numArt
                 <thead>
                     <tr>
                         <th>Titre Article</th>
-                        <th>Pseudo</th>
+                        <th>Nom d'utilisateur</th>
                         <th>Date</th>
                         <th>Contenu</th>
                         <th>Actions</th>
@@ -84,7 +84,7 @@ $coms = sql_select("comment c INNER JOIN article a ON c.numArt = a.numArt
 
                 <thead>
                     <tr>
-                        <th>Pseudo</th>
+                        <th>Nom d'utilisateur</th>
                         <th>Dernière modif</th>
                         <th>Contenu</th>
                         <th>Publication</th>
@@ -122,7 +122,7 @@ $coms = sql_select("comment c INNER JOIN article a ON c.numArt = a.numArt
 
                 <thead>
                     <tr>
-                        <th>Pseudo</th>
+                        <th>Nom d'utilisateur</th>
                         <th>date suppr logique</th>
                         <th>Contenu</th>
                         <th>Publication</th>
@@ -162,7 +162,7 @@ $coms = sql_select("comment c INNER JOIN article a ON c.numArt = a.numArt
 
                 <thead>
                     <tr>
-                        <th>Pseudo</th>
+                        <th>Nom d'utilisateur</th>
                         <th>Date suppr logique</th>
                         <th>Contenu</th>
                         <th>Publication</th>

@@ -55,8 +55,8 @@ if (isset($_GET['numMemb'])) {
                 <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response-update">
 
                 <div class="form-group">
-                    <!-- PSEUDO -->
-                    <label for="pseudoMemb">Pseudo du membre (non modifiable)</label>
+                    <!-- NOM D'UTILISATEUR -->
+                    <label for="pseudoMemb">Nom d'utilisateur du membre (non modifiable)</label>
                     <input id="pseudoMemb" name="pseudoMemb" class="form-control" type="text"
                         value="<?php echo htmlspecialchars($pseudoMemb); ?>" readonly disabled />
 

@@ -51,8 +51,8 @@ if(isset($_GET['numMemb'])){
                     <!-- NOM -->
                     <label for="nomMemb">Nom du membre</label>
                     <input id="nomMemb" name="nomMemb" class="form-control" type="text" value="<?php echo($nomMemb); ?>" readonly="readonly" disabled />
-                    <!-- PSEUDO -->
-                    <label for="pseudoMemb">Pseudo du membre</label>
+                    <!-- NOM D'UTILISATEUR -->
+                    <label for="pseudoMemb">Nom d'utilisateur du membre</label>
                     <input id="pseudoMemb" name="pseudoMemb" class="form-control" type="text" value="<?php echo($pseudoMemb); ?>" readonly="readonly" disabled />
                     <!-- MAIL -->
                     <label for="eMailMemb">Adresse e-mail du membre</label>
