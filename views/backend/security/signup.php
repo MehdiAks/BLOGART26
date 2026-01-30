@@ -131,8 +131,10 @@ unset($_SESSION['errors'], $_SESSION['old']);
             button.classList.remove('is-visible');
         };
 
-        button.addEventListener('pointerdown', show);
-        button.addEventListener('pointerup', hide);
+        button.addEventListener('pointerdown', (event) => {
+            event.preventDefault();
+            show();
+        });
         button.addEventListener('pointerleave', hide);
         button.addEventListener('pointercancel', hide);
         button.addEventListener('keydown', (event) => {
@@ -141,6 +143,10 @@ unset($_SESSION['errors'], $_SESSION['old']);
             }
         });
         button.addEventListener('keyup', hide);
+
+        document.addEventListener('pointerup', hide);
+        document.addEventListener('pointercancel', hide);
+        document.addEventListener('touchend', hide);
     });
 </script>
 <script>
