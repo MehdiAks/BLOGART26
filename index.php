@@ -1,12 +1,15 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
-require_once 'header.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/libs/cookie-consent.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/header.php';
 
 sql_connect();
 
 $articles = sql_select("ARTICLE", "*", null, null, "RAND()", 3);
 ?>
-<div id="cookie-popup" class="cookie-popup">
+
+<?php if (!hasUserMadeCookieChoice()): ?>
+<div id="cookie-popup" class="cookie-popup" style="display: block;">
     <div class="cookie-content">
         <h3>Politique de Cookies</h3>
         <p>
@@ -14,41 +17,23 @@ $articles = sql_select("ARTICLE", "*", null, null, "RAND()", 3);
             le contenu et analyser le trafic. Certains cookies sont strictement nécessaires, tandis que d'autres permettent de mieux comprendre
             votre navigation.
             <br>
-            <br>En cliquant sur “Continuer et accepter”, vous autorisez l'utilisation de tous les cookies. Si vous choisissez “Continuer sans
-            accepter”, vous ne pourrez pas créer de compte. Si vous possèdez déjà un compte, vous devrez le supprimer pour refuser les cookies.
+            <br>En cliquant sur "Continuer et accepter", vous autorisez l'utilisation de tous les cookies. Si vous choisissez "Continuer sans
+            accepter", vous ne pourrez pas créer de compte. Si vous possèdez déjà un compte, vous devrez le supprimer pour refuser les cookies.
             <br>
-            <br>Votre choix sera enregistré pour une durée de 6 mois, mais vous pourrez le modifier à tout moment en accédant aux “Politique
-            de confidentialité” en bas de page.
+            <br>Votre choix sera enregistré pour une durée de <?php echo COOKIE_CONSENT_DURATION_MINUTES; ?> minutes, mais vous pourrez le modifier à tout moment en accédant aux "Politique
+            de confidentialité" en bas de page.
         </p>
         <div class="cookie-buttons">
-            <button id="reject-cookies" type="button">Continuer sans accepter</button>
-            <button id="accept-cookies" type="button">Continuer et accepter</button>
+            <form method="POST" style="display: inline;">
+                <button type="submit" name="reject_cookies" id="reject-cookies">Continuer sans accepter</button>
+            </form>
+            <form method="POST" style="display: inline;">
+                <button type="submit" name="accept_cookies" id="accept-cookies">Continuer et accepter</button>
+            </form>
         </div>
     </div>
 </div>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const cookiePopup = document.getElementById("cookie-popup");
-        const acceptBtn = document.getElementById("accept-cookies");
-        const rejectBtn = document.getElementById("reject-cookies");
-
-        if (localStorage.getItem("cookieConsent") === "rejected" || !localStorage.getItem("cookieConsent")) {
-            cookiePopup.style.display = "block";
-        }
-
-        acceptBtn.addEventListener("click", function () {
-            localStorage.setItem("cookieConsent", "accepted");
-            document.cookie = "cookieConsent=accepted; path=/; max-age=" + (6 * 30 * 24 * 60 * 60);
-            cookiePopup.style.display = "none";
-        });
-
-        rejectBtn.addEventListener("click", function () {
-            localStorage.setItem("cookieConsent", "rejected");
-            document.cookie = "cookieConsent=rejected; path=/; max-age=" + (6 * 30 * 24 * 60 * 60);
-            cookiePopup.style.display = "none";
-        });
-    });
-</script>
+<?php endif; ?>
 
 <h2>Dernières actualités</h2>
 
