@@ -263,6 +263,9 @@ $numStat = $_SESSION['numStat'] ?? null;
                     <a href="<?php echo ROOT_URL . '/index.php'; ?>">Accueil</a>
                 </li>
                 <li>
+                    <a href="<?php echo ROOT_URL . '/notre-histoire.php'; ?>">Notre histoire</a>
+                </li>
+                <li>
                     <a href="<?php echo ROOT_URL . '/actualites.php'; ?>">Actualités</a>
                 </li>
                 <li>
