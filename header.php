@@ -17,6 +17,11 @@ $numStat = $_SESSION['numStat'] ?? null;
     <link href="<?php echo ROOT_URL . '/Romain/assets/css/style.css'; ?>" rel="stylesheet">
     <link href="<?php echo ROOT_URL . '/Romain/assets/css/fonts.css'; ?>" rel="stylesheet">
     <link rel="icon" type="image/png" href="/romain/assets/images/logo.png" />
+    <?php if (!empty($pageStyles) && is_array($pageStyles)) : ?>
+        <?php foreach ($pageStyles as $stylePath) : ?>
+            <link href="<?php echo htmlspecialchars($stylePath); ?>" rel="stylesheet">
+        <?php endforeach; ?>
+    <?php endif; ?>
 
 
     <style>
