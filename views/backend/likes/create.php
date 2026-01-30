@@ -1,8 +1,8 @@
 <?php
-include '../../../header.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 
-include '../../../header.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirecmodo.php';
+include '../../../header.php';
 ?>
 
 <!-- Bootstrap form to create a new like -->

@@ -1,4 +1,5 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 include '../../../header.php';
 
 if(isset($_GET['numStat'])){

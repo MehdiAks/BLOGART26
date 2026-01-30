@@ -1,6 +1,7 @@
 <?php
-include '../../../header.php'; // Inclure le header
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
+include '../../../header.php'; // Inclure le header
 
 
 // Vérifier si l'ID de l'article est passé en paramètre

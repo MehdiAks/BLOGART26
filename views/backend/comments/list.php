@@ -1,6 +1,7 @@
 <?php
-include '../../../header.php'; // contains the header and call to config.php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirecmodo.php';
+include '../../../header.php'; // contains the header and call to config.php
 
 //Load all statuts
 $coms = sql_select("comment", "*");
