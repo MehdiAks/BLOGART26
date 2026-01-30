@@ -138,27 +138,28 @@ if (isset($_SESSION['user_id'])) {
 </head>
 
 <body>
-    <div class="image-fixe">
-        <img src="<?php echo ROOT_URL; ?>/src/images/image_fixe.jpg" alt="Image fixe">
-    </div>
+    <div class="article-page">
+        <header class="article-hero" style="--hero-image: url('<?php echo ROOT_URL . '/src/uploads/' . ($article['urlPhotArt']); ?>')">
+            <div class="article-hero__overlay">
+                <p class="article-kicker">Actualités</p>
+                <h1 class="article-title">
+                    <?php echo ($article['libTitrArt']); ?>
+                </h1>
+                <div class="article-meta">
+                    <span><?php echo ($article['dtCreaArt']); ?></span>
+                    <span class="article-meta__dot">•</span>
+                    <span>Lecture 2 min</span>
+                </div>
+            </div>
+        </header>
 
-    <div>
-        <h1 class="article1titre">
-            <?php echo ($article['libTitrArt']); ?>
-        </h1>
-        <h2 class="soustitre">
-            <?php echo ($article['dtCreaArt']); ?> <br> Lecture 2 min
-        </h2>
-    </div>
+        <section class="article-body">
+            <div class="article-lead">
+                <?php echo ($article['libChapoArt']); ?> 
+            </div>
 
-    <section>
-        <h2 class="carre">
-            <?php echo ($article['libChapoArt']); ?> 
-        </h2>
-
-        <div class="containerarticle">
-            <div class="section-left">
-                <div class="contenu">
+            <div class="article-layout">
+                <div class="article-content">
                     <article>
                         <h2 class="phraseaccroche">
                             <?php echo ($article['libAccrochArt']); ?> 
@@ -166,10 +167,12 @@ if (isset($_SESSION['user_id'])) {
                         <p class="paragraphe">
                             <?php echo ($article['parag1Art']); ?> 
                         </p>
-                        <img class="image2" src="<?php echo ROOT_URL . '/src/uploads/' . ($article['urlPhotArt']); ?>" alt="Image article">
-                        <p class="petit">
-                            © Groupe 1 Bordeaux étudiant club + Description de l’image
-                        </p>
+                        <figure class="article-figure">
+                            <img class="image2" src="<?php echo ROOT_URL . '/src/uploads/' . ($article['urlPhotArt']); ?>" alt="Image article">
+                            <figcaption class="article-caption">
+                                © Groupe 1 Bordeaux étudiant club + Description de l’image
+                            </figcaption>
+                        </figure>
 
                         <div class="text-with-line">
                             <?php echo ($article['libSsTitr1Art']); ?> 
@@ -184,108 +187,94 @@ if (isset($_SESSION['user_id'])) {
                         </div>
 
                         <p class="paragraphe3">
-                            <?php ($article['parag3Art']); ?>
+                            <?php echo ($article['parag3Art']); ?>
                         </p>
 
                         <p class="conclusion">
                             <?php echo ($article['libConclArt']); ?>
                         </p>
                     </article>
+
+                    <div class="comments-block">
+                        <h2>Ajouter un commentaire</h2>
+                        <form action="article.php?numArt=<?php echo $numArt; ?>" method="post" class="comment-form">
+                            <div class="champ">
+                                <textarea id="libCom" name="libCom" class="form-control" type="text" required></textarea>
+                            </div>
+                            <input type="hidden" name="numArt" value="<?php echo $numArt; ?>" />
+                            <div class="btn-se-connecter">
+                                <button type="submit">Envoyer</button>
+                            </div>  
+                        </form>
+                    </div>
+
+                    <div class="comments-block">
+                        <h2>Commentaires</h2>
+                        <?php if (!empty($comments)): ?>
+                            <ul class="comments-list">
+                                <?php foreach ($comments as $comment): ?>
+                                    <li class="commentairesaf">
+                                        <div class="comment-meta">
+                                            <span class="username"><?php echo ($comment['pseudoMemb']); ?></span> 
+                                            <span class="date"><?php echo ($comment['dtCreaCom']); ?></span>
+                                        </div>
+                                        <p class="commentaire"><?php echo nl2br(($comment['libCom'])); ?></p>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php else: ?>
+                            <p>Il n'y a pas encore de commentaires pour cet article.</p>
+                        <?php endif; ?>
+                    </div>
                 </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2>Ajouter un commentaire</h2>
-                        </div>
-                        <div class="col-md-12">
-                            <!-- Form to create a new motcle -->
+
+                <aside class="article-sidebar">
+                    <h2>Autres articles</h2>
+                    <?php
+                    $randomArticles = sql_select("ARTICLE", "*", "1=1 ORDER BY RAND() LIMIT 3");
+
+                    if (!empty($randomArticles)):
+                        foreach ($randomArticles as $randomArticle): ?>
+                            <div class="random-article">
+                                <img class="imagedroite" src="<?php echo ROOT_URL . '/src/uploads/' . ($randomArticle['urlPhotArt']); ?>" alt="Image article">
+                                <h3 class="titredroite">
+                                    <?php echo ($randomArticle['libTitrArt']); ?>
+                                </h3>
+                                <p class="txtdroite">
+                                    <?php echo ($randomArticle['libChapoArt']); ?>
+                                </p>
+                                <a href="article.php?numArt=<?php echo $randomArticle['numArt']; ?>" class="clickable-text">Lire l'article →</a>
+                            </div>
+                        <?php endforeach;
+                    else: ?>
+                        <p>Aucun article disponible.</p>
+                    <?php endif; ?>
+                    <div class="likes-section">
+                        <h2>Évaluer cet article</h2>
+                        <div class="vote-buttons">
                             <form action="article.php?numArt=<?php echo $numArt; ?>" method="post">
-                                <div class="champ">
-                                    <textarea id="libCom" name="libCom" class="form-control" type="text" required></textarea>
-                                </div>
-                                <input type="hidden" name="numArt" value="<?php echo $numArt; ?>" />
-                                <br />
-                                <div class="btn-se-connecter">
-                                    <button type="submit">Envoyer</button>
-                                </div>  
+                                <input type="hidden" name="numArt" value="<?php echo $numArt; ?>">
+                                <input type="hidden" name="likeA" value="1">
+                                <button type="submit" class="btn-vote <?php echo $userVote === 1 ? 'active-like' : ''; ?>">
+                                    <img src="<?php echo ROOT_URL; ?>/src/images/pnglike.png" alt="Like">
+                                    <h3><?php echo $likeCount; ?></h3>
+                                </button>
+                            </form>
+
+                            <form action="article.php?numArt=<?php echo $numArt; ?>" method="post">
+                                <input type="hidden" name="numArt" value="<?php echo $numArt; ?>">
+                                <input type="hidden" name="likeA" value="0">
+                                <button type="submit" class="btn-vote <?php echo $userVote === 0 ? 'active-dislike' : ''; ?>">
+                                    <img src="<?php echo ROOT_URL; ?>/src/images/pngdislike.png" alt="Dislike">
+                                    <h3><?php echo $dislikeCount; ?></h3>
+                                </button>
                             </form>
                         </div>
                     </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- Affichage des commentaires -->
-                            <h2>Commentaires</h2>
-                            <?php if (!empty($comments)): ?>
-                                <ul >
-                                    <?php foreach ($comments as $comment): ?>
-                                        <div class="commentairesaf">
-                                            <li class="list-group-item">
-                                            <span class="username"><?php echo ($comment['pseudoMemb']); ?></span> 
-                                            a écrit le 
-                                            <span class="date"><?php echo ($comment['dtCreaCom']); ?> :</span>
-                                            <p class="commentaire"><?php echo nl2br(($comment['libCom'])); ?></p>
-
-                                            </li>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </ul>
-                            <?php else: ?>
-                                <p>Il n'y a pas encore de commentaires pour cet article.</p>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                </div>
+                </aside>
             </div>
-
-            <div class="section-right">
-                <h2>Autres articles</h2>
-                <?php
-                $randomArticles = sql_select("ARTICLE", "*", "1=1 ORDER BY RAND() LIMIT 3");
-
-                if (!empty($randomArticles)):
-                    foreach ($randomArticles as $randomArticle): ?>
-                        <div class="random-article">
-                            <img class="imagedroite" src="<?php echo ROOT_URL . '/src/uploads/' . ($randomArticle['urlPhotArt']); ?>" alt="Image article">
-                            <h2 class="titredroite">
-                                <?php echo ($randomArticle['libTitrArt']); ?>
-                            </h2>
-                            <p class="txtdroite">
-                                <?php echo ($randomArticle['libChapoArt']); ?>
-                            </p>
-                            <a href="article.php?numArt=<?php echo $randomArticle['numArt']; ?>" class="clickable-text">Lire l'article →</a>
-                        </div>
-                    <?php endforeach;
-                else: ?>
-                    <p>Aucun article disponible.</p>
-                <?php endif; ?>
-                <div class="container likes-section">
-                    <h2>Évaluer cet article</h2>
-                    <div class="vote-buttons">
-                        <form action="article.php?numArt=<?php echo $numArt; ?>" method="post">
-                            <input type="hidden" name="numArt" value="<?php echo $numArt; ?>">
-                            <input type="hidden" name="likeA" value="1">
-                            <button type="submit" class="btn-vote <?php echo $userVote === 1 ? 'active-like' : ''; ?>">
-                                <img src="<?php echo ROOT_URL; ?>/src/images/pnglike.png" alt="Like">
-                                <h3><?php echo $likeCount; ?></h3>
-                            </button>
-                        </form>
-
-                        <!-- Formulaire Dislike -->
-                        <form action="article.php?numArt=<?php echo $numArt; ?>" method="post">
-                            <input type="hidden" name="numArt" value="<?php echo $numArt; ?>">
-                            <input type="hidden" name="likeA" value="0">
-                            <button type="submit" class="btn-vote <?php echo $userVote === 0 ? 'active-dislike' : ''; ?>">
-                                <img src="<?php echo ROOT_URL; ?>/src/images/pngdislike.png" alt="Dislike">
-                                <h3><?php echo $dislikeCount; ?></h3>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 </body>
 </html>
 <?php
