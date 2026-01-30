@@ -1,76 +1,23 @@
 /* Commentaire: Feuille de style pour stylearticle. */
 /* ======================= RESET GLOBAL ======================= */
 html, body {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
     font-family: "Poppins", serif;
-    overflow-x: hidden; /* Empêche le défilement horizontal */
+    overflow-x: hidden;
     text-align: start !important;
-
+    background-color: #f4f5f7;
+    color: #1b1b1b;
 }
 
 /* ======================= TITRES ======================= */
 h1 {
-    font-size: 4vw; /* Adaptatif selon l'écran */
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-left: 20px;
-}
-
-.article1titre {
-    padding-left: 10px;
-    margin-left: 90px !important;
-    padding-top: 15vh;
-    margin-right: 10vw;
-    font-size: 3.5rem;
-    color: white;
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
     font-weight: 700;
-    text-align: start;
-    text-shadow: 
-        -3px -3px 0 black, 
-         3px -3px 0 black, 
-        -3px  3px 0 black, 
-         3px  3px 0 black;
-
-}
-
-.soustitre {
-    color: white;
-    margin-left: 90px;
-    padding-left: 20px;
-    margin-bottom: 50px;
-    font-size: 1.8rem;
-    font-weight: 700;
-    text-shadow: 
-    -3px -3px 0 black, 
-     3px -3px 0 black, 
-    -3px  3px 0 black, 
-     3px  3px 0 black;
-}
-
-.carre {
-    background-color: #67081D;
-    color: white;
-    padding: 50px;
-    margin-bottom: 0;
-    text-align: center;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: -10px;
-}
-
-/* ======================= IMAGE FIXE EN FOND ======================= */
-.image-fixe {
-    position: fixed; /* Rend l'image fixe sur l'écran */
-    bottom: 0px;
-    left: 0;
-    width: 100%; /* L'image prend toute la largeur */
-    height: 100vh; /* L'image prend toute la hauteur de l'écran */
-    z-index: -1; /* Place l'image derrière le contenu */
-    
+    margin: 0;
 }
 .random-article {
     border: #ffffff70 2px solid;
@@ -89,23 +36,93 @@ h1 {
     background-color: #ffffff;
 }
 
-.image-fixe img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ajuste l'image pour qu'elle remplisse l'espace sans la déformer */
-    filter: brightness(80%); /* Réduit la luminosité à 80% */
+.article-page {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
+
+.article-hero {
+    min-height: 420px;
+    background-image: var(--hero-image);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    color: white;
+}
+
+.article-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+.article-hero__overlay {
+    position: relative;
+    z-index: 1;
+    width: min(1100px, 90%);
+    margin: 0 auto 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.article-kicker {
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0;
+}
+
+.article-title {
+    font-size: clamp(2.6rem, 4vw, 3.8rem);
+    font-weight: 700;
+    margin: 0;
+}
+
+.article-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.article-meta__dot {
+    font-size: 1.4rem;
+    line-height: 0;
+}
+
+.article-body {
+    width: min(1100px, 90%);
+    margin: 0 auto 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.article-lead {
+    background-color: white;
+    padding: 24px 28px;
+    border-radius: 16px;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    font-weight: 600;
+    color: #67081D;
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+}
+
 /* ======================= CONTENU ARTICLE ======================= */
 .phraseaccroche {
     color: #67081D;
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 50px;
-}
-
-.contenu {
-    background-color: white;
-    padding: 50px;
 }
 
 .paragraphe, .paragraphe2, .paragraphe3 {
@@ -133,27 +150,28 @@ h1 {
 }
 
 /* ======================= RESPONSIVE GRID ======================= */
-.containerarticle {
+.article-layout {
     display: grid; 
-    grid-template-columns: 65% 35%; /* Deux colonnes : 65% / 35% */
-    width: 100%;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
     gap: 30px;
-    padding: 20px;
-    background-color: white;
 }
 
-.section-left {
+.article-content {
     background-color: white;
-    padding: 20px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
 }
 
-.section-right {
-    margin-top: -20px;
-    background-color: #f4f4f4;
-    padding: 20px;
+.article-sidebar {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
-    align-items: start;
+    gap: 24px;
+    align-items: stretch;
 }
 
 /* ======================= IMAGES ======================= */
@@ -163,7 +181,7 @@ h1 {
     height: auto;
     display: block;
     border-radius: 10px;
-    margin: 30px auto;
+    margin: 0;
 }
 
 .imagedroite {
@@ -175,10 +193,20 @@ h1 {
     margin: 20px auto;
 }
 
+.article-figure {
+    margin: 30px 0;
+}
+
+.article-caption {
+    font-size: 0.95rem;
+    color: #6b6b6b;
+    margin-top: 12px;
+}
+
 /* ======================= ARTICLES SUGGÉRÉS ======================= */
 
 .titredroite {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     font-weight: 700;
     margin-top: 10px;
 }
@@ -200,30 +228,78 @@ h1 {
     color: #67081D;
 }
 h2 {
-    font-size: 3.5rem ;
+    font-size: 1.6rem;
     font-weight: 700;
     color: #000000;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 .username {
-    font-size: 1.8em;
+    font-size: 1.1rem;
     font-weight: bold; 
     color: #333; 
 }
 
 .date {
-    font-size: 1.4em; 
+    font-size: 0.95rem; 
     color: #777; 
 }
 
 .commentairesaf {
-    padding-left: 10px; 
-    font-style: italic; 
+    padding: 16px; 
     color: #444; 
-    border: #cccccc 1px solid;
-    border-radius: 5px;
+    border: 1px solid #e2e4e8;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    list-style: none;
+}
+
+.comment-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
     margin-bottom: 10px;
+}
+
+.comments-list {
+    padding: 0;
+    margin: 0;
+}
+
+.comments-block {
+    margin-top: 40px;
+}
+
+.commentaire {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.comment-form textarea {
+    width: 100%;
+    min-height: 120px;
+    border-radius: 12px;
+    border: 1px solid #e2e4e8;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+.btn-se-connecter button {
+    margin-top: 16px;
+    background: #67081D;
+    color: #fff;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-se-connecter button:hover {
+    background: #510616;
 }
 .vote-buttons {
     display: flex;
@@ -237,10 +313,10 @@ h2 {
 }
 
 .likes-section {
-    margin: 20px 0;
-    padding: 15px;
+    margin: 0;
+    padding: 20px;
     background: #f8f9fa;
-    border-radius: 8px;
+    border-radius: 16px;
 }
 
 .btn-vote {
@@ -253,6 +329,8 @@ h2 {
     align-items: center;
     justify-content: center;
     gap: 20px;
+    background: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
 }
 
 .btn-vote img {
@@ -278,38 +356,26 @@ h2 {
 
 /* ======================= RESPONSIVE ======================= */
 @media (max-width: 1024px) {
-    .containerarticle {
-        grid-template-columns: 1fr; /* Une seule colonne */
+    .article-layout {
+        grid-template-columns: 1fr;
     }
 
-    .article1titre {
-        font-size: 3rem;
+    .article-content,
+    .article-sidebar {
+        padding: 24px;
     }
 
-    .soustitre {
-        font-size: 1.5rem;
+    .article-lead {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .article-hero {
+        min-height: 320px;
     }
 
-    .imagedroite, .image2 {
-        max-width: 100%;
-    }
-    .titlehead {
-        font-size: 40px!important;
-        margin-top: 250px !important;
-        margin-bottom: 250px !important;
-    }
-    .carre {
-        padding: 50px;
-        font-size: 20px;
-    }
-    h1 {
-        font-size: 40px!important;
-        margin-top: 250px !important;
-        margin-bottom: 250px !important;
-    }
-    .carre {
-        padding: 50px;
-        font-size: 20px;
-        
+    .article-meta {
+        flex-wrap: wrap;
     }
 }
