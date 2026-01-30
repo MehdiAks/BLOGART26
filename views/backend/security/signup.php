@@ -6,6 +6,7 @@ include '../../../header.php';
 $errors = $_SESSION['errors'] ?? [];
 $old = $_SESSION['old'] ?? [];
 $recaptchaSiteKey = getenv('RECAPTCHA_SITE_KEY');
+$recaptchaSiteKeyEscaped = htmlspecialchars($recaptchaSiteKey ?? '', ENT_QUOTES, 'UTF-8');
 
 // Nettoyage des données de session après récupération
 unset($_SESSION['errors'], $_SESSION['old']);
@@ -103,7 +104,8 @@ unset($_SESSION['errors'], $_SESSION['old']);
 
 </main>
 
-<script src="https://www.google.com/recaptcha/api.js?render=<?php echo htmlspecialchars($recaptchaSiteKey ?? '', ENT_QUOTES, 'UTF-8'); ?>"></script>
+<?php if (!empty($recaptchaSiteKey)): ?>
+<script src="https://www.google.com/recaptcha/api.js?render=<?php echo $recaptchaSiteKeyEscaped; ?>"></script>
 <script>
     function togglePassword(id) {
         var x = document.getElementById(id);
@@ -117,7 +119,8 @@ unset($_SESSION['errors'], $_SESSION['old']);
     (function () {
         var form = document.querySelector('form');
         var tokenInput = document.getElementById('g-recaptcha-response-signup');
-        if (!form || !tokenInput) {
+        var siteKey = '<?php echo $recaptchaSiteKeyEscaped; ?>';
+        if (!form || !tokenInput || !siteKey) {
             return;
         }
 
@@ -127,8 +130,12 @@ unset($_SESSION['errors'], $_SESSION['old']);
                 return;
             }
             event.preventDefault();
+            if (typeof grecaptcha === 'undefined') {
+                form.submit();
+                return;
+            }
             grecaptcha.ready(function () {
-                grecaptcha.execute('<?php echo htmlspecialchars($recaptchaSiteKey ?? '', ENT_QUOTES, 'UTF-8'); ?>', {action: 'signup'})
+                grecaptcha.execute(siteKey, {action: 'signup'})
                     .then(function (token) {
                         tokenInput.value = token;
                         isSubmitting = true;
@@ -138,3 +145,4 @@ unset($_SESSION['errors'], $_SESSION['old']);
         });
     })();
 </script>
+<?php endif; ?>

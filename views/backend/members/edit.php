@@ -7,6 +7,7 @@ include '../../../header.php';
 $errors = $_SESSION['errors'] ?? [];
 unset($_SESSION['errors']);
 $recaptchaSiteKey = getenv('RECAPTCHA_SITE_KEY');
+$recaptchaSiteKeyEscaped = htmlspecialchars($recaptchaSiteKey ?? '', ENT_QUOTES, 'UTF-8');
 
 // Seulement si tu es admin ou modérateur, tu as accès à cette page
 /*if (!isset($_SESSION['numStat']) || $_SESSION['numStat'] !== 1 && $_SESSION['numStat'] !== 2 ) {
@@ -114,7 +115,9 @@ if (isset($_GET['numMemb'])) {
     </div>
 </div>
 
-<script src="https://www.google.com/recaptcha/api.js?render=<?php echo htmlspecialchars($recaptchaSiteKey ?? '', ENT_QUOTES, 'UTF-8'); ?>"></script>
+<?php if (!empty($recaptchaSiteKey)): ?>
+<script src="https://www.google.com/recaptcha/api.js?render=<?php echo $recaptchaSiteKeyEscaped; ?>"></script>
+<?php endif; ?>
 <!-- JS POUR CACHER/AFFICHER MDP-->
 <script>
     document.getElementById('afficher').addEventListener("click", function () {
@@ -130,7 +133,8 @@ if (isset($_GET['numMemb'])) {
     (function () {
         var form = document.querySelector('form');
         var tokenInput = document.getElementById('g-recaptcha-response-update');
-        if (!form || !tokenInput) {
+        var siteKey = '<?php echo $recaptchaSiteKeyEscaped; ?>';
+        if (!form || !tokenInput || !siteKey || typeof grecaptcha === 'undefined') {
             return;
         }
 
@@ -140,8 +144,12 @@ if (isset($_GET['numMemb'])) {
                 return;
             }
             event.preventDefault();
+            if (typeof grecaptcha === 'undefined') {
+                form.submit();
+                return;
+            }
             grecaptcha.ready(function () {
-                grecaptcha.execute('<?php echo htmlspecialchars($recaptchaSiteKey ?? '', ENT_QUOTES, 'UTF-8'); ?>', {action: 'update'})
+                grecaptcha.execute(siteKey, {action: 'update'})
                     .then(function (token) {
                         tokenInput.value = token;
                         isSubmitting = true;
