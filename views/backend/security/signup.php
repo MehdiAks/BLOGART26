@@ -42,9 +42,9 @@ unset($_SESSION['errors'], $_SESSION['old']);
                     <input type="text" id="nomMemb" name="nomMemb" value="<?= htmlspecialchars($old['nomMemb'] ?? '') ?>" required>
                 </div>
 
-                <!-- Pseudo -->
+                <!-- Nom d'utilisateur -->
                 <div class="champ full">
-                    <label for="pseudoMemb" placeholder="6 à 70 caractères">Pseudo</label>
+                    <label for="pseudoMemb" placeholder="6 à 70 caractères">Nom d'utilisateur</label>
                     <input type="text"
                             id="pseudoMemb"
                             name="pseudoMemb"

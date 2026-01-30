@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pseudo = ctrlSaisies($_POST['pseudo']);
     $password = ctrlSaisies($_POST['password']);
 
-    // Vérifier si l'utilisateur existe avec ce pseudo
+    // Vérifier si l'utilisateur existe avec ce nom d'utilisateur
     $user = sql_select("MEMBRE", "*", "pseudoMemb = '$pseudo'");
     
     if ($user) {
@@ -17,14 +17,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['pseudoMemb'] = $user[0]['pseudoMemb'];
 
             header("Location: " . ROOT_URL . "/index.php");
-            $_SESSION['pseudoMemb'] = $pseudo; // Stocke le pseudo en session
+            $_SESSION['pseudoMemb'] = $pseudo; // Stocke le nom d'utilisateur en session
             exit();
         } else {
             header("Location: " . ROOT_URL . "/views/security/login.php?error=Mot de passe incorrect");
             exit();
         }
     } else {
-        header("Location: " . ROOT_URL . "/views/security/login.php?error=Pseudo ou mot de passe incorrect");
+        header("Location: " . ROOT_URL . "/views/security/login.php?error=Nom d'utilisateur ou mot de passe incorrect");
         exit();
     }
 }

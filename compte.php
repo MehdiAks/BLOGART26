@@ -45,7 +45,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/header.php';
             <div class="card h-100">
                 <div class="card-body">
                     <h2 class="h5 mb-3">Statut</h2>
-                    <p class="mb-1"><strong>Pseudo :</strong> <?php echo htmlspecialchars($memberData['pseudoMemb'] ?? ''); ?></p>
+                    <p class="mb-1"><strong>Nom d'utilisateur :</strong> <?php echo htmlspecialchars($memberData['pseudoMemb'] ?? ''); ?></p>
                     <p class="mb-1"><strong>Statut :</strong> <?php echo htmlspecialchars($memberData['libStat'] ?? ''); ?></p>
                 </div>
             </div>

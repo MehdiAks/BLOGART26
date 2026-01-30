@@ -1,5 +1,5 @@
 <?php
-// A la création du login, le pseudo ne doit pas exister. 
+// A la création du login, le nom d'utilisateur ne doit pas exister. 
 // Vérifier son absence en BDD avant l'insert
 function get_ExistPseudo($pseudoMemb){
 	global $DB;

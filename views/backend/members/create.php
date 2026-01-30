@@ -26,9 +26,9 @@ if (isset($_GET['numCom'])) {
             <!-- Form to create a new member -->
             <form action="<?php echo ROOT_URL . '/api/members/create.php' ?>" method="post" id="formCreate">
                 <div class="form-group">
-                    <!-- PSEUDO -->
+                    <!-- NOM D'UTILISATEUR -->
 
-                    <label for="pseudoMemb">Pseudo du membre (non modifiable)</label>
+                    <label for="pseudoMemb">Nom d'utilisateur du membre (non modifiable)</label>
                     <input id="pseudoMemb" name="pseudoMemb" class="form-control" type="text" autofocus="autofocus" />
                     <p>(entre 6 et 70 caractères)</p>
                     <!-- PRENOM -->

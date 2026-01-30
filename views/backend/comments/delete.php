@@ -47,7 +47,7 @@ if(isset($_GET['numCom'])){
                 <br>
 
                 <div class="form-group">
-                    <label for="pseudoMemb">Pseudo Membre</label>
+                    <label for="pseudoMemb">Nom d'utilisateur du membre</label>
                     <input id="numCom" name="numCom" class="form-control" style="display: none" type="text" value="<?php echo ($numCom); ?>" readonly="readonly" />
                     <input id="pseudoMemb" name="pseudoMemb" class="form-control" type="text" value="<?php echo ($pseudoMemb); ?>"/>
                 </div>

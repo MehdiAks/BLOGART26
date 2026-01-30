@@ -20,13 +20,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $errors = [];
 
-    // Vérification Pseudo
+    // Vérification nom d'utilisateur
     if (strlen($pseudoMemb) < 6 || strlen($pseudoMemb) > 70) {
-        $errors[] = "Erreur, le pseudo doit contenir entre 6 et 70 caractères.";
+        $errors[] = "Erreur, le nom d'utilisateur doit contenir entre 6 et 70 caractères.";
     } else {
         $verif = sql_select('MEMBRE', 'pseudoMemb', "pseudoMemb = '$pseudoMemb'");
         if (!empty($verif)) {
-            $errors[] = "Veuillez choisir un pseudo disponible.";
+            $errors[] = "Veuillez choisir un nom d'utilisateur disponible.";
             $pseudoMemb = null;
         }
     }

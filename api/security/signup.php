@@ -23,11 +23,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['errors'][] = $recaptcha['message'] ?: 'Échec de la vérification reCAPTCHA.';
     }
 
-    // Validation pseudo
+    // Validation nom d'utilisateur
     if (strlen($pseudoMemb) < 6 || strlen($pseudoMemb) > 70) {
-        $_SESSION['errors'][] = 'Le pseudo doit contenir entre 6 et 70 caractères';
+        $_SESSION['errors'][] = "Le nom d'utilisateur doit contenir entre 6 et 70 caractères";
     } elseif (!empty(sql_select('MEMBRE', 'pseudoMemb', "pseudoMemb = '$pseudoMemb'"))) {
-        $_SESSION['errors'][] = 'Pseudo déjà utilisé';
+        $_SESSION['errors'][] = "Nom d'utilisateur déjà utilisé";
     }
 
     // Validation mot de passe
