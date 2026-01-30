@@ -119,8 +119,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             button.classList.remove('is-visible');
         };
 
-        button.addEventListener('pointerdown', show);
-        button.addEventListener('pointerup', hide);
+        button.addEventListener('pointerdown', (event) => {
+            event.preventDefault();
+            show();
+        });
         button.addEventListener('pointerleave', hide);
         button.addEventListener('pointercancel', hide);
         button.addEventListener('keydown', (event) => {
@@ -129,5 +131,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         });
         button.addEventListener('keyup', hide);
+
+        document.addEventListener('pointerup', hide);
+        document.addEventListener('pointercancel', hide);
+        document.addEventListener('touchend', hide);
     });
 </script>
