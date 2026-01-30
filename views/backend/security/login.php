@@ -2,7 +2,6 @@
 
 
 session_start();
-include '../../../header.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once '../../../functions/ctrlSaisies.php';
 
@@ -49,6 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
+<?php include '../../../header.php'; ?>
 
 <main>
 
@@ -110,4 +111,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 </script>
-
