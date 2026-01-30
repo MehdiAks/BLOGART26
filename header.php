@@ -186,10 +186,10 @@ $pseudoMemb = $_SESSION['pseudoMemb'] ?? null;
                     <a href="<?php echo ROOT_URL . '/index.php'; ?>">Accueil</a>
                 </li>
                 <li>
-                    <a href="#Contact">Contact</a>
+                    <a href="<?php echo ROOT_URL . '/contact.php'; ?>">Contact</a>
                 </li>
                 <li>
-                    <a href="#Anciens-et-amis">Anciens et amis</a>
+                    <a href="<?php echo ROOT_URL . '/anciens-et-amis.php'; ?>">Anciens et amis</a>
                 </li>
             </ul>
             <div class="header-actions">

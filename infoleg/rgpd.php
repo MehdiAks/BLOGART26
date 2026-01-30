@@ -26,36 +26,50 @@ include '../header.php';
             <br>
 
             <h2>Introduction</h2>
-            <p>Chez <b>Bordeaux étudiant club</b>, nous accordons une grande importance à la confidentialité et à la protection des données personnelles de nos utilisateurs...</p>
+            <p>Bordeaux Étudiant Club accorde une grande importance à la protection de la vie privée et des données personnelles de ses utilisateurs.
+            <br>Cette politique de confidentialité explique quelles données sont collectées, comment elles sont utilisées et quels sont vos droits conformément au Règlement Général sur la Protection des Données (RGPD).</br>
+            En naviguant sur le site, vous adhérez aux procédures énoncées dans ce document.</p>
 
-            <h2>Données collectées</h2>
-            <p>Nous collectons les données suivantes lors de votre interaction avec notre site :</p>
+            <h2>1.Quelles données collectons-nous ?</h2>
+            <p>Nous collectons certaines données personnelles lorsque vous interagissez avec le site, notamment lorsque vous :</p>
             <ul>
-                <li><b>Données d’identification:</b> nom, prénom, adresse e-mail, numéro de téléphone.</li>
-                <li><b>Données de navigation:</b> adresse IP, type de navigateur, pages consultées, durée des visites.</li>
-                <li><b>Données fournies volontairement:</b> via les formulaires de contact, les inscriptions à la newsletter, ou tout autre moyen.</li>
+                <li>- Remplissez un formulaire de contact,</li>
+                <li>- Créez un compte,</li>
+                <li>- Laissez un commentaire,</li>
             </ul>
 
-            <h2>Finalités de la collecte</h2>
+            <p>Ces données peuvent inclure :</p>
+            <ul>
+                <li>- Prénom et nom,</li>
+                <li>- Adresse e-mail,</li>
+                <li>informations saisies dans les formulaires.</li>
+            </ul>
+
+            <h3>Données collectées automatiquement</h3>
+            <p>Lors de votre navigation sur le site, certaines données techniques peuvent être collectées automatiquement, telles que :</p>
+            <ul>
+                <li>- Adresse IP,</li>
+                <li> - Type de navigateur,</li>
+                <li>- Pages consultées,</li>
+                <li>- Durée de navigation.</li>
+            </ul>
+
+            <h2>2. Pourquoi utilisons-nous vos données ?</h2>
             <p>Les données collectées sont utilisées pour :</p>
-            <ol>
-                <li>Gérer et améliorer l’accès au site et ses fonctionnalités.</li>
-                <li>Répondre à vos demandes via le formulaire de contact.</li>
-                <li>Garantir la sécurité et la prévention des fraudes sur notre site.</li>
-                <li>Se conformer à nos obligations légales et réglementaires.</li>
-            </ol>
-
-            <h2>Partage des données</h2>
-            <p>Vos données personnelles ne sont jamais vendues à des tiers.</p>
-
-            <h2>Durée de conservation</h2>
-            <p>Nous conservons vos données personnelles aussi longtemps que nécessaire pour les finalités décrites dans cette politique :</p>
             <ul>
-                <li><b>Données de navigation:</b> 6 mois après leur collecte.</li>
-                <li><b>Autres données:</b> durée légale ou contractuelle applicable.</li>
+                <li>- Assurer le bon fonctionnement du site,</li>
+                <li>- Répondre à vos messages et demandes,</li>
+                <li>- Améliorer l’expérience utilisateur,</li>
+                <li>- Respecter nos obligations légales.</li>
             </ul>
 
-            <h2>Vos Droits</h2>
+            <h2>3. Partage des données</h2>
+            <p>Vos données personnelles ne sont ni vendues ni louées à des tiers.</p>
+
+            <h2>4. Durée de conservation des données</h2>
+            <p>Les données personnelles sont conservées pour une durée de 6 mois.</p>
+
+            <h2>5. Vos Droits</h2>
             <p>Conformément au RGPD, vous disposez des droits suivants :</p>
             <ul>
                 <li><b>Droit d’accès:</b> savoir quelles données nous détenons sur vous.</li>
@@ -66,23 +80,25 @@ include '../header.php';
             </ul>
             <p>Pour exercer vos droits, contactez-nous à l’adresse suivante: <b>contact@bordeauxetudiantclub.com</b>.</p>
 
-            <h2>Cookies</h2>
-            <p>Notre site utilise des cookies pour :</p>
+            <h2>6. Cookies</h2>
+            <p>Le site utilise des cookies pour :</p>
             <ul>
                 <li>Assurer le bon fonctionnement du site.</li>
                 <li>Collecter des statistiques anonymes sur l’utilisation du site.</li>
-                <li>Vous proposer des contenus adaptés à vos centres d’intérêt.</li>
+                <li>Améliorer l'expérience utilisateur.</li>
             </ul>
-            <p>Vous pouvez configurer vos préférences de cookies via votre navigateur ou notre gestionnaire de cookies disponible sur le site.</p>
+            <p>Vous pouvez accepter, refuser ou paramétrer les cookies via votre navigateur ou l’outil de gestion des cookies du site.</p>
 
-            <h2>Sécurité</h2>
-            <p>Nous mettons en place des mesures techniques et organisationnelles pour garantir la sécurité de vos données personnelles contre tout accès non autorisé...</p>
+            <h2>7. Sécurité des données</h2>
+            <p>Nous mettons en place des mesures techniques et organisationnelles afin de protéger vos données personnelles 
+            contre tout accès non autorisé, perte ou divulgation.</p>
 
-            <h2>Modifications de la Politique</h2>
-            <p>Nous nous réservons le droit de modifier cette politique de confidentialité à tout moment...</p>
+            <h2>8. Modification de la politique de confidentialité</h2>
+            <p>Cette politique peut être mise à jour à tout moment.
+            <br>Les utilisateurs sont invités à consulter régulièrement cette page afin de rester informés des éventuelles modifications.</br></p>
 
-            <h2>Contact</h2>
-            <p>Pour toute question relative à cette politique ou au traitement de vos données personnelles, vous pouvez nous contacter à :</p>
+            <h2>9. Contact/h2>
+            <p>Pour toute question concernant la protection des données personnelles, vous pouvez nous contacter à :</p>
             <ul>
                 <li>Adresse e-mail: <b>contact@bordeauxetudiantclub.com</b></li>
                 <li>Adresse postale: <b>1 Rue Jacques Ellul, 33800 Bordeaux</b></li>
