@@ -143,38 +143,43 @@ $numStat = $_SESSION['numStat'] ?? null;
                 <img src="<?php echo ROOT_URL . '/Romain/assets/images/logo.png'; ?>" alt="BEC" class="site-logo">
                 <span>Bordeaux Étudiant Club</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Ouvrir le menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mainNavbar">
-                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo ROOT_URL . '/index.php'; ?>">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo ROOT_URL . '/actualites.php'; ?>">Actualités</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo ROOT_URL . '/contact.php'; ?>">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo ROOT_URL . '/anciens-et-amis.php'; ?>">Anciens et amis</a>
-                    </li>
-                </ul>
-                <div class="d-flex align-items-lg-center gap-2 ms-lg-3 mt-3 mt-lg-0">
-                    <?php if ($pseudoMemb): ?>
-                        <div class="dropdown">
-                            <button class="btn btn-bec-outline dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <?php echo htmlspecialchars($pseudoMemb); ?>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="<?php echo ROOT_URL . '/compte.php'; ?>">Mon compte</a></li>
-                                <?php if ($numStat === 1 || $numStat === 2): ?>
-                                    <li><a class="dropdown-item" href="<?php echo ROOT_URL . '/views/backend/dashboard.php'; ?>">Panneau admin</a></li>
-                                <?php endif; ?>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item text-danger" href="<?php echo ROOT_URL . '/api/security/disconnect.php'; ?>">Déconnexion</a></li>
-                            </ul>
+        </div>
+
+        <nav class="header-nav">
+            <ul>
+                <li>
+                    <a href="<?php echo ROOT_URL . '/index.php'; ?>">Accueil</a>
+                </li>
+                <li>
+                    <a href="<?php echo ROOT_URL . '/notre-histoire.php'; ?>">Notre histoire</a>
+                </li>
+                <li>
+                    <a href="<?php echo ROOT_URL . '/actualites.php'; ?>">Actualités</a>
+                </li>
+                <li>
+                    <a href="<?php echo ROOT_URL . '/contact.php'; ?>">Contact</a>
+                </li>
+                <li>
+                    <a href="<?php echo ROOT_URL . '/anciens-et-amis.php'; ?>">Anciens et amis</a>
+                </li>
+            </ul>
+            <div class="header-actions">
+                <?php if ($pseudoMemb): ?>
+                    <details class="header-menu">
+                        <summary class="header-menu__toggle">
+                            <span class="header-user"><?php echo htmlspecialchars($pseudoMemb); ?></span>
+                            <span class="header-burger" aria-hidden="true">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </summary>
+                        <div class="header-menu__dropdown">
+                            <a href="<?php echo ROOT_URL . '/compte.php'; ?>">Mon compte</a>
+                            <?php if ($numStat === 1 || $numStat === 2): ?>
+                                <a href="<?php echo ROOT_URL . '/views/backend/dashboard.php'; ?>">Panneau admin</a>
+                            <?php endif; ?>
+                            <a class="header-menu__logout" href="<?php echo ROOT_URL . '/api/security/disconnect.php'; ?>">Déconnexion</a>
                         </div>
                     <?php else: ?>
                         <a class="btn btn-bec-primary" href="<?php echo ROOT_URL . '/views/backend/security/login.php'; ?>">
