@@ -86,7 +86,8 @@ function verifyRecaptcha($token, $action, $threshold = null) {
     }
 
     $success = $data['success'] ?? false;
-    $score = (float) ($data['score'] ?? 0.0);
+    $hasScore = array_key_exists('score', $data);
+    $score = $hasScore ? (float) $data['score'] : 0.0;
     $responseAction = $data['action'] ?? '';
 
     if (getenv('APP_DEBUG') === 'true') {
@@ -107,7 +108,7 @@ function verifyRecaptcha($token, $action, $threshold = null) {
         ];
     }
 
-    if ($responseAction !== $action) {
+    if ($hasScore && $responseAction !== $action) {
         return [
             'valid' => false,
             'score' => $score,
@@ -115,7 +116,7 @@ function verifyRecaptcha($token, $action, $threshold = null) {
         ];
     }
 
-    if ($score < $resolvedThreshold) {
+    if ($hasScore && $score < $resolvedThreshold) {
         return [
             'valid' => false,
             'score' => $score,
