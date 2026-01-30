@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/libs/cookie-consent.php';
 $pageStyles = [ROOT_URL . '/src/css/home.css'];
+$pageHasVideo = true;
 require_once $_SERVER['DOCUMENT_ROOT'] . '/header.php';
 
 sql_connect();

@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 $pseudoMemb = $_SESSION['pseudoMemb'] ?? null;
 $numStat = $_SESSION['numStat'] ?? null;
+$hasBackgroundVideo = $pageHasVideo ?? false;
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -31,30 +32,46 @@ $numStat = $_SESSION['numStat'] ?? null;
             --bec-accent: #67081D;
         }
 
+        html {
+            background-color: var(--bec-offwhite);
+        }
+
         body {
-            background-color: transparent;
+            position: relative;
+            background-color: var(--bec-offwhite);
             color: var(--bec-dark);
         }
 
-        .site-background-video {
-            position: fixed;
+        body.has-site-video {
+            background-color: transparent;
+        }
+
+        .site-background {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .site-background-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: -2;
         }
 
         .site-background-overlay {
-            position: fixed;
+            position: absolute;
             inset: 0;
-            background: rgba(246, 241, 234, 0.75);
-            z-index: -1;
+            background: rgba(0, 0, 0, 0.5);
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .site-background-video {
+            .site-background {
                 display: none;
             }
 
@@ -66,6 +83,8 @@ $numStat = $_SESSION['numStat'] ?? null;
         .site-main {
             text-align: left;
             min-height: 60vh;
+            position: relative;
+            z-index: 1;
         }
 
         .site-header .navbar-brand {
@@ -76,6 +95,8 @@ $numStat = $_SESSION['numStat'] ?? null;
         .site-header {
             background-color: transparent;
             border-bottom: none;
+            position: relative;
+            z-index: 1;
         }
 
         .site-header .navbar-brand span {
@@ -189,11 +210,15 @@ $numStat = $_SESSION['numStat'] ?? null;
 
 </head>
 
-<body>
-    <video class="site-background-video" autoplay muted loop playsinline poster="<?php echo ROOT_URL . '/src/images/background/background-index.jpg'; ?>">
-        <source src="<?php echo ROOT_URL . '/src/videos/fond.mp4'; ?>" type="video/mp4">
-    </video>
-    <div class="site-background-overlay" aria-hidden="true"></div>
+<body class="<?php echo $hasBackgroundVideo ? 'has-site-video' : 'has-solid-bg'; ?>">
+    <?php if ($hasBackgroundVideo): ?>
+        <div class="site-background" aria-hidden="true">
+            <video class="site-background-video" autoplay muted loop playsinline poster="<?php echo ROOT_URL . '/src/images/background/background-index.jpg'; ?>">
+                <source src="<?php echo ROOT_URL . '/src/videos/fond.mp4'; ?>" type="video/mp4">
+            </video>
+            <div class="site-background-overlay"></div>
+        </div>
+    <?php endif; ?>
     <header class="site-header">
         <div class="container d-flex align-items-center justify-content-between flex-wrap gap-3 py-3">
             <a class="navbar-brand d-flex align-items-center gap-2" href="<?php echo ROOT_URL . '/index.php'; ?>">
