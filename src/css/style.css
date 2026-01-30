@@ -166,16 +166,23 @@ form {
 .auth-page {
     display: flex;
     justify-content: center;
+    align-items: center;
+    min-height: 80vh;
     padding: 40px 16px 80px;
 }
 
 .auth-card {
-    width: min(92vw, 640px);
+    width: min(92vw, 620px);
+    min-height: 520px;
     background: #ffffff;
     border-radius: 28px;
     padding: 40px 48px;
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
 }
 
 .auth-card h1 {
@@ -185,6 +192,10 @@ form {
 
 .auth-form {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
 }
 
 .auth-stack {
@@ -205,7 +216,9 @@ form {
 }
 
 .signup-grid .offset-right {
-    margin-left: 14px;
+    grid-column: 1 / -1;
+    margin-left: 24px;
+    width: calc(100% - 24px);
 }
 
 .champ {
@@ -235,6 +248,7 @@ form {
 .auth-card .champ {
     margin-bottom: 0;
     align-items: stretch;
+    gap: 8px;
 }
 
 .auth-card .champ label {
@@ -243,10 +257,11 @@ form {
 }
 
 .auth-card .champ input {
-    border: 1px solid #d8d1d1;
-    border-radius: 14px;
-    padding: 12px 14px;
-    background: #faf7f7;
+    border: 1px solid #e4dada;
+    border-radius: 16px;
+    padding: 14px 16px;
+    background: #ffffff;
+    box-shadow: 0 12px 24px rgba(103, 8, 29, 0.08);
 }
 
 .auth-card .champ input:focus {
@@ -259,7 +274,7 @@ form {
 }
 
 .input-with-icon input {
-    padding-right: 46px;
+    padding-right: 58px;
 }
 
 .password-toggle {
@@ -269,14 +284,18 @@ form {
     transform: translateY(-50%);
     border: none;
     background: transparent;
-    padding: 0;
+    padding: 4px;
     cursor: pointer;
     color: #67081D;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .password-toggle .icon {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     display: block;
 }
 
@@ -303,6 +322,7 @@ form {
     align-items: center;
     gap: 12px;
     margin: 28px 0 16px;
+    justify-content: center;
 }
 
 .checkbox-row label {
@@ -414,6 +434,7 @@ formp {
 
     .signup-grid .offset-right {
         margin-left: 0;
+        width: 100%;
     }
 }
 /* Style général du pop-up */

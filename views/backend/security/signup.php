@@ -53,19 +53,19 @@ unset($_SESSION['errors'], $_SESSION['old']);
                 </div>
 
                 <!-- Email -->
-                <div class="champ">
+                <div class="champ full">
                     <label for="eMailMemb">Email :</label>
                     <input type="email" id="eMailMemb" name="eMailMemb" value="<?= htmlspecialchars($old['eMailMemb'] ?? '') ?>" required>
                 </div>
 
                 <!-- Confirmation Email -->
-                <div class="champ offset-right">
+                <div class="champ full offset-right">
                     <label for="eMailMemb2">Confirmer l'email :</label>
                     <input type="email" id="eMailMemb2" name="eMailMemb2" value="<?= htmlspecialchars($old['eMailMemb2'] ?? '') ?>" required>
                 </div>
 
                 <!-- Mot de passe -->
-                <div class="champ">
+                <div class="champ full">
                     <label for="passMemb">Mot de passe :</label>
                     <div class="input-with-icon">
                         <input type="password" id="passMemb" name="passMemb" required>
@@ -75,22 +75,15 @@ unset($_SESSION['errors'], $_SESSION['old']);
                             data-target="passMemb"
                             aria-label="Afficher le mot de passe"
                         >
-                            <svg class="icon icon-closed" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6z" fill="none" stroke="currentColor" stroke-width="2"/>
-                                <circle cx="12" cy="12" r="3" fill="currentColor"/>
-                                <path d="M4 4l16 16" fill="none" stroke="currentColor" stroke-width="2"/>
-                            </svg>
-                            <svg class="icon icon-open" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6z" fill="none" stroke="currentColor" stroke-width="2"/>
-                                <circle cx="12" cy="12" r="3" fill="currentColor"/>
-                            </svg>
+                            <img class="icon icon-closed" src="<?php echo ROOT_URL . '/src/images/eye-closed.png'; ?>" alt="Masquer le mot de passe">
+                            <img class="icon icon-open" src="<?php echo ROOT_URL . '/src/images/eye-open.png'; ?>" alt="Afficher le mot de passe">
                         </button>
                     </div>
                     <small class="form-text text-muted">Au moins 8 caractères, une majuscule, une minuscule et un chiffre</small>
                 </div>
 
                 <!-- Confirmation mot de passe -->
-                <div class="champ offset-right">
+                <div class="champ full offset-right">
                     <label for="passMemb2">Confirmation du mot de passe :</label>
                     <div class="input-with-icon">
                         <input type="password" id="passMemb2" name="passMemb2" required>
@@ -100,22 +93,15 @@ unset($_SESSION['errors'], $_SESSION['old']);
                             data-target="passMemb2"
                             aria-label="Afficher le mot de passe"
                         >
-                            <svg class="icon icon-closed" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6z" fill="none" stroke="currentColor" stroke-width="2"/>
-                                <circle cx="12" cy="12" r="3" fill="currentColor"/>
-                                <path d="M4 4l16 16" fill="none" stroke="currentColor" stroke-width="2"/>
-                            </svg>
-                            <svg class="icon icon-open" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6z" fill="none" stroke="currentColor" stroke-width="2"/>
-                                <circle cx="12" cy="12" r="3" fill="currentColor"/>
-                            </svg>
+                            <img class="icon icon-closed" src="<?php echo ROOT_URL . '/src/images/eye-closed.png'; ?>" alt="Masquer le mot de passe">
+                            <img class="icon icon-open" src="<?php echo ROOT_URL . '/src/images/eye-open.png'; ?>" alt="Afficher le mot de passe">
                         </button>
                     </div>
                 </div>
             </div>
             <!-- Accord données -->
             <div class="champ checkbox-row">
-                <label for="accordMemb">J'accepte le stockage de mes données, les CGU et les obligations légales.</label>
+                <label for="accordMemb">J'accepte le stockage de mes données, les CGU et toutes les obligations légales.</label>
                 <input type="checkbox" id="accordMemb" name="accordMemb" value="1" <?= isset($old['accordMemb']) ? 'checked' : '' ?> required>
             </div>
             <!-- Boutons -->
