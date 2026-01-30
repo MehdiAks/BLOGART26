@@ -2,9 +2,8 @@
 // Commentaire: Fonctions utilitaires pour security.
 // Check if user have access to ressource, take level needed and return boolean
 function check_access($level) {
-    if (isset($_SESSION['user_id']) || isset($_SESSION['id_user'])) {
-        $user_id = $_SESSION['user_id'] ?? $_SESSION['id_user'];
-        $user_level = sql_select("MEMBRE", 'numStat', "numMemb = " . $user_id)[0]['numStat'];
+    if(isset($_SESSION['id_user'])){
+        $user_level = sql_select("MEMBRE", 'numStat', "numMemb = " . $_SESSION['id_user'])[0]['numStat'];
         if($user_level <= $level){
             return true;
         }else{

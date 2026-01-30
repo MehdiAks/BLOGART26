@@ -1,10 +1,6 @@
 <?php
 //load config
 require_once 'config.php';
-
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
 ?>
 <!DOCTYPE html>
 <html lang="fr-FR">
@@ -21,46 +17,27 @@ if (session_status() === PHP_SESSION_NONE) {
 <body>
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand d-flex align-items-center" href="/">
-      <img src="/src/images/article1.png" alt="Logo Bordeaux étudiant club" width="36" height="36" class="me-2" />
-      Bordeaux étudiant club
-    </a>
+    <a class="navbar-brand" href="#">Bordeaux étudiant club</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto align-items-lg-center gap-2">
+      <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="/">Accueil</a>
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/#Contact">Contact</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/#Anciens-et-amis">Anciens &amp; amis</a>
-        </li>
-        <?php if (!empty($_SESSION['user_id'])) : ?>
-          <li class="nav-item">
-            <a class="nav-link" href="/views/backend/dashboard.php">Admin</a>
-          </li>
-        <?php endif; ?>
-        <li class="nav-item">
-          <?php if (!empty($_SESSION['user_id']) && !empty($_SESSION['pseudoMemb'])) : ?>
-            <div class="d-flex flex-column flex-lg-row gap-2">
-              <a class="btn btn-outline-dark" href="/views/backend/dashboard.php" role="button">
-                👤 <?= htmlspecialchars($_SESSION['pseudoMemb']); ?>
-              </a>
-              <a class="btn btn-outline-secondary" href="/api/security/disconnect.php" role="button">
-                Se déconnecter
-              </a>
-            </div>
-          <?php else : ?>
-            <a class="btn btn-dark" href="/views/backend/security/login.php" role="button">
-              👤 Connexion / Inscription
-            </a>
-          <?php endif; ?>
+          <a class="nav-link" href="/views/backend/dashboard.php">Admin</a>
         </li>
       </ul>
+    </div>
+    <!--right align-->
+    <div class="d-flex">
+      <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Rechercher sur le site…" aria-label="Search" >
+      </form>
+      <a class="btn btn-primary m-1" href="/views/backend/security/login.php" role="button">Login</a>
+      <a class="btn btn-dark m-1" href="/views/backend/security/signup.php" role="button">Sign up</a>
     </div>
   </div>
 </nav>

@@ -7,7 +7,6 @@
  */
 // Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../../header.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
 
 if (isset($_GET['numStat'])) {
     $numStat = (int) $_GET['numStat'];

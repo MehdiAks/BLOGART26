@@ -7,7 +7,6 @@
  */
 // Charge le layout ou des dépendances communes nécessaires à la vue.
 include '../../../header.php'; // contains the header and call to config.php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
 
 //Load all statuts
 // Requête SQL : récupère des données pour construire la vue.
