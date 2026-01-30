@@ -71,7 +71,7 @@ include '../header.php';
             <p>Vos données personnelles ne sont ni vendues ni louées à des tiers.</p>
 
             <h2>4. Durée de conservation des données</h2>
-            <p>Les données personnelles sont conservées pour une durée de 6 mois.</p>
+            <p>Les données personnelles sont conservées pour une durée de 24 heures.</p>
 
             <h2>5. Vos Droits</h2>
             <p>Conformément au RGPD, vous disposez des droits suivants :</p>
