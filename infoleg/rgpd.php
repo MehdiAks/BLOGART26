@@ -97,7 +97,7 @@ include '../header.php';
             <p>Cette politique peut être mise à jour à tout moment.
             <br>Les utilisateurs sont invités à consulter régulièrement cette page afin de rester informés des éventuelles modifications.</br></p>
 
-            <h2>9. Contact/h2>
+            <h2>9. Contact</h2>
             <p>Pour toute question concernant la protection des données personnelles, vous pouvez nous contacter à :</p>
             <ul>
                 <li>Adresse e-mail: <b>contact@bordeauxetudiantclub.com</b></li>
