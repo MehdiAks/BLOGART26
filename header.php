@@ -55,6 +55,27 @@ $numStat = $_SESSION['numStat'] ?? null;
             font-weight: 500;
         }
 
+        .site-header .header-nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .site-header .header-nav a {
+            color: var(--bec-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .site-header .header-nav a:hover,
+        .site-header .header-nav a:focus {
+            color: var(--bec-accent);
+        }
+
         .site-header .navbar-nav .nav-link:hover,
         .site-header .navbar-nav .nav-link:focus {
             color: var(--bec-accent);
@@ -138,31 +159,32 @@ $numStat = $_SESSION['numStat'] ?? null;
 
 <body>
     <header class="site-header border-bottom bg-white">
-        <nav class="navbar navbar-expand-lg navbar-light container py-3">
+        <div class="container d-flex align-items-center justify-content-between flex-wrap gap-3 py-3">
             <a class="navbar-brand d-flex align-items-center gap-2" href="<?php echo ROOT_URL . '/index.php'; ?>">
                 <img src="<?php echo ROOT_URL . '/Romain/assets/images/logo.png'; ?>" alt="BEC" class="site-logo">
                 <span>Bordeaux Étudiant Club</span>
             </a>
-        </div>
 
-        <nav class="header-nav">
-            <ul>
-                <li>
-                    <a href="<?php echo ROOT_URL . '/index.php'; ?>">Accueil</a>
-                </li>
-                <li>
-                    <a href="<?php echo ROOT_URL . '/notre-histoire.php'; ?>">Notre histoire</a>
-                </li>
-                <li>
-                    <a href="<?php echo ROOT_URL . '/actualites.php'; ?>">Actualités</a>
-                </li>
-                <li>
-                    <a href="<?php echo ROOT_URL . '/contact.php'; ?>">Contact</a>
-                </li>
-                <li>
-                    <a href="<?php echo ROOT_URL . '/anciens-et-amis.php'; ?>">Anciens et amis</a>
-                </li>
-            </ul>
+            <nav class="header-nav">
+                <ul>
+                    <li>
+                        <a href="<?php echo ROOT_URL . '/index.php'; ?>">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo ROOT_URL . '/notre-histoire.php'; ?>">Notre histoire</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo ROOT_URL . '/actualites.php'; ?>">Actualités</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo ROOT_URL . '/contact.php'; ?>">Contact</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo ROOT_URL . '/anciens-et-amis.php'; ?>">Anciens et amis</a>
+                    </li>
+                </ul>
+            </nav>
+
             <div class="header-actions">
                 <?php if ($pseudoMemb): ?>
                     <details class="header-menu">
@@ -181,13 +203,13 @@ $numStat = $_SESSION['numStat'] ?? null;
                             <?php endif; ?>
                             <a class="header-menu__logout" href="<?php echo ROOT_URL . '/api/security/disconnect.php'; ?>">Déconnexion</a>
                         </div>
-                    <?php else: ?>
-                        <a class="btn btn-bec-primary" href="<?php echo ROOT_URL . '/views/backend/security/login.php'; ?>">
-                            Connexion / Inscription
-                        </a>
-                    <?php endif; ?>
-                </div>
+                    </details>
+                <?php else: ?>
+                    <a class="btn btn-bec-primary" href="<?php echo ROOT_URL . '/views/backend/security/login.php'; ?>">
+                        Connexion / Inscription
+                    </a>
+                <?php endif; ?>
             </div>
-        </nav>
+        </div>
     </header>
     <main class="site-main container py-5">
