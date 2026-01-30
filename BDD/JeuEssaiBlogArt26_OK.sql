@@ -1,4 +1,3 @@
--- Commentaire: Script SQL pour JeuEssaiBlogArt26_OK.
 /***********************************************/
 /* Blog des articles (BD MySQL) du cours BDD
 //

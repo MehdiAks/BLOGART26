@@ -1,13 +1,7 @@
 <?php
-// Commentaire: Fichier PHP pour config.
 //define ROOT_PATH
 define('ROOT', $_SERVER['DOCUMENT_ROOT']);
 define('ROOT_URL', 'http://' . $_SERVER['HTTP_HOST']);
-
-// Ensure session is available across the app
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
 
 //Load env
 require_once ROOT . '/includes/libs/DotEnv.php';

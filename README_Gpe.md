@@ -1,4 +1,3 @@
-<!-- Commentaire: Documentation du projet et instructions générales. -->
 # Blogart Template
 
 ## Setup

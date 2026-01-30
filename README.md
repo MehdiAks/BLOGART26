@@ -1,9 +1,6 @@
-<!-- Commentaire: Documentation du projet et instructions générales. -->
 # Blogart Template
 
 ## Setup
-1. Copy `.env.example` to `.env` and fill in your local database credentials.
-2. Ensure the MySQL user in `.env` has access to the database.
 
 
 ## Architecture

@@ -1,5 +1,4 @@
 <?php
-// Commentaire: Utilitaire de requêtes pour insert.
 // insert instance
 function sql_insert($table, $attributs, $values){
     global $DB;

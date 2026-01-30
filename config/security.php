@@ -1,5 +1,4 @@
 <?php
-// Commentaire: Configuration liée à security.
 /**
  * Check if user is logged in with SESSION
  */

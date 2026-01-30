@@ -1,5 +1,4 @@
 <?php
-// Commentaire: Fonctions utilitaires pour global.inc.
 /**
  * Include all functions loaders
 */

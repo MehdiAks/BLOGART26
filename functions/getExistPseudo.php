@@ -1,5 +1,4 @@
 <?php
-// Commentaire: Fonctions utilitaires pour getExistPseudo.
 // A la création du login, le pseudo ne doit pas exister. 
 // Vérifier son absence en BDD avant l'insert
 function get_ExistPseudo($pseudoMemb){
@@ -15,3 +14,4 @@ function get_ExistPseudo($pseudoMemb){
 	$result->execute(array($pseudoMemb));
 	return($result->rowCount());
 }
+?>

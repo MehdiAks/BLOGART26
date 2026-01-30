@@ -1,5 +1,4 @@
 <?php
-// Commentaire: Utilitaire de requêtes pour update.
 // update instance
 function sql_update($table, $attributs, $where) {
     global $DB;

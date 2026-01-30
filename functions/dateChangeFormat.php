@@ -1,5 +1,4 @@
 <?php
-// Commentaire: Fonctions utilitaires pour dateChangeFormat.
 /******************************************************
 *
 * En entrée :
@@ -35,3 +34,4 @@ function dateChangeFormat($dateIn, $from, $to){
         return "";	// Si aucune date en entrée
     }
 }
+?>

@@ -1,5 +1,4 @@
 <?php
-// Commentaire: Utilitaire de requêtes pour delete.
 // delete instance
 function sql_delete($table, $where){
     global $DB;
