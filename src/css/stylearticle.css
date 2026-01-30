@@ -6,7 +6,7 @@ html, body {
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
-    font-family: "Poppins", serif;
+    font-family: "Epilogue", sans-serif;
     overflow-x: hidden;
     text-align: start !important;
     background-color: #f4f5f7;
@@ -14,6 +14,11 @@ html, body {
 }
 
 /* ======================= TITRES ======================= */
+h1, h2, h3, h4, h5, h6,
+.article-title,
+.phraseaccroche {
+    font-family: "Montserrat", sans-serif;
+}
 h1 {
     font-size: clamp(2.4rem, 4vw, 3.6rem);
     font-weight: 700;
