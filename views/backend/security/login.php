@@ -84,15 +84,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             data-target="mdp"
                             aria-label="Afficher le mot de passe"
                         >
-                            <svg class="icon icon-closed" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6z" fill="none" stroke="currentColor" stroke-width="2"/>
-                                <circle cx="12" cy="12" r="3" fill="currentColor"/>
-                                <path d="M4 4l16 16" fill="none" stroke="currentColor" stroke-width="2"/>
-                            </svg>
-                            <svg class="icon icon-open" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6z" fill="none" stroke="currentColor" stroke-width="2"/>
-                                <circle cx="12" cy="12" r="3" fill="currentColor"/>
-                            </svg>
+                            <img class="icon icon-closed" src="<?php echo ROOT_URL . '/src/images/eye-closed.png'; ?>" alt="Masquer le mot de passe">
+                            <img class="icon icon-open" src="<?php echo ROOT_URL . '/src/images/eye-open.png'; ?>" alt="Afficher le mot de passe">
                         </button>
                     </div>
                     <?php if (!empty($errorPassword)): ?>
