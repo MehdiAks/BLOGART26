@@ -167,6 +167,7 @@ $pseudoMemb = $_SESSION['pseudoMemb'] ?? null;
             }
         }
     </style>
+
 </head>
 
 <body>

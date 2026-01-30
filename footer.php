@@ -10,7 +10,13 @@
                 <img src="<?php echo ROOT_URL . '/Romain/assets/images/facebook.png'; ?>" alt="Facebook">
             </a>
             <h4>
-                <a href="<?php echo ROOT_URL . '/infoleg/cgu.php'; ?>">conditions d’utilisation</a>
+                <a href="<?php echo ROOT_URL . '/infoleg/cgu.php'; ?>">Conditions d’utilisation</a>
+            </h4>
+            <h4>
+                <a href="<?php echo ROOT_URL . '/infoleg/mentionleg.php'; ?>">Mentions légales</a>
+            </h4>
+                        <h4>
+                <a href="<?php echo ROOT_URL . '/infoleg/rgpd.php'; ?>">RGPD</a>
             </h4>
         </div>
 
