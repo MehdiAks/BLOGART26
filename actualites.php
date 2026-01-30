@@ -1,95 +1,153 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 
-    require_once 'header.php';
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
-    
+$pageStyles = [
+    ROOT_URL . '/src/css/style.css',
+    ROOT_URL . '/src/css/styleactu.css',
+];
+
+require_once 'header.php';
+
+sql_connect();
+
+$search = trim($_GET['search'] ?? '');
+$keyword = trim($_GET['keyword'] ?? '');
+$theme = isset($_GET['theme']) ? (int) $_GET['theme'] : 0;
+
+$themeStmt = $DB->prepare('SELECT numThem, libThem FROM THEMATIQUE ORDER BY libThem ASC');
+$themeStmt->execute();
+$thematiques = $themeStmt->fetchAll(PDO::FETCH_ASSOC);
+
+$conditions = [];
+$params = [];
+
+if ($theme > 0) {
+    $conditions[] = 'a.numThem = :theme';
+    $params[':theme'] = $theme;
+}
+
+if ($search !== '') {
+    $conditions[] = 'a.libTitrArt LIKE :search';
+    $params[':search'] = '%' . $search . '%';
+}
+
+if ($keyword !== '') {
+    $conditions[] = '(a.libChapoArt LIKE :keyword OR a.libAccrochArt LIKE :keyword OR a.parag1Art LIKE :keyword OR a.parag2Art LIKE :keyword OR a.parag3Art LIKE :keyword)';
+    $params[':keyword'] = '%' . $keyword . '%';
+}
+
+$query = 'SELECT a.numArt, a.libTitrArt, a.libChapoArt, a.urlPhotArt, t.libThem FROM ARTICLE a INNER JOIN THEMATIQUE t ON a.numThem = t.numThem';
+if (!empty($conditions)) {
+    $query .= ' WHERE ' . implode(' AND ', $conditions);
+}
+$query .= ' ORDER BY a.dtCreaArt DESC';
+
+$articleStmt = $DB->prepare($query);
+$articleStmt->execute($params);
+$articles = $articleStmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <title>Nos actus | Mêlées Bordelaises</title>
-        <link href="<?php echo ROOT_URL . "/"?>src/css/font.css" rel="stylesheet"/>
-        <link href="<?php echo ROOT_URL . "/"?>src/css/styleactu.css" rel="stylesheet"/>
-        <link href="<?php echo ROOT_URL . "/"?>src/css/style.css" rel="stylesheet"/>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    </head>
+<main class="container py-5">
+    <section class="news-summary">
+        <p class="news-summary__eyebrow">Actualités</p>
+        <h1 class="news-summary__title">Restez au plus près de la vie du club</h1>
+        <p class="news-summary__text">
+            Entre résultats, interviews, moments forts et coulisses, retrouvez ici l'ensemble des actualités du BEC.
+            Ce fil éditorial met en avant les histoires qui font vibrer la communauté, avec des mises à jour régulières
+            pour ne rien manquer des temps forts.
+        </p>
+    </section>
 
-    <body>
-        <div>
-
-            <div class="image-fixe">
-                <img src="ubb site/image/ubb image.jpg" alt="Image fixe">
+    <section class="news-filters" aria-label="Filtres des actualités">
+        <form method="get" class="row g-3 align-items-end">
+            <div class="col-12 col-lg-4">
+                <label for="theme" class="form-label">Thématique</label>
+                <select id="theme" name="theme" class="form-select">
+                    <option value="0">Toutes les thématiques</option>
+                    <?php foreach ($thematiques as $thematique): ?>
+                        <option value="<?php echo (int) $thematique['numThem']; ?>" <?php echo $theme === (int) $thematique['numThem'] ? 'selected' : ''; ?>>
+                            <?php echo htmlspecialchars($thematique['libThem']); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
             </div>
+            <div class="col-12 col-lg-4">
+                <label for="search" class="form-label">Recherche par titre</label>
+                <input
+                    type="search"
+                    id="search"
+                    name="search"
+                    class="form-control"
+                    placeholder="Ex: victoire, équipe, match"
+                    value="<?php echo htmlspecialchars($search, ENT_QUOTES); ?>"
+                />
+            </div>
+            <div class="col-12 col-lg-4">
+                <label for="keyword" class="form-label">Mots-clés</label>
+                <input
+                    type="text"
+                    id="keyword"
+                    name="keyword"
+                    class="form-control"
+                    placeholder="Ex: entraînement, événement"
+                    value="<?php echo htmlspecialchars($keyword, ENT_QUOTES); ?>"
+                />
+            </div>
+            <div class="col-12 d-flex flex-wrap gap-2">
+                <button type="submit" class="btn btn-primary">Appliquer les filtres</button>
+                <a class="btn btn-outline-secondary" href="<?php echo ROOT_URL . '/actualites.php'; ?>">Réinitialiser</a>
+                <p class="news-filters__count ms-lg-auto mb-0">
+                    <?php echo count($articles); ?> actualité<?php echo count($articles) > 1 ? 's' : ''; ?> trouvée<?php echo count($articles) > 1 ? 's' : ''; ?>
+                </p>
+            </div>
+        </form>
+    </section>
 
-            <div>
-            <h1 class="article1titre">
-                <h1 class="titlehead" >Nos actus</h1>
-            </h1>
-
-        </div>
-        <h2 class="carre">
-                <p class="accroche">Restez à l’affût de toute l’actualité rugbystique à Bordeaux: résultats, interviews, événements et plus encore, tout ce qui fait vibrer l'ovalie Girondine !</p>
-        </h2>
-        <div class="containeractu">
-
-
-            <section class="hero-header">
-                
-                <img src="ubb site/image/fleche-bas.svg" style="filter: invert(1); width:50px; height:50px;">
-
-                <audio id="sound" src="/src/audio/AllerUBB.mp3"></audio>
-                <script>
-                    document.addEventListener("DOMContentLoaded", function () {
-                        let audio = document.getElementById("sound");
-                        audio.play().catch(error => {
-                            console.log("Lecture automatique bloquée par le navigateur : ", error);
-                        });
-                    });
-                    document.addEventListener("click", function () {
-                        let audio = document.getElementById("sound");
-                        if (audio.paused) {
-                            audio.play();
-                        }
-                    });
-                </script>                    
-            </section>
-
-            <section class="articles"> 
-                        <?php
-
-                        $randomArticles = sql_select("ARTICLE", "*", "1=1 ORDER BY RAND() LIMIT 3");
-
-                        if (!empty($randomArticles)):
-                            foreach ($randomArticles as $randomArticle): ?>
-                                <div class="art">
-                                    <div class="random-article">
-                                        <img class="imagedroite" src="<?php echo ROOT_URL . '/src/uploads/' . htmlspecialchars($randomArticle['urlPhotArt']); ?>" alt="Image article">
-                                        <h2 class="titredroite">
-                                            <?php echo htmlspecialchars($randomArticle['libTitrArt']); ?>
-                                        </h2>
-                                        <p class="txtdroite">                               
-                                            <?php echo substr($randomArticle['libChapoArt'], 0, 100) . (strlen($randomArticle['libChapoArt']) > 100 ? '...' : ''); ?></td>
-                                        </p>
-                                        <a href="article.php?numArt=<?php echo $randomArticle['numArt']; ?>" class="clickable-text">Lire l'article →</a>
-                                    </div>
+    <section class="news-grid" aria-live="polite">
+        <div class="row g-4">
+            <?php if (!empty($articles)): ?>
+                <?php foreach ($articles as $article): ?>
+                    <?php
+                    $imagePath = !empty($article['urlPhotArt'])
+                        ? ROOT_URL . '/src/uploads/' . htmlspecialchars($article['urlPhotArt'])
+                        : ROOT_URL . '/src/images/article.png';
+                    $chapo = $article['libChapoArt'] ?? '';
+                    $maxLength = 140;
+                    $excerptBase = function_exists('mb_substr') ? mb_substr($chapo, 0, $maxLength) : substr($chapo, 0, $maxLength);
+                    $chapoLength = function_exists('mb_strlen') ? mb_strlen($chapo) : strlen($chapo);
+                    $excerpt = $excerptBase . ($chapoLength > $maxLength ? '...' : '');
+                    ?>
+                    <div class="col-12 col-lg-6">
+                        <div class="card news-card h-100">
+                            <div class="ratio ratio-4x3 news-card__media">
+                                <img src="<?php echo $imagePath; ?>" class="news-card__image" alt="<?php echo htmlspecialchars($article['libTitrArt']); ?>">
+                            </div>
+                            <div class="card-body d-flex flex-column">
+                                <div class="news-card__meta">
+                                    <span class="badge text-bg-light"><?php echo htmlspecialchars($article['libThem']); ?></span>
                                 </div>
-                            <?php endforeach;
-                        else: ?>
-                            <p>Aucun article disponible.</p>
-                        <?php endif; ?>
-                    </div>                    
-                </a>
-                
-            </section>
+                                <h2 class="card-title news-card__title">
+                                    <?php echo htmlspecialchars($article['libTitrArt']); ?>
+                                </h2>
+                                <p class="card-text news-card__excerpt">
+                                    <?php echo htmlspecialchars($excerpt); ?>
+                                </p>
+                                <a href="<?php echo ROOT_URL . '/article.php?numArt=' . (int) $article['numArt']; ?>" class="btn btn-outline-primary mt-auto">Lire la suite</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="col-12">
+                    <div class="alert alert-light border news-empty" role="status">
+                        Aucune actualité ne correspond à vos filtres pour le moment.
+                    </div>
+                </div>
+            <?php endif; ?>
         </div>
-    </body>
-</html>
+    </section>
+</main>
+
 <?php
 require_once 'footer.php';
 ?>
