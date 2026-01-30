@@ -46,9 +46,14 @@ if (session_status() === PHP_SESSION_NONE) {
         <?php endif; ?>
         <li class="nav-item">
           <?php if (!empty($_SESSION['user_id']) && !empty($_SESSION['pseudoMemb'])) : ?>
-            <a class="btn btn-outline-dark" href="/api/security/disconnect.php" role="button">
-              👤 <?= htmlspecialchars($_SESSION['pseudoMemb']); ?>
-            </a>
+            <div class="d-flex flex-column flex-lg-row gap-2">
+              <a class="btn btn-outline-dark" href="/views/backend/dashboard.php" role="button">
+                👤 <?= htmlspecialchars($_SESSION['pseudoMemb']); ?>
+              </a>
+              <a class="btn btn-outline-secondary" href="/api/security/disconnect.php" role="button">
+                Se déconnecter
+              </a>
+            </div>
           <?php else : ?>
             <a class="btn btn-dark" href="/views/backend/security/login.php" role="button">
               👤 Connexion / Inscription

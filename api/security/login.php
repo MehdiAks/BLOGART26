@@ -16,16 +16,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $user[0]['passMemb'])) {
             $_SESSION['user_id'] = $user[0]['numMemb'];
             $_SESSION['pseudoMemb'] = $user[0]['pseudoMemb'];
+            $_SESSION['numStat'] = $user[0]['numStat'];
 
             header("Location: " . ROOT_URL . "/index.php");
-            $_SESSION['pseudoMemb'] = $pseudo; // Stocke le pseudo en session
             exit();
         } else {
-            header("Location: " . ROOT_URL . "/views/security/login.php?error=Mot de passe incorrect");
+            header("Location: " . ROOT_URL . "/views/backend/security/login.php?error=Mot de passe incorrect");
             exit();
         }
     } else {
-        header("Location: " . ROOT_URL . "/views/security/login.php?error=Pseudo ou mot de passe incorrect");
+        header("Location: " . ROOT_URL . "/views/backend/security/login.php?error=Pseudo ou mot de passe incorrect");
         exit();
     }
 }
