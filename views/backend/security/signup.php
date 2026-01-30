@@ -12,111 +12,152 @@ $recaptchaSiteKeyEscaped = htmlspecialchars($recaptchaSiteKey ?? '', ENT_QUOTES,
 unset($_SESSION['errors'], $_SESSION['old']);
 ?>
 
-<main>
+<main class="auth-page">
+    <section class="auth-card">
+        <h1>Créer mon compte</h1>
 
-    <h1>Créer mon compte</h1>
-
-
-    <div class="container mb-4">
-        <?php if (!empty($errors)): ?>
-            <div class="alert alert-danger">
-                <ul class="mb-2">
-                    <?php foreach ($errors as $error): ?>
-                        <?= htmlspecialchars($error) ?><br>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-        <?php endif; ?>
-    </div>
-    <form action="<?php echo ROOT_URL . '/api/security/signup.php' ?>" method="post">
-        <!-- Prénom -->
-        <div class="rowlog">
-            <div class="collumnslog" >
+        <div class="container mb-4">
+            <?php if (!empty($errors)): ?>
+                <div class="alert alert-danger">
+                    <ul class="mb-2">
+                        <?php foreach ($errors as $error): ?>
+                            <?= htmlspecialchars($error) ?><br>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
+        </div>
+        <form action="<?php echo ROOT_URL . '/api/security/signup.php' ?>" method="post" class="auth-form">
+            <div class="signup-grid">
+                <!-- Prénom -->
                 <div class="champ">
                     <label for="prenomMemb">Prénom :</label>
-                    <input type="text" name="prenomMemb" value="<?= htmlspecialchars($old['prenomMemb'] ?? '') ?>" required>
+                    <input type="text" id="prenomMemb" name="prenomMemb" value="<?= htmlspecialchars($old['prenomMemb'] ?? '') ?>" required>
                 </div>
 
                 <!-- Nom -->
                 <div class="champ">
                     <label for="nomMemb">Nom :</label>
-                    <input type="text" name="nomMemb" value="<?= htmlspecialchars($old['nomMemb'] ?? '') ?>" required>
+                    <input type="text" id="nomMemb" name="nomMemb" value="<?= htmlspecialchars($old['nomMemb'] ?? '') ?>" required>
                 </div>
-                    <!-- Pseudo -->
-                <div class="champ">
-                    <label for="pseudo" placeholder="6 à 70 caractères">Pseudo</label>
-                    <input type="text" 
-                            name="pseudoMemb" 
+
+                <!-- Pseudo -->
+                <div class="champ full">
+                    <label for="pseudoMemb" placeholder="6 à 70 caractères">Pseudo</label>
+                    <input type="text"
+                            id="pseudoMemb"
+                            name="pseudoMemb"
                             value="<?= htmlspecialchars($old['pseudoMemb'] ?? '') ?>"
                             required>
                     <small class="form-text text-muted">6 à 70 caractères</small>
                 </div>
-            </div>
-            <div class="collumnslog">
+
                 <!-- Email -->
                 <div class="champ">
-                    <label for="email">Email :</label>
-                    <input type="email" name="eMailMemb" value="<?= htmlspecialchars($old['eMailMemb'] ?? '') ?>" required>
+                    <label for="eMailMemb">Email :</label>
+                    <input type="email" id="eMailMemb" name="eMailMemb" value="<?= htmlspecialchars($old['eMailMemb'] ?? '') ?>" required>
                 </div>
 
                 <!-- Confirmation Email -->
-                <div class="champ">
-                    <label for="email">Confirmer l'email :</label>
-                    <input type="email" name="eMailMemb2" value="<?= htmlspecialchars($old['eMailMemb2'] ?? '') ?>" required>
+                <div class="champ offset-right">
+                    <label for="eMailMemb2">Confirmer l'email :</label>
+                    <input type="email" id="eMailMemb2" name="eMailMemb2" value="<?= htmlspecialchars($old['eMailMemb2'] ?? '') ?>" required>
                 </div>
 
                 <!-- Mot de passe -->
                 <div class="champ">
                     <label for="passMemb">Mot de passe :</label>
-                    <input type="password" id="passMemb" name="passMemb" required>
+                    <div class="input-with-icon">
+                        <input type="password" id="passMemb" name="passMemb" required>
+                        <button
+                            class="password-toggle"
+                            type="button"
+                            data-target="passMemb"
+                            aria-label="Afficher le mot de passe"
+                        >
+                            <svg class="icon icon-closed" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                                <path d="M4 4l16 16" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <svg class="icon icon-open" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                            </svg>
+                        </button>
+                    </div>
                     <small class="form-text text-muted">Au moins 8 caractères, une majuscule, une minuscule et un chiffre</small>
-                    <div class="afficher-mdp">
-                        <input type="checkbox" onclick="togglePassword('passMemb')"> Afficher mot de passe
-                    </div>
                 </div>
-                
-                <!-- Confirmation mot de passe -->
-                <div class="champ">
-                    <label for="passMemb2">Confirmation du mot de passe :</label>
-                    <input type="password" id="passMemb2" name="passMemb2" required>
-                    <div class="afficher-mdp">
-                        <input type="checkbox" onclick="togglePassword('passMemb2')"> Afficher mot de passe
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Accord données -->
-        <div>
-            <div class="champ">
-                <label  for="accordMemb">J'accepte le stockage de mes données</label>
-                <input type="checkbox" name="accordMemb" value="1" <?= isset($old['accordMemb']) ? 'checked' : '' ?> required>
-                
-            </div>
-        </div>
-        <!-- Boutons -->
-        <?php if (!empty($recaptchaSiteKey)): ?>
-            <div class="champ">
-                <div class="g-recaptcha" data-sitekey="<?php echo $recaptchaSiteKeyEscaped; ?>"></div>
-            </div>
-        <?php endif; ?>
-        <div class="btn-se-connecter">
-            <button type="submit">Créer mon compte</button>
-        </div>
 
-        <p>Vous possédez déjà un compte ? <a href="/views/backend/security/login.php" class="link">Se connecter</a></p>
-    </form>
+                <!-- Confirmation mot de passe -->
+                <div class="champ offset-right">
+                    <label for="passMemb2">Confirmation du mot de passe :</label>
+                    <div class="input-with-icon">
+                        <input type="password" id="passMemb2" name="passMemb2" required>
+                        <button
+                            class="password-toggle"
+                            type="button"
+                            data-target="passMemb2"
+                            aria-label="Afficher le mot de passe"
+                        >
+                            <svg class="icon icon-closed" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                                <path d="M4 4l16 16" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <svg class="icon icon-open" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Accord données -->
+            <div class="champ checkbox-row">
+                <label for="accordMemb">J'accepte le stockage de mes données, les CGU et les obligations légales.</label>
+                <input type="checkbox" id="accordMemb" name="accordMemb" value="1" <?= isset($old['accordMemb']) ? 'checked' : '' ?> required>
+            </div>
+            <!-- Boutons -->
+            <div class="btn-se-connecter">
+                <button type="submit">Créer mon compte</button>
+            </div>
+
+            <p>Vous possédez déjà un compte ? <a href="/views/backend/security/login.php" class="link">Se connecter</a></p>
+
+            <?php if (!empty($recaptchaSiteKey)): ?>
+                <div class="champ captcha-row">
+                    <div class="g-recaptcha" data-sitekey="<?php echo $recaptchaSiteKeyEscaped; ?>"></div>
+                </div>
+            <?php endif; ?>
+        </form>
+    </section>
 
 </main>
 <?php if (!empty($recaptchaSiteKey)): ?>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <?php endif; ?>
 <script>
-    function togglePassword(id) {
-        var x = document.getElementById(id);
-        if (x.type === "password") {
-            x.type = "text";
-        } else {
-            x.type = "password";
-        }
-    }
+    document.querySelectorAll('.password-toggle').forEach((button) => {
+        const input = document.getElementById(button.dataset.target);
+        const show = () => {
+            input.type = 'text';
+            button.classList.add('is-visible');
+        };
+        const hide = () => {
+            input.type = 'password';
+            button.classList.remove('is-visible');
+        };
+
+        button.addEventListener('pointerdown', show);
+        button.addEventListener('pointerup', hide);
+        button.addEventListener('pointerleave', hide);
+        button.addEventListener('pointercancel', hide);
+        button.addEventListener('keydown', (event) => {
+            if (event.code === 'Space' || event.code === 'Enter') {
+                show();
+            }
+        });
+        button.addEventListener('keyup', hide);
+    });
 </script>

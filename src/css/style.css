@@ -163,6 +163,51 @@ form {
     text-align: center;
 }
 
+.auth-page {
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px 80px;
+}
+
+.auth-card {
+    width: min(92vw, 640px);
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 40px 48px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+    text-align: center;
+}
+
+.auth-card h1 {
+    margin: 0 0 24px !important;
+    font-size: 40px !important;
+}
+
+.auth-form {
+    width: 100%;
+}
+
+.auth-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.signup-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 26px;
+    width: 100%;
+}
+
+.signup-grid .full {
+    grid-column: 1 / -1;
+}
+
+.signup-grid .offset-right {
+    margin-left: 14px;
+}
+
 .champ {
     width: 100%;
     display: flex;
@@ -185,6 +230,92 @@ form {
     border-bottom: 2px solid #cccccc; /* Ajoute uniquement une ligne en bas */
     outline: none; /* Supprime le contour bleu par défaut */
     
+}
+
+.auth-card .champ {
+    margin-bottom: 0;
+    align-items: stretch;
+}
+
+.auth-card .champ label {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.auth-card .champ input {
+    border: 1px solid #d8d1d1;
+    border-radius: 14px;
+    padding: 12px 14px;
+    background: #faf7f7;
+}
+
+.auth-card .champ input:focus {
+    border-color: #67081D;
+    box-shadow: 0 0 0 3px rgba(103, 8, 29, 0.12);
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon input {
+    padding-right: 46px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    color: #67081D;
+}
+
+.password-toggle .icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+.password-toggle .icon-open {
+    display: none;
+}
+
+.password-toggle.is-visible .icon-open {
+    display: block;
+}
+
+.password-toggle.is-visible .icon-closed {
+    display: none;
+}
+
+.password-toggle:focus-visible {
+    outline: 2px solid #67081D;
+    outline-offset: 2px;
+    border-radius: 6px;
+}
+
+.checkbox-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    margin: 28px 0 16px;
+}
+
+.checkbox-row label {
+    margin-bottom: 0;
+    font-size: 15px;
+}
+
+.checkbox-row input {
+    width: auto;
+}
+
+.captcha-row {
+    margin-top: 18px;
 }
 
 input:focus {
@@ -266,6 +397,24 @@ formp {
 .afficher-mdp label {
     font-size: 16px;
     font-weight:300;
+}
+
+@media (max-width: 768px) {
+    .auth-card {
+        padding: 32px 24px;
+    }
+
+    .auth-card h1 {
+        font-size: 30px !important;
+    }
+
+    .signup-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .signup-grid .offset-right {
+        margin-left: 0;
+    }
 }
 /* Style général du pop-up */
 .cookie-popup {
