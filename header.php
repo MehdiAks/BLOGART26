@@ -32,8 +32,35 @@ $numStat = $_SESSION['numStat'] ?? null;
         }
 
         body {
-            background-color: var(--bec-offwhite);
+            background-color: transparent;
             color: var(--bec-dark);
+        }
+
+        .site-background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .site-background-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(246, 241, 234, 0.75);
+            z-index: -1;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .site-background-video {
+                display: none;
+            }
+
+            body {
+                background-color: var(--bec-offwhite);
+            }
         }
 
         .site-main {
@@ -163,6 +190,10 @@ $numStat = $_SESSION['numStat'] ?? null;
 </head>
 
 <body>
+    <video class="site-background-video" autoplay muted loop playsinline poster="<?php echo ROOT_URL . '/src/images/background/background-index.jpg'; ?>">
+        <source src="<?php echo ROOT_URL . '/src/videos/fond.mp4'; ?>" type="video/mp4">
+    </video>
+    <div class="site-background-overlay" aria-hidden="true"></div>
     <header class="site-header">
         <div class="container d-flex align-items-center justify-content-between flex-wrap gap-3 py-3">
             <a class="navbar-brand d-flex align-items-center gap-2" href="<?php echo ROOT_URL . '/index.php'; ?>">
