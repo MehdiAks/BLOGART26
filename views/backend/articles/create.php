@@ -1,6 +1,7 @@
 <?php
-include '../../../header.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
+include '../../../header.php';
 
 // Récupération des thématiques et mots-clés disponibles
 $thematiques = sql_select("THEMATIQUE", "*");

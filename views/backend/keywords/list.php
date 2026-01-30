@@ -1,6 +1,7 @@
 <?php
-include '../../../header.php'; 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
+include '../../../header.php'; 
 
 //Load all statuts
 $keywords = sql_select("MOTCLE", "*");

@@ -1,6 +1,7 @@
 <?php
-include '../../../header.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
+include '../../../header.php';
 
 // Seulement si tu es admin ou modérateur, tu as accès à cette page
 /*if (!isset($_SESSION['numStat']) || $_SESSION['numStat'] !== 1 && $_SESSION['numStat'] !== 2 ) {

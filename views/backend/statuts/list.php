@@ -1,4 +1,5 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 include '../../../header.php'; // contains the header and call to config.php
 
 //Load all statuts

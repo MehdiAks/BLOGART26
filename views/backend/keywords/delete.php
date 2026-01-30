@@ -1,6 +1,7 @@
 <?php
-include '../../../header.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
+include '../../../header.php';
 
 if (isset($_GET['numMotCle'])) {
     $numMotCle = $_GET['numMotCle'];
