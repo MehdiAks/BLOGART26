@@ -36,167 +36,63 @@ $numStat = $_SESSION['numStat'] ?? null;
             color: var(--bec-dark);
         }
 
-        .box {
-            height: 250px;
-            margin-bottom: 20px;
-        }
-
-        .article-image {
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .article-content {
-            background-color: var(--bec-offwhite);
-            padding: 20px;
-            border-radius: 6px;
-            height: 100%;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-        }
-
-        .article-content p {
-            color: var(--bec-dark);
-        }
-
-        .article-content a {
-            color: var(--bec-accent);
-            font-weight: 600;
-        }
-
-        .exercice {
-            margin-top: 80px;
-        }
-
-        .header {
-            background-color: var(--bec-offwhite);
-            align-items: center;
-            min-height: 96px;
-        }
-
-        .header-nav {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .header-nav ul {
-            align-items: center;
-            gap: 40px;
-            margin: 0;
-        }
-
-        .header-nav li {
-            display: flex;
-            align-items: center;
-        }
-
-        .header-nav a {
-            color: var(--bec-dark);
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .header-user {
-            font-weight: 600;
-            color: var(--bec-dark);
-        }
-
-        .header-menu {
-            position: relative;
-        }
-
-        .header-menu summary {
-            list-style: none;
-        }
-
-        .header-menu summary::-webkit-details-marker {
-            display: none;
-        }
-
-        .header-menu__toggle {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-        }
-
-        .header-burger {
-            display: inline-flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .header-burger span {
-            width: 20px;
-            height: 2px;
-            background-color: var(--bec-dark);
-            display: block;
-        }
-
-        .header-menu__dropdown {
-            position: absolute;
-            right: 0;
-            top: calc(100% + 12px);
-            background: #fff;
-            border-radius: 12px;
-            padding: 12px;
-            min-width: 220px;
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            z-index: 10;
-        }
-
-        .header-menu:not([open]) .header-menu__dropdown {
-            display: none;
-        }
-
-        .header-menu__dropdown a,
-        .header-menu__dropdown button {
+        .site-main {
             text-align: left;
-            background: transparent;
-            border: none;
-            padding: 8px 10px;
-            border-radius: 8px;
-            color: var(--bec-dark);
-            font-weight: 600;
+            min-height: 60vh;
         }
 
-        .header-menu__dropdown a:hover,
-        .header-menu__dropdown button:hover {
+        .site-header .navbar-brand {
+            font-weight: 700;
+            color: var(--bec-dark);
+        }
+
+        .site-header .navbar-brand span {
+            font-size: 1.1rem;
+        }
+
+        .site-header .navbar-nav .nav-link {
+            color: var(--bec-dark);
+            font-weight: 500;
+        }
+
+        .site-header .navbar-nav .nav-link:hover,
+        .site-header .navbar-nav .nav-link:focus {
+            color: var(--bec-accent);
+        }
+
+        .site-logo {
+            height: 44px;
+            width: auto;
+        }
+
+        .btn-bec-primary {
+            background-color: var(--bec-accent);
+            border-color: var(--bec-accent);
+            color: #fff;
+        }
+
+        .btn-bec-primary:hover {
+            background-color: #8a0a27;
+            border-color: #8a0a27;
+        }
+
+        .btn-bec-outline {
+            border-color: rgba(103, 8, 29, 0.35);
+            color: var(--bec-accent);
+        }
+
+        .btn-bec-outline:hover {
             background-color: rgba(103, 8, 29, 0.08);
         }
 
-        .header-menu__dropdown .header-menu__logout {
-            color: var(--bec-accent);
+        .site-footer {
+            background-color: #fff;
         }
 
-        .header-actions button {
-            background-color: var(--bec-accent);
-            color: #fff;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 999px;
-            font-weight: 600;
-        }
-
-        .header-actions button:hover {
-            background-color: #8a0a27;
-        }
-
-        .footer {
-            background-color: var(--bec-offwhite);
-            color: var(--bec-dark);
-        }
-
-        .footer a,
-        .footer h3,
-        .footer h4 {
+        .site-footer a,
+        .site-footer h3,
+        .site-footer h4,
+        .site-footer p {
             color: var(--bec-dark);
         }
 
@@ -231,18 +127,9 @@ $numStat = $_SESSION['numStat'] ?? null;
         }
 
         @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                gap: 16px;
-                padding: 16px;
-            }
-
-            .header-nav {
-                flex-direction: column;
-            }
-
-            .header-actions {
-                flex-direction: column;
+            .site-main {
+                padding-top: 20px;
+                padding-bottom: 40px;
             }
         }
     </style>
@@ -250,52 +137,52 @@ $numStat = $_SESSION['numStat'] ?? null;
 </head>
 
 <body>
-    <header class="header">
-        <div class="header-logo">
-            <a href="<?php echo ROOT_URL . '/index.php'; ?>">
-                <img src="<?php echo ROOT_URL . '/Romain/assets/images/logo.png'; ?>" alt="BEC" class="header-logo">
+    <header class="site-header border-bottom bg-white">
+        <nav class="navbar navbar-expand-lg navbar-light container py-3">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="<?php echo ROOT_URL . '/index.php'; ?>">
+                <img src="<?php echo ROOT_URL . '/Romain/assets/images/logo.png'; ?>" alt="BEC" class="site-logo">
+                <span>Bordeaux Étudiant Club</span>
             </a>
-        </div>
-
-        <nav class="header-nav">
-            <ul>
-                <li>
-                    <a href="<?php echo ROOT_URL . '/index.php'; ?>">Accueil</a>
-                </li>
-                <li>
-                    <a href="<?php echo ROOT_URL . '/actualites.php'; ?>">Actualités</a>
-                </li>
-                <li>
-                    <a href="<?php echo ROOT_URL . '/contact.php'; ?>">Contact</a>
-                </li>
-                <li>
-                    <a href="<?php echo ROOT_URL . '/anciens-et-amis.php'; ?>">Anciens et amis</a>
-                </li>
-            </ul>
-            <div class="header-actions">
-                <?php if ($pseudoMemb): ?>
-                    <details class="header-menu">
-                        <summary class="header-menu__toggle">
-                            <span class="header-user"><?php echo htmlspecialchars($pseudoMemb); ?></span>
-                            <span class="header-burger" aria-hidden="true">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </span>
-                        </summary>
-                        <div class="header-menu__dropdown">
-                            <a href="<?php echo ROOT_URL . '/compte.php'; ?>">Mon compte</a>
-                            <?php if ($numStat === 1 || $numStat === 2): ?>
-                                <a href="<?php echo ROOT_URL . '/views/backend/dashboard.php'; ?>">Panneau admin</a>
-                            <?php endif; ?>
-                            <a class="header-menu__logout" href="<?php echo ROOT_URL . '/api/security/disconnect.php'; ?>">Déconnexion</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Ouvrir le menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo ROOT_URL . '/index.php'; ?>">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo ROOT_URL . '/actualites.php'; ?>">Actualités</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo ROOT_URL . '/contact.php'; ?>">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo ROOT_URL . '/anciens-et-amis.php'; ?>">Anciens et amis</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-lg-center gap-2 ms-lg-3 mt-3 mt-lg-0">
+                    <?php if ($pseudoMemb): ?>
+                        <div class="dropdown">
+                            <button class="btn btn-bec-outline dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?php echo htmlspecialchars($pseudoMemb); ?>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="<?php echo ROOT_URL . '/compte.php'; ?>">Mon compte</a></li>
+                                <?php if ($numStat === 1 || $numStat === 2): ?>
+                                    <li><a class="dropdown-item" href="<?php echo ROOT_URL . '/views/backend/dashboard.php'; ?>">Panneau admin</a></li>
+                                <?php endif; ?>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="<?php echo ROOT_URL . '/api/security/disconnect.php'; ?>">Déconnexion</a></li>
+                            </ul>
                         </div>
-                    </details>
-                <?php else: ?>
-                    <a href="<?php echo ROOT_URL . '/views/backend/security/login.php'; ?>">
-                        <button type="button">Connexion / Inscription</button>
-                    </a>
-                <?php endif; ?>
+                    <?php else: ?>
+                        <a class="btn btn-bec-primary" href="<?php echo ROOT_URL . '/views/backend/security/login.php'; ?>">
+                            Connexion / Inscription
+                        </a>
+                    <?php endif; ?>
+                </div>
             </div>
         </nav>
     </header>
+    <main class="site-main container py-5">
