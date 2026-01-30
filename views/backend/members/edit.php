@@ -3,6 +3,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/redirec.php';
 include '../../../header.php';
 
+// Récupération des erreurs flash
+$errors = $_SESSION['errors'] ?? [];
+unset($_SESSION['errors']);
+$recaptchaSiteKey = getenv('RECAPTCHA_SITE_KEY');
+
 // Seulement si tu es admin ou modérateur, tu as accès à cette page
 /*if (!isset($_SESSION['numStat']) || $_SESSION['numStat'] !== 1 && $_SESSION['numStat'] !== 2 ) {
     header('Location: ../../../index.php');
@@ -31,10 +36,22 @@ if (isset($_GET['numMemb'])) {
         <div class="col-md-12">
             <h1>Modification Membre</h1>
         </div>
+        <?php if (!empty($errors)): ?>
+            <div class="col-md-12">
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        <?php foreach ($errors as $error): ?>
+                            <li><?= htmlspecialchars($error) ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
+        <?php endif; ?>
         <div class="col-md-12">
             <form action="<?php echo ROOT_URL . '/api/members/update.php' ?>" method="post">
                 <input name="numMemb" class="form-control" type="hidden"
                     value="<?php echo htmlspecialchars($numMemb); ?>" />
+                <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response-update">
 
                 <div class="form-group">
                     <!-- PSEUDO -->
@@ -97,6 +114,7 @@ if (isset($_GET['numMemb'])) {
     </div>
 </div>
 
+<script src="https://www.google.com/recaptcha/api.js?render=<?php echo htmlspecialchars($recaptchaSiteKey ?? '', ENT_QUOTES, 'UTF-8'); ?>"></script>
 <!-- JS POUR CACHER/AFFICHER MDP-->
 <script>
     document.getElementById('afficher').addEventListener("click", function () {
@@ -108,4 +126,28 @@ if (isset($_GET['numMemb'])) {
         let passInput2 = document.getElementById('passMemb2');
         passInput2.type = (passInput2.type === 'password') ? 'text' : 'password';
     });
+
+    (function () {
+        var form = document.querySelector('form');
+        var tokenInput = document.getElementById('g-recaptcha-response-update');
+        if (!form || !tokenInput) {
+            return;
+        }
+
+        var isSubmitting = false;
+        form.addEventListener('submit', function (event) {
+            if (isSubmitting) {
+                return;
+            }
+            event.preventDefault();
+            grecaptcha.ready(function () {
+                grecaptcha.execute('<?php echo htmlspecialchars($recaptchaSiteKey ?? '', ENT_QUOTES, 'UTF-8'); ?>', {action: 'update'})
+                    .then(function (token) {
+                        tokenInput.value = token;
+                        isSubmitting = true;
+                        form.submit();
+                    });
+            });
+        });
+    })();
 </script>

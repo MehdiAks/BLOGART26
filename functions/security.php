@@ -12,3 +12,98 @@ function check_access($level) {
         return false;
     }
 }
+
+function verifyRecaptcha($token, $action, $threshold = null) {
+    $secretKey = getenv('RECAPTCHA_SECRET_KEY');
+    $resolvedThreshold = $threshold ?? (float) (getenv('RECAPTCHA_THRESHOLD') ?: 0.5);
+
+    if (empty($secretKey)) {
+        return [
+            'valid' => false,
+            'score' => 0,
+            'message' => 'Configuration reCAPTCHA manquante.'
+        ];
+    }
+
+    if (empty($token)) {
+        return [
+            'valid' => false,
+            'score' => 0,
+            'message' => 'Veuillez valider le reCAPTCHA.'
+        ];
+    }
+
+    $payload = http_build_query([
+        'secret' => $secretKey,
+        'response' => $token
+    ]);
+
+    $ch = curl_init('https://www.google.com/recaptcha/api/siteverify');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+    $response = curl_exec($ch);
+    $curlError = curl_error($ch);
+    curl_close($ch);
+
+    if ($response === false) {
+        return [
+            'valid' => false,
+            'score' => 0,
+            'message' => 'Vérification reCAPTCHA impossible.'
+        ];
+    }
+
+    $data = json_decode($response, true);
+    if (!is_array($data)) {
+        return [
+            'valid' => false,
+            'score' => 0,
+            'message' => 'Réponse reCAPTCHA invalide.'
+        ];
+    }
+
+    $success = $data['success'] ?? false;
+    $score = (float) ($data['score'] ?? 0.0);
+    $responseAction = $data['action'] ?? '';
+
+    if (getenv('APP_DEBUG') === 'true') {
+        error_log(sprintf(
+            'reCAPTCHA action=%s success=%s score=%.2f error=%s',
+            $action,
+            $success ? 'true' : 'false',
+            $score,
+            $curlError
+        ));
+    }
+
+    if (!$success) {
+        return [
+            'valid' => false,
+            'score' => $score,
+            'message' => 'La vérification reCAPTCHA a échoué.'
+        ];
+    }
+
+    if ($responseAction !== $action) {
+        return [
+            'valid' => false,
+            'score' => $score,
+            'message' => 'Action reCAPTCHA invalide.'
+        ];
+    }
+
+    if ($score < $resolvedThreshold) {
+        return [
+            'valid' => false,
+            'score' => $score,
+            'message' => 'Score reCAPTCHA insuffisant.'
+        ];
+    }
+
+    return [
+        'valid' => true,
+        'score' => $score,
+        'message' => ''
+    ];
+}
