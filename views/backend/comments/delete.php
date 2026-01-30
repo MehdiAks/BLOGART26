@@ -140,4 +140,3 @@ if(isset($_GET['numCom'])){
         </div>
     </div>
 </div>
- 
