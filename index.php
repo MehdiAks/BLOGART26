@@ -65,7 +65,10 @@ $articles = sql_select("ARTICLE", "*", null, null, "RAND()", 3);
             </div>
         </div>
         <div class="home-hero__media">
-            <img src="<?php echo ROOT_URL . '/src/images/background/background-index.jpg'; ?>" alt="Ambiance étudiante à Bordeaux">
+            <video autoplay muted loop playsinline poster="<?php echo ROOT_URL . '/src/images/background/background-index.jpg'; ?>">
+                <source src="<?php echo ROOT_URL . '/src/videos/fond.mp4'; ?>" type="video/mp4">
+                Votre navigateur ne supporte pas la lecture de vidéos.
+            </video>
             <div class="home-hero__card">
                 <strong>À venir :</strong>
                 <p>Forum des associations, ateliers sportifs & soirées solidaires.</p>

@@ -46,6 +46,11 @@ $numStat = $_SESSION['numStat'] ?? null;
             color: var(--bec-dark);
         }
 
+        .site-header {
+            background-color: transparent;
+            border-bottom: none;
+        }
+
         .site-header .navbar-brand span {
             font-size: 1.1rem;
         }
@@ -158,7 +163,7 @@ $numStat = $_SESSION['numStat'] ?? null;
 </head>
 
 <body>
-    <header class="site-header border-bottom bg-white">
+    <header class="site-header">
         <div class="container d-flex align-items-center justify-content-between flex-wrap gap-3 py-3">
             <a class="navbar-brand d-flex align-items-center gap-2" href="<?php echo ROOT_URL . '/index.php'; ?>">
                 <img src="<?php echo ROOT_URL . '/Romain/assets/images/logo.png'; ?>" alt="BEC" class="site-logo">
