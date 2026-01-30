@@ -18,6 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $accordMemb = isset($_POST['accordMemb']) ? 1 : 0;
     $numStat = 3;
 
+    $recaptcha = verifyRecaptcha($_POST['g-recaptcha-response'] ?? '', 'signup');
+    if (!$recaptcha['valid']) {
+        $_SESSION['errors'][] = $recaptcha['message'] ?: 'Échec de la vérification reCAPTCHA.';
+    }
+
     // Validation pseudo
     if (strlen($pseudoMemb) < 6 || strlen($pseudoMemb) > 70) {
         $_SESSION['errors'][] = 'Le pseudo doit contenir entre 6 et 70 caractères';
