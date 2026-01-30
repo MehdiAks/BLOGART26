@@ -12,4 +12,3 @@ function check_access($level) {
         return false;
     }
 }
-?>
