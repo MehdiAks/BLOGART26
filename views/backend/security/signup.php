@@ -28,6 +28,7 @@ unset($_SESSION['errors'], $_SESSION['old']);
             <?php endif; ?>
         </div>
         <form action="<?php echo ROOT_URL . '/api/security/signup.php' ?>" method="post" class="auth-form">
+            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response-signup">
             <div class="signup-grid">
                 <!-- Prénom -->
                 <div class="champ">
@@ -125,17 +126,12 @@ unset($_SESSION['errors'], $_SESSION['old']);
 
             <p>Vous possédez déjà un compte ? <a href="/views/backend/security/login.php" class="link">Se connecter</a></p>
 
-            <?php if (!empty($recaptchaSiteKey)): ?>
-                <div class="champ captcha-row">
-                    <div class="g-recaptcha" data-sitekey="<?php echo $recaptchaSiteKeyEscaped; ?>"></div>
-                </div>
-            <?php endif; ?>
         </form>
     </section>
 
 </main>
 <?php if (!empty($recaptchaSiteKey)): ?>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://www.google.com/recaptcha/api.js?render=<?php echo $recaptchaSiteKeyEscaped; ?>"></script>
 <?php endif; ?>
 <script>
     document.querySelectorAll('.password-toggle').forEach((button) => {
@@ -160,4 +156,34 @@ unset($_SESSION['errors'], $_SESSION['old']);
         });
         button.addEventListener('keyup', hide);
     });
+</script>
+<script>
+    (function () {
+        var form = document.querySelector('.auth-form');
+        var tokenInput = document.getElementById('g-recaptcha-response-signup');
+        var siteKey = '<?php echo $recaptchaSiteKeyEscaped; ?>';
+        if (!form || !tokenInput || !siteKey || typeof grecaptcha === 'undefined') {
+            return;
+        }
+
+        var isSubmitting = false;
+        form.addEventListener('submit', function (event) {
+            if (isSubmitting) {
+                return;
+            }
+            event.preventDefault();
+            if (typeof grecaptcha === 'undefined') {
+                form.submit();
+                return;
+            }
+            grecaptcha.ready(function () {
+                grecaptcha.execute(siteKey, {action: 'signup'})
+                    .then(function (token) {
+                        tokenInput.value = token;
+                        isSubmitting = true;
+                        form.submit();
+                    });
+            });
+        });
+    })();
 </script>
