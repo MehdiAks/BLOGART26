@@ -529,56 +529,26 @@ Ce document décrit chaque dossier et fichier présents dans le dépôt, leur ut
   - **Pourquoi :** Informer l’utilisateur.
   - **Lié à :** `includes/libs/cookie-consent.php`.
 
-## Dossier `Romain`
+## Assets déplacés dans `src`
 
-- `Romain/`
-  - **Utilité :** Maquette/prototype statique.
-  - **Pourquoi :** Ressources de design/maquette.
-  - **Lié à :** Aucun direct avec le runtime PHP (assets autonomes).
-
-- `Romain/index.php`
-  - **Utilité :** Page de démonstration/maquette.
-  - **Pourquoi :** Présentation visuelle.
-  - **Lié à :** `Romain/assets/*`.
-
-- `Romain/assets/`
-  - **Utilité :** Assets de la maquette.
-  - **Pourquoi :** CSS, images, fonts pour la maquette.
-  - **Lié à :** `Romain/index.php`.
-
-- `Romain/assets/css/`
-  - **Utilité :** Styles de la maquette.
-  - **Pourquoi :** Mise en forme.
-  - **Lié à :** `Romain/index.php`.
-
+- `src/css/`
+  - **Utilité :** Feuilles de style partagées.
+  - **Pourquoi :** Centraliser le CSS du site.
+  - **Lié à :** `header.php`, `actualites.php`, `article.php`.
   - `reset.css`, `style.css`, `variables.css`, `fonts.css`, `system.css`.
 
-- `Romain/assets/images/`
-  - **Utilité :** Images de la maquette.
-  - **Pourquoi :** Illustrations.
-  - **Lié à :** `Romain/index.php`.
-
+- `src/images/`
+  - **Utilité :** Images globales.
+  - **Pourquoi :** Centraliser les visuels.
+  - **Lié à :** `header.php`, `footer.php`.
   - `logo.png`, `image1.jpg`, `image2.jpg`, `image3.jpg`, `map.png`, `facebook.png`, `instagram.png`.
 
-- `Romain/assets/fonts/`
+- `src/fonts/`
   - **Utilité :** Polices.
   - **Pourquoi :** Identité visuelle.
-  - **Lié à :** `Romain/assets/css/fonts.css`.
+  - **Lié à :** `src/css/fonts.css`.
 
-- `Romain/assets/fonts/Epilogue/`
-  - **Utilité :** Police Epilogue.
-  - **Pourquoi :** Typographie de la maquette.
-  - **Lié à :** `Romain/assets/css/fonts.css`.
-
-- `Romain/assets/fonts/Montserrat/`
-  - **Utilité :** Police Montserrat.
-  - **Pourquoi :** Typographie de la maquette.
-  - **Lié à :** `Romain/assets/css/fonts.css`.
-
-- `Romain/.DS_Store`, `Romain/assets/.DS_Store`, `Romain/assets/fonts/.DS_Store`, `Romain/assets/images/.DS_Store`
-  - **Utilité :** Métadonnées macOS.
-  - **Pourquoi :** Créé automatiquement.
-  - **Lié à :** Aucun.
+  - `Epilogue/`, `Montserrat/`.
 
 ## Dossier `.git` (métadonnées Git)
 
@@ -732,4 +702,3 @@ Ce document décrit chaque dossier et fichier présents dans le dépôt, leur ut
   - **Utilité :** Références de branches (legacy).
   - **Pourquoi :** Support ancien Git.
   - **Lié à :** `.git/refs/heads/*`.
-

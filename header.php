@@ -12,12 +12,12 @@ $hasBackgroundVideo = $pageHasVideo ?? false;
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo ROOT_URL . '/Romain/assets/css/reset.css'; ?>" rel="stylesheet">
-    <link href="<?php echo ROOT_URL . '/Romain/assets/css/variables.css'; ?>" rel="stylesheet">
-    <link href="<?php echo ROOT_URL . '/Romain/assets/css/system.css'; ?>" rel="stylesheet">
-    <link href="<?php echo ROOT_URL . '/Romain/assets/css/style.css'; ?>" rel="stylesheet">
-    <link href="<?php echo ROOT_URL . '/Romain/assets/css/fonts.css'; ?>" rel="stylesheet">
-    <link rel="icon" type="image/png" href="/romain/assets/images/logo.png" />
+    <link href="<?php echo ROOT_URL . '/src/css/reset.css'; ?>" rel="stylesheet">
+    <link href="<?php echo ROOT_URL . '/src/css/variables.css'; ?>" rel="stylesheet">
+    <link href="<?php echo ROOT_URL . '/src/css/system.css'; ?>" rel="stylesheet">
+    <link href="<?php echo ROOT_URL . '/src/css/style.css'; ?>" rel="stylesheet">
+    <link href="<?php echo ROOT_URL . '/src/css/fonts.css'; ?>" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/src/images/logo.png" />
     <?php if (!empty($pageStyles) && is_array($pageStyles)) : ?>
         <?php foreach ($pageStyles as $stylePath) : ?>
             <link href="<?php echo htmlspecialchars($stylePath); ?>" rel="stylesheet">
@@ -222,7 +222,7 @@ $hasBackgroundVideo = $pageHasVideo ?? false;
     <header class="site-header">
         <div class="container d-flex align-items-center justify-content-between flex-wrap gap-3 py-3">
             <a class="navbar-brand d-flex align-items-center gap-2" href="<?php echo ROOT_URL . '/index.php'; ?>">
-                <img src="<?php echo ROOT_URL . '/Romain/assets/images/logo.png'; ?>" alt="BEC" class="site-logo">
+                <img src="<?php echo ROOT_URL . '/src/images/logo.png'; ?>" alt="BEC" class="site-logo">
                 <span>Bordeaux Étudiant Club</span>
             </a>
 
