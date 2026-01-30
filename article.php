@@ -139,7 +139,7 @@ if (isset($_SESSION['user_id'])) {
 
 <body>
     <div class="image-fixe">
-        <img src="ubb site/image/ubb image.jpg" alt="Image fixe">
+        <img src="<?php echo ROOT_URL; ?>/src/images/image_fixe.jpg" alt="Image fixe">
     </div>
 
     <div>

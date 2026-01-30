@@ -17,7 +17,7 @@ require_once 'header.php';
         <div class="col-lg-4 col-md-6">
             <div class="article-content h-100">
                 <img
-                    src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80"
+                    src="src/images/background/background-actualite.jpg"
                     class="article-image mb-3"
                     alt="Ancien joueur en entraînement"
                 >
@@ -26,7 +26,7 @@ require_once 'header.php';
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Vestibulum ante
                     ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.
                 </p>
-                <a href="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=80">
+                <a href="src/images/background/background-actualite.jpg">
                     Voir la galerie anciens-joueurs.jpg
                 </a>
             </div>
@@ -35,7 +35,7 @@ require_once 'header.php';
         <div class="col-lg-4 col-md-6">
             <div class="article-content h-100">
                 <img
-                    src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+                    src="src/images/background/background-article.jpg"
                     class="article-image mb-3"
                     alt="Supporters réunis"
                 >
@@ -44,7 +44,7 @@ require_once 'header.php';
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat, lorem ac aliquet
                     commodo, lorem ipsum consequat lectus, vitae commodo urna mauris nec metus.
                 </p>
-                <a href="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80">
+                <a href="src/images/background/background-article.jpg">
                     Découvrir supporters-bec.jpg
                 </a>
             </div>
@@ -53,7 +53,7 @@ require_once 'header.php';
         <div class="col-lg-4 col-md-6">
             <div class="article-content h-100">
                 <img
-                    src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80"
+                    src="src/images/background/background-index.jpg"
                     class="article-image mb-3"
                     alt="Moment de convivialité"
                 >
@@ -62,7 +62,7 @@ require_once 'header.php';
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tristique, tellus id consequat
                     sodales, nisl neque aliquet urna, ut viverra turpis leo non quam.
                 </p>
-                <a href="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80">
+                <a href="src/images/background/background-index.jpg">
                     Voir retrouvailles-anciens.jpg
                 </a>
             </div>
