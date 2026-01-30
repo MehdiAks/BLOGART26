@@ -1,7 +1,10 @@
 # Blogart Template
 
 ## Setup
-
+### Group 1
+MMI - IUT Bordeaux Montaigne  
+Group members: Mehdi Afankous, Romain Bezombes, Alvin Bonaventure-Sanchez, Juliette Rieunau, Phuong-My Nguyen  
+Theme: Bordeaux through the Bordeaux Étudiant Club
 
 ## Architecture
 - **api** - Contains all php calls for example "create.php" for statuts, articles
