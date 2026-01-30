@@ -33,7 +33,7 @@ include '../header.php';
                 (Métiers du Multimédia et de l’Internet). 
                 Courriel de contact : contact@bordeauxetudiantclub.com</p>
 
-            <br>
+            <br></br>
 
             <h2>Hébergement du site</h2>
 
@@ -55,7 +55,7 @@ include '../header.php';
             <p>L’ensemble des contenus présents sur le site (textes, images, articles, logos, vidéos) est protégé par le droit d’auteur.
                 Toute reproduction, modification ou diffusion, totale ou partielle, sans autorisation préalable est interdite.</p>
 
-            <br>
+            <br></br>
 
             
         </main>
